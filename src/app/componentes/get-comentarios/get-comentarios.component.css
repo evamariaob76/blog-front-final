@@ -1,0 +1,16 @@
+th {
+    text-align: center;
+}
+
+.bordes {
+    border: 1px solid #1d1936;
+}
+
+.cabecera {
+    color: #1d1936;
+}
+
+.row {
+    background: white;
+    padding-bottom: 50px;
+}

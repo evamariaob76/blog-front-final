@@ -1,0 +1,31 @@
+th {
+    text-align: center;
+}
+
+.row {
+    padding-top: 20px;
+    padding-left: 10px;
+}
+
+.cabecera {
+    color: #1d1936;
+}
+
+.bordes {
+    border: 1px solid #1d1936;
+}
+
+.boton {
+    background: #00004d;
+    color: white
+}
+
+.boton:hover {
+    color: white;
+    background: #38688B;
+}
+
+.row {
+    background: white;
+    padding-bottom: 50px;
+}

@@ -1,0 +1,22 @@
+    * {
+        font-family: 'Amaranth', sans-serif;
+    }
+    
+    .menu-lateral {
+        width: 100%;
+    }
+    
+    .row {
+        padding: 0px;
+    }
+    
+    @media (max-width:414px) {
+        .header {
+            padding: 0px;
+            height: 250px;
+        }
+        .login {
+            margin-top: 0px!important;
+            padding-top: 0px!important;
+        }
+    }

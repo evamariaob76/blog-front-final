@@ -1,0 +1,23 @@
+.row {
+    height: 100px;
+    text-align: center;
+    color: #1D1936;
+    font-family: 'Kaushan Script', cursive;
+    font-size: 15px;
+    border-top: 1px solid #bccbd8;
+}
+
+.resaltar {
+    font-size: 12px;
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+* {
+    background: #4F6E85;
+}
+
+.pie {
+    display: inline-block;
+    vertical-align: middle;
+}

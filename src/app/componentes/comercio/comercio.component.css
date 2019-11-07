@@ -1,0 +1,169 @@
+.card-title {
+    font-family: 'Kaushan Script', cursive;
+    text-align: center;
+}
+
+* {
+    font-family: 'Amaranth', sans-serif;
+    text-align: justify;
+}
+
+div>img {
+    width: 100%;
+    height: 100%;
+}
+
+.actividad {
+    color: grey;
+}
+
+.main {
+    width: min-content;
+}
+
+.fa-asterisk {
+    font-size: 7px;
+}
+
+.bio {
+    background: #fff;
+    font-size: 12px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    display: flex;
+    align-items: left;
+    padding-top: 0px;
+}
+
+li {
+    height: 30px !important;
+    padding-right: 10px;
+}
+
+li a,
+.bio {
+    text-decoration: none;
+}
+
+.bio img {
+    -webkit-box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+    max-width: 25px;
+    border-radius: 50%;
+}
+
+div a {
+    display: inline;
+}
+
+.wrapper {
+    padding-top: 130px;
+    padding-left: 80px;
+    padding-right: 60px;
+}
+
+.fa-heart {
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+h1 {
+    padding-top: 20px;
+}
+
+.fa-facebook-f,
+.fa-comment {
+    font-size: 15px;
+    color: #B2BABB;
+}
+
+.social a {
+    padding-right: 6px;
+    color: #B2BABB;
+}
+
+.cabecera {
+    padding-top: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    height: 40px;
+    padding-bottom: 0px;
+}
+
+.boton {
+    background: #00004d;
+    color: white
+}
+
+.boton:hover {
+    color: white;
+    background: #38688B;
+}
+
+.corazon {
+    display: inline-block;
+    font-size: 20px;
+    color: #B2BABB;
+    transform-origin: center;
+}
+
+.corazonClick {
+    display: inline-block;
+    font-size: 20px;
+    color: #B2BABB;
+    transform-origin: center;
+    animation: latidos .50s;
+}
+
+p {
+    font-size: 16px;
+    padding-bottom: 0px;
+    font-family: "Josefin Sans";
+    text-align: justify;
+}
+
+h1 {
+    font-weight: bold;
+    font-family: 'Merienda', cursive;
+}
+
+label {
+    font-size: 14px;
+}
+
+.resumen {
+    padding-top: 20px;
+}
+
+@keyframes latidos {
+    from {
+        color: red;
+    }
+    to {
+        color: #B2BABB;
+    }
+}
+
+span {
+    position: relative;
+    bottom: 1px;
+    left: 0px;
+}
+
+.boton {
+    background: #00004d;
+    color: white;
+}
+
+.boton:hover {
+    color: white;
+    background: #38688B;
+}
