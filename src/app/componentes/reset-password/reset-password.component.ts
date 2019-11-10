@@ -17,8 +17,8 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit() {
   }
-  resetPassword(passwordForm: NgForm, password): void {//método para resetear la contraseña
-    password = passwordForm.value.password;
+  resetPassword(passwordForm: NgForm): void {//método para resetear la contraseña
+    let password = passwordForm.value.password;
     this.usuariosService.updateUsuarioPassword(password)
       .subscribe(json => {
         swal.fire('Has actualizado correctamente la contraseña', 'success')
