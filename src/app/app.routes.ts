@@ -10,7 +10,6 @@ import { AuthGuard } from './guards/auth.guard';
 import { BodyComercioComponent } from './componentes/body-comercio/body-comercio.component';
 import { GetComentariosComponent } from './componentes/get-comentarios/get-comentarios.component';
 import { CrearComercioComponent } from './componentes/crear-comercio/crear-comercio.component';
-import { SubirFotosComponent } from './componentes/subir-fotos/subir-fotos.component';
 import { BioComponent } from './componentes/bio/bio.component';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { EditarComercioComponent } from './componentes/editar-comercio/editar-comercio.component';
@@ -41,7 +40,6 @@ const RUTAS: Routes = [
     { path: 'likes', component: ComerciosLikesComponent, canActivate: [AuthGuard, RolesGuard], data: { role: 'ROLE_ADMIN' }   },
     { path: 'comentarios/:id', component: GetComentariosComponent },
     { path: 'crear/comercios', component: CrearComercioComponent, canActivate: [AuthGuard, RolesGuard], data: { role: 'ROLE_ADMIN' }  },
-    { path: 'crear/comercios/fotos/:id', component: SubirFotosComponent, canActivate: [AuthGuard, RolesGuard], data: { role: 'ROLE_ADMIN' }   },
     { path: 'admin', component: BodyAdminComponent },
     { path: 'mes/:mes', component: BodyFechasComponent },
     { path: 'bio', component: BioComponent },

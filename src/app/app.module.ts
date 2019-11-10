@@ -52,7 +52,6 @@ import { ComentariosComponent } from './componentes/comentarios/comentarios.comp
 import { BodyComercioComponent } from './componentes/body-comercio/body-comercio.component';
 import { GetComentariosComponent } from './componentes/get-comentarios/get-comentarios.component';
 import { CrearComercioComponent } from './componentes/crear-comercio/crear-comercio.component';
-import { SubirFotosComponent } from './componentes/subir-fotos/subir-fotos.component';
 import { AdminComponent } from './componentes/admin/admin.component';
 import { ComercioFechasComponent } from './componentes/comercio-fechas/comercio-fechas.component';
 import { InformacionPersonalComponent } from './componentes/informacion-personal/informacion-personal.component';
@@ -95,7 +94,6 @@ import { BodyUpdatedAdminComponent } from './componentes/body-updated-admin/body
     BodyComercioComponent,
     GetComentariosComponent,
     CrearComercioComponent,
-    SubirFotosComponent,
     AdminComponent,
     ComercioFechasComponent,
     InformacionPersonalComponent,
