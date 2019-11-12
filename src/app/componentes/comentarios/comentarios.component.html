@@ -66,7 +66,7 @@
                         <li class="comment" id="comment" *ngIf="i<4  && comprobar==false">
                             <div id="comentariosInicio">
                                 <div class="vcard ">
-                                    <img src="../../../assets/img/madrid/1madrid.jpg" alt="Image placeholder">
+                                    <img src="{{url_backend}}/api/descargasAdmin/img/{{usuario.fotoPortada}}" alt="Image placeholder">
                                 </div>
                                 <div class="comment-body">
                                     <h3>{{comentario.nombre}}{{comentario.id}}</h3>
@@ -95,7 +95,7 @@
                             <div class="contestacion ">
                                 <div id=" comentariosInicio ">
                                     <div class="vcard ">
-                                        <img src="../../../assets//img//personal/imagen.jpg" alt="Image placeholder ">
+                                        <img src="{{url_backend}}/api/descargasAdmin/img/{{usuario.fotoPortada}}" alt="Image placeholder ">
                                     </div>
                                     <div class="comment-body ">
                                         <h3>Amind dice... </h3>
@@ -107,7 +107,7 @@
                                         </div>
                                         <div id="contestacionAmin{{comentario.id}}" class="ocultar">
                                             <textarea name="contestacion " cols="60 " rows="4 " required minlength="2" [(ngModel)]="coment" #contestacion="ngModel"></textarea>
-                                            <div style="border:1px solid red" id="contestacionFormulario" class="alert alert-danger" style="margin-left:150px; width:500px" *ngIf="contestacion.invalid && contestacion.touched">
+                                            <div id="contestacionFormulario" class="alert alert-danger" style="margin-left:150px; width:500px" *ngIf="contestacion.invalid && contestacion.touched">
                                                 <div id="contestacionFormulario" *ngIf="contestacion.invalid && (contestacion.dirty || contestacion.touched)">
                                                     La contestación debe tener al menos 2 caracteres
                                                 </div>
@@ -123,7 +123,7 @@
                         <li class="comment" id="comment" *ngIf="comprobar ==true ">
                             <div id="comentariosInicio">
                                 <div class="vcard ">
-                                    <img src="../../../assets/img/madrid/1madrid.jpg" alt="Image placeholder">
+                                    <img src="{{url_backend}}/api/descargasAdmin/img/{{usuario.fotoPortada}}" alt="Image placeholder">
                                 </div>
                                 <div class="comment-body">
                                     <h3>{{comentario.nombre}}</h3>
@@ -152,7 +152,7 @@
                             <div class="contestacion ">
                                 <div id=" comentariosInicio ">
                                     <div class="vcard ">
-                                        <img src="../../../assets//img/personal/imagen.jpg" alt="Image Placeholder" class="img-fluid">
+                                        <img src="{{url_backend}}/api/descargasAdmin/img/{{usuario.fotoPortada}}" alt="Image Placeholder" class="img-fluid">
                                     </div>
                                     <div class="comment-body ">
                                         <h3>Amind dice... </h3>

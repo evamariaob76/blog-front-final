@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ComerciosService, Comercio } from '../../servicios/comercios.service';
 import { EmailService } from '../../servicios/email.service';
 import { map, catchError, tap } from 'rxjs/operators';
-
 import { Router, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { URL_BACKEND } from "../../config/config";
+
 
 @Component({
   selector: 'app-crear-comercio',
@@ -32,6 +33,8 @@ export class CrearComercioComponent implements OnInit {
   id: number;
   actividades : any=[];
   otros : string="";
+  url_backend: string = URL_BACKEND;
+
   constructor(private comerciosService: ComerciosService,
     private router: Router,
     private activatedRoute: ActivatedRoute,

@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ComerciosService } from '../../servicios/comercios.service';
 import { AutenticacionService } from '../../servicios/autenticacion.service';
-import swal from 'sweetalert2';
 import { UsuariosService } from '../../servicios/usuarios.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { stringify } from '@angular/compiler/src/util';
+import { URL_BACKEND } from "../../config/config";
 
  
 @Component({
@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   comercios: any = {};
   usuario: any = {};
   foto: string="";
+  url_backend: string = URL_BACKEND;
 
   constructor(private activatedRoute: ActivatedRoute,
               private comerciosService : ComerciosService,
@@ -77,7 +78,7 @@ export class HeaderComponent implements OnInit {
   cargarUsuario(){
     this.usuariosService.getUsuario(2).subscribe((usuario => {
       if(usuario.fotoPortada){
-        this.foto = "http://localhost:8080/api/descargasAdmin/img/"+usuario.fotoPortada;
+        this.foto = this.url_backend+"/api/descargasAdmin/img/"+usuario.fotoPortada;
         }
     }));
   }

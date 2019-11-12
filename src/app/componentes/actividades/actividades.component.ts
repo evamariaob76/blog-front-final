@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ComerciosService, Comercio } from '../../servicios/comercios.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MenuLateralComponent } from '../menu-lateral/menu-lateral.component';
+import { URL_BACKEND } from "../../config/config";
 
 @Component({
   selector: 'app-actividades',
@@ -12,6 +13,7 @@ export class ActividadesComponent implements OnInit {
   comercios: Comercio[] = [];
   nombre : string;
   comercio: any = [];
+  url_backend: string = URL_BACKEND;
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,

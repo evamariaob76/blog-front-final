@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ComerciosService, Comercio } from '../../servicios/comercios.service';
+import { URL_BACKEND } from "../../config/config";
 
 
 
@@ -13,6 +14,7 @@ export class BuscadorComponent implements OnInit {
   comercio: Comercio;
    comercios : Comercio[]=[];
    termino : string;
+  url_backend: string = URL_BACKEND;
 
   constructor(private activatedRoute: ActivatedRoute,
               private comerciosService : ComerciosService

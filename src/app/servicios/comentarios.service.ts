@@ -5,13 +5,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 import swal from 'sweetalert2';
 import { AutenticacionService } from './autenticacion.service';
+import { URL_BACKEND } from '../config/config'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComentariosService {
   private httpHeaders = new HttpHeaders();
-  private url : string = 'http://localhost:8080/api/comentarios';
+  private url: string = URL_BACKEND+'/api/comentarios';
 
 constructor(private router: Router,
             private http : HttpClient,

@@ -8,14 +8,15 @@ import { map, catchError, tap } from 'rxjs/operators';
 import { formatDate } from '@angular/common';
 import { AutenticacionService } from './autenticacion.service';
 import swal from 'sweetalert2';
+import { URL_BACKEND } from "../config/config";
 
 
 @Injectable()
 export class ComerciosService {
   private comercios : Comercio[]=[];
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-  private url : string = 'http://localhost:8080/api/comercios';
- private urlDelete: string = 'http://localhost:8080/api/comercio';
+  private url : string = URL_BACKEND+'/api/comercios';
+ private urlDelete: string = URL_BACKEND+'/api/comercio';
 
     constructor(private router: Router,
                 private http : HttpClient,

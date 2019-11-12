@@ -4,14 +4,15 @@ import { Router } from '@angular/router';
 import { Observable, of, pipe, throwError } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import swal from 'sweetalert2';
+import { URL_BACKEND } from "../config/config";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmailService {
   private httpHeaders = new HttpHeaders();
-  private url: string = 'http://localhost:8080/api/sendmail';
-  private urlPassword: string = 'http://localhost:4200/api/send/password';
+  private url: string = URL_BACKEND+'/api/sendmail';
+  private urlPassword: string = URL_BACKEND+'/api/send/password';
 
   constructor(private router: Router,
     private http: HttpClient) { }

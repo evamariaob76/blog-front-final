@@ -8,6 +8,7 @@ import swal from 'sweetalert2';
 import { Router } from '@angular/router'; 
 import { formatDate } from '@angular/common';
 import { AutenticacionService } from './autenticacion.service';
+import { URL_BACKEND } from '../config/config'
 
 
 
@@ -16,7 +17,7 @@ import { AutenticacionService } from './autenticacion.service';
 })
 export class ClienteService {
 
-  private urlEndPoint: string = 'http://localhost:8080/api/clientes';
+  private urlEndPoint: string = URL_BACKEND+'/api/clientes';
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor( private http: HttpClient,
                private router: Router,

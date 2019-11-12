@@ -8,6 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 import { CompartirInformacionService } from '../../servicios/compartir-informacion.service';
 import { AutenticacionService } from '../../servicios/autenticacion.service';
+import { URL_BACKEND } from "../../config/config";
 
 @Component({
   selector: 'app-comentarios',
@@ -29,6 +30,7 @@ export class ComentariosComponent implements OnInit {
   myClass: boolean = false;
   numeroComentarios: any;
   ocultar = false;
+  url_backend: string = URL_BACKEND;
 
   constructor(private comentariosService: ComentariosService,
               private activatedRoute: ActivatedRoute,

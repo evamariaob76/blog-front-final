@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../servicios/usuarios.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
+import { URL_BACKEND } from "../../config/config";
+
 
 @Component({
   selector: 'app-upload-admin',
@@ -18,6 +20,8 @@ export class UploadAdminComponent implements OnInit {
   htmlStr: string = "*foto personal sin actualizar"
   htmlStr1: string = "*foto de portada sin actualizar"
   estadoPositivo: boolean = false;
+  url_backend: string = URL_BACKEND;
+
   constructor(private usuariosService: UsuariosService,
     private activatedRoute: ActivatedRoute,
     private router: Router,

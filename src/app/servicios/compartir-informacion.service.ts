@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ComentariosService, Comentario } from '../servicios/comentarios.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { URL_BACKEND } from "../config/config";
 
 //servicio que llamará al back end para obtener el número de comentarios, ya que estos comentarios se actualizan desde otro componente
 
@@ -12,8 +13,8 @@ import { Observable } from 'rxjs';
 })
 export class CompartirInformacionService {
   private httpHeaders = new HttpHeaders();
-  private urlComentarios: string = 'http://localhost:8080/api/comentarios';
-  private urlComercios: string = 'http://localhost:8080/api/comercios';
+  private urlComentarios: string = URL_BACKEND+'/api/comentarios';
+  private urlComercios: string = URL_BACKEND+'/api/comercios';
 
 
 numeroComentarios: number = 0;

@@ -3,7 +3,7 @@ import { ComerciosService, Comercio } from '../../servicios/comercios.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as $ from 'jquery';
 import { ComentariosService, Comentario } from '../../servicios/comentarios.service';
-
+import {URL_BACKEND} from '../../config/config'
 
 @Component({
   selector: 'app-body',
@@ -17,6 +17,8 @@ export class BodyComponent implements OnInit {
   indice : number =6;
   indiceMax: number =  0;
   mostrar : boolean =true;
+  url_backend: string = URL_BACKEND;
+
   constructor(private comerciosService: ComerciosService, 
               private router: Router, 
               private activatedRoute: ActivatedRoute,

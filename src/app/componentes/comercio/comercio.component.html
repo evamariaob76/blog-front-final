@@ -7,7 +7,7 @@
             <div class="col-lg-10 cabecera">
                 <ul>
                     <li>
-                        <div class=" bio text-muted "><img src="../../../assets//img/personal/imagen.jpg" alt="Imgen Admin">
+                        <div class=" bio text-muted "><img src="{{url_backend}}/api/fotoPortada/img/{{usuario.img}}" alt="Imgen Admin">
                         </div>
                     </li>
                     <li>
@@ -57,13 +57,13 @@
                         <p class="resumen">{{comercio.parrafoOne}}</p>
                         <div class="row mb-12 " *ngIf="comercio.img && comercio.img1 && comercio.img2">
                             <div class="col-md-12 mb-4 ">
-                                <img src="http://localhost:8080/api/descargas/img/{{comercio.img}} " class="card-img-top " alt="imagen comercio ">
+                                <img src="{{url_backend}}/api/descargas/img/{{comercio.img}} " class="card-img-top " alt="imagen comercio ">
                             </div>
                             <div class="col-md-6 mb-4 ">
-                                <img src="http://localhost:8080/api/descargas/img/{{comercio.img1}} " class="card-img-top " alt="imagen comercio  ">
+                                <img src="{{url_backend}}/api/descargas/img/{{comercio.img1}} " class="card-img-top " alt="imagen comercio  ">
                             </div>
                             <div class="col-md-6 mb-4 ">
-                                <img src="http://localhost:8080/api/descargas/img/{{comercio.img2}} " class="card-img-top " alt="imagen comercio  ">
+                                <img src="{{url_backend}}/api/descargas/img/{{comercio.img2}} " class="card-img-top " alt="imagen comercio  ">
                             </div>
                         </div>
                         <p>{{comercio.parrafoTwo}}</p>

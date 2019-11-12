@@ -4,6 +4,7 @@ import { ComerciosService, Comercio } from '../../servicios/comercios.service';
 import { tap } from 'rxjs/operators';
 import * as moment from 'moment';
 import { Pipe, PipeTransform } from '@angular/core';
+import { URL_BACKEND } from "../../config/config";
 
   
 
@@ -15,6 +16,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ComercioFechasComponent implements OnInit{
   comercios: Comercio[] = [];
   termino : any;
+  url_backend: string = URL_BACKEND;
+
   
   constructor(private activatedRoute: ActivatedRoute,
               private comerciosService: ComerciosService) { }

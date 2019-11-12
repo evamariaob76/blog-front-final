@@ -3,6 +3,7 @@ import { ComerciosService, Comercio } from '../../servicios/comercios.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompartirInformacionService } from '../../servicios/compartir-informacion.service';
 import { tap } from 'rxjs/operators';
+import { URL_BACKEND } from "../../config/config";
 
 
 @Component({
@@ -16,11 +17,13 @@ export class MenuDinamicoComponent implements OnInit {
   comercio: []=[];
   mes: any;
   termino: any;
-comerciosMeses: any[]=[];
-me:any []=[];
-m: any[]=[];
-cero: number;
+  comerciosMeses: any[]=[];
+  me:any []=[];
+  m: any[]=[];
+  cero: number;
   sortedActivities:any[]=[];
+  url_backend: string = URL_BACKEND;
+
   constructor(private activatedRoute: ActivatedRoute,
     private comerciosService: ComerciosService,
     private compartirInformacionService: CompartirInformacionService,
