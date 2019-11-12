@@ -58,7 +58,10 @@
     "simplify-js": "^1.2.3",
     "sweetalert2": "^8.16.3",
     "tslib": "^1.9.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "express":"*",
+    "body-parser":"*",
+    "bcrypt": "^0.8.5"
 
   },
   "devDependencies": {
