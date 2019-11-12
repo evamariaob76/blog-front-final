@@ -1,0 +1,258 @@
+.menu,
+nav {
+    width: 1140px!important;
+    padding: 0%;
+    margin: 0%;
+}
+
+* {
+    z-index: 2;
+    text-align: justify;
+}
+
+input {
+    height: 40px;
+    width: 200px;
+    font-size: 12px;
+    text-align: center;
+    font-style: italic;
+}
+
+.parent {
+    padding: 0px;
+}
+
+.logo {
+    line-height: 60px;
+    position: fixed;
+    float: left;
+    margin: 16px 46px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 2px #1d1936;
+    font-family: 'Kaushan Script', cursive;
+}
+
+@font-face {
+    font-family: Arkhip-Regular;
+    src: url(src/assets/fonts/Arkhip-Regular.ttf) format(‘truetype’);
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+}
+
+nav ul {
+    line-height: 60px;
+    list-style: none;
+    color: #fff;
+    padding: 0;
+    text-align: right;
+    margin: 0;
+    padding-right: 40px;
+    transition: 1s;
+    background: #4F6E85;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 16px 30px;
+}
+
+nav div ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Kaushan Script';
+    font-weight: normal;
+}
+
+nav div ul li a:hover {
+    font-weight: bolder;
+}
+
+.menu-icon {
+    line-height: 60px;
+    width: 100%;
+    background: #000;
+    text-align: right;
+    box-sizing: border-box;
+    cursor: pointer;
+    color: #fff;
+    display: none;
+}
+
+nav ul button {
+    text-decoration: none;
+    color: #4F6E85;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 5px!important;
+}
+
+@media (max-width: 414px) {
+    .logo {
+        width: 100%;
+        text-align: center;
+        position: relative;
+        padding: 0px;
+        margin: 0px;
+    }
+    * {
+        background: #4F6E85;
+    }
+    input {
+        background: white!important;
+        width: 100px;
+        font-size: 9px;
+    }
+    .menu {
+        clear: both;
+        float: left;
+        width: 100%;
+    }
+    .logo>span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    }
+    .menu {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    }
+    .menu nav ul {
+        text-align: center;
+        padding: 0px;
+    }
+    nav ul {
+        padding: 0px!important;
+        margin: 0px!important;
+    }
+    .menu {
+        padding-right: 15px!important;
+    }
+    .row {
+        padding-bottom: 150px;
+    }
+    nav ul li {
+        display: inline-block;
+    }
+    li {
+        height: 5px!important;
+    }
+    header {
+        height: 1vh;
+        background-size: 10px, 10px;
+        background: none;
+    }
+    .principal {
+        margin-bottom: 150px;
+    }
+    button {
+        margin-right: 40px;
+    }
+}
+
+@media(max-width: 360px) {
+    ul {
+        width: 350px
+    }
+    header {
+        background: #4F6E85;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        height: 600px;
+    }
+    input {
+        background: white!important;
+    }
+}
+
+@media (max-width: 414px) {
+    .logo {
+        width: 100%;
+        text-align: center;
+        position: relative;
+        padding: 0px;
+        margin: 0px;
+    }
+    * {
+        background: #4F6E85;
+    }
+    input {
+        background: white!important;
+        width: 100px;
+        font-size: 9px;
+    }
+    .menu {
+        clear: both;
+        float: left;
+        width: 100%;
+    }
+    .logo>span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    }
+    .menu {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    }
+    .menu nav ul {
+        text-align: center;
+        padding: 0px;
+    }
+    nav ul {
+        padding: 0px!important;
+        margin: 0px!important;
+    }
+    .menu {
+        padding-right: 15px!important;
+    }
+    .row {
+        padding-bottom: 150px;
+    }
+    nav ul li {
+        display: inline-block;
+    }
+    li {
+        height: 5px!important;
+    }
+    header {
+        height: 1vh;
+        background-size: 10px, 10px;
+        background: none;
+    }
+    .principal {
+        margin-bottom: 150px;
+    }
+    button {
+        margin-right: 40px;
+    }
+}
+
+@media(min-width: 768px) and (max-width:1024px) {
+    ul {
+        width: 720px
+    }
+    header {
+        background: #4F6E85;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        height: 600px;
+    }
+    input {
+        background: white!important;
+    }
+}
+
+@media (min-width:1024px) and (max-width:1200px) {
+    ul {
+        width: 960px
+    }
+}

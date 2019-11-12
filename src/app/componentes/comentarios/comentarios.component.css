@@ -1,0 +1,123 @@
+.form {
+    width: 340px;
+    height: 500px;
+    background: #e6e6e6;
+    border-radius: 8px;
+    box-shadow: 0 0 40px -10px #000;
+    max-width: calc(100vw - 40px);
+    box-sizing: border-box;
+    font-family: 'Amaranth';
+    position: relative;
+}
+
+.formulario {
+    border: 1px solid #4F6E85;
+}
+
+h2 {
+    margin: 10px 0;
+    width: 180px;
+    color: #78788c;
+    border-bottom: 3px solid #78788c
+}
+
+textarea {
+    overflow: auto;
+    resize: vertical;
+}
+
+.comment-list .children {
+    margin: 0;
+    float: left;
+    width: 100%;
+}
+
+.comment-list li {
+    padding: 0;
+    margin: 0 0 5px 0;
+    float: left;
+    width: 100%;
+    clear: both;
+    list-style: none;
+}
+
+.comment-list li .vcard {
+    width: 80px;
+    float: left;
+}
+
+.comment-list li .vcard img {
+    width: 50px;
+    border-radius: 50%;
+}
+
+.comment-list li .comment-body {
+    float: right;
+    width: calc(100% - 80px);
+}
+
+h3 {
+    font-size: 20px;
+}
+
+.comment-list li .comment-body .meta {
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: .1em;
+    color: #ccc;
+}
+
+.comment-list li .comment-body .reply {
+    background: #e6e6e6;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.comment-list li .comment-body .reply:hover {
+    color: #000;
+    background: #e3e3e3;
+}
+
+.row {
+    margin-left: 40px;
+}
+
+.contestacion {
+    padding-left: 100px;
+}
+
+.ocultar {
+    display: none;
+}
+
+#guardar {
+    margin-left: 150px;
+}
+
+.boton {
+    margin-right: 10px;
+}
+
+.boton {
+    background: #00004d;
+    color: white;
+    border: none;
+}
+
+.boton:hover {
+    color: white;
+    background: #38688B;
+}
+
+button {
+    margin-bottom: 30px;
+}
+
+.contestaAdmin {
+    display: inline;
+}
+
+.row {
+    padding-bottom: 40px;
+}

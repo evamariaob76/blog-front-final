@@ -1,0 +1,32 @@
+<div class="row principal">
+    <div class="col-lg-12 parent ">
+
+        <header>
+            <nav>
+                <div class="logo">
+                    <span>D'IXX al XXI</span>
+                </div>
+                <div class="menu">
+                    <ul style="padding: 0x; margin: 0px;">
+                        <li style="padding: 0x; margin: 0px">
+                            <a class="home" [routerLink]="['/home']">Home</a>
+                        </li>
+                        <li>
+                            <a class="" (click)="Autenticarse()" [routerLink]="['/clientes/form']">Suscribirse</a>
+                        </li>
+                        <li><a [routerLink]="['/contacto/form']">Contacto</a></li>
+                        <li>
+                            <form action="#" class="search-top-form">
+                                <input type="text" id="s" placeholder="para buscar escribe y enter..." #buscarSitio (keyup.enter)="findByName(buscarSitio.value); ">
+                                <span class="icon fa fa-search"></span>
+                            </form>
+                        </li>
+                        <button *ngIf="!authService.isAuthenticated()" class="btn btn-light" [routerLink]="['/admin']">Login</button>
+                        <button *ngIf="authService.isAuthenticated() && authService.hasRole('ROLE_ADMIN')" class="btn btn-light" [routerLink]="['/admin']"> Admin</button>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+    </div>
+</div>

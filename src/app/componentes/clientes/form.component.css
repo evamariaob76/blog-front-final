@@ -1,0 +1,55 @@
+    * {
+        font-family: 'Amaranth', sans-serif;
+    }
+    
+    .contenedor {
+        padding-top: 150px;
+        width: 800px;
+        margin: auto;
+    }
+    
+    .formulario {
+        padding-top: 80px!important;
+        padding-bottom: 150px !important;
+    }
+    
+    .botonDisabled {
+        background: #00004d;
+    }
+    
+    .boton {
+        background: #00004d;
+        color: white
+    }
+    
+    .boton:hover {
+        color: white;
+        background: #38688B;
+    }
+    
+    h3 {
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .background {
+        background: white;
+    }
+    
+    form {
+        border: 1px solid black;
+    }
+    
+    .obligatorio {
+        color: #4F6E85;
+        font-weight: bold;
+        padding-bottom: 20px;
+    }
+    
+    div {
+        font-weight: bolder;
+    }
+    
+    .alert {
+        font-weight: normal;
+    }
