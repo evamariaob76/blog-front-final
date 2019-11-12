@@ -58,8 +58,12 @@
     "simplify-js": "^1.2.3",
     "sweetalert2": "^8.16.3",
     "tslib": "^1.9.0",
-    "zone.js": "~0.9.1"
-
+    "zone.js": "~0.9.1",
+    "express": "^4.16.2",
+    "express-fileupload": "^0.3.0",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.15.6",
+    "express-validator": "^4.3.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.800.0",
