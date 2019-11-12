@@ -13,6 +13,7 @@ export class ActividadesComponent implements OnInit {
   comercios: Comercio[] = [];
   nombre : string;
   comercio: any = [];
+  url_backend: string = URL_BACKEND;
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,

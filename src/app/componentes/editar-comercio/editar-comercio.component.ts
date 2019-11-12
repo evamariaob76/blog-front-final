@@ -4,7 +4,7 @@ import { EmailService } from '../../servicios/email.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { URL_BACKEND } from "../../config/config";
+import { URL_BACKEND } from '../../config/config';
 
 @Component({
   selector: 'app-editar-comercio',
@@ -28,7 +28,7 @@ export class EditarComercioComponent implements OnInit {
   visible: boolean = false;
   updateFoto = false;
   id: any = {};
-
+  url_backend : string = URL_BACKEND;
   constructor(private comerciosService: ComerciosService,
     private router: Router,
     private activatedRoute: ActivatedRoute,

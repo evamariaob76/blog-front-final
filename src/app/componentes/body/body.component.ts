@@ -17,6 +17,8 @@ export class BodyComponent implements OnInit {
   indice : number =6;
   indiceMax: number =  0;
   mostrar : boolean =true;
+  url_backend: string = URL_BACKEND;
+
   constructor(private comerciosService: ComerciosService, 
               private router: Router, 
               private activatedRoute: ActivatedRoute,

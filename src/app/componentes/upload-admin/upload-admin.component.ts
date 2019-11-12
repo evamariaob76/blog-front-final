@@ -20,6 +20,8 @@ export class UploadAdminComponent implements OnInit {
   htmlStr: string = "*foto personal sin actualizar"
   htmlStr1: string = "*foto de portada sin actualizar"
   estadoPositivo: boolean = false;
+  url_backend: string = URL_BACKEND;
+
   constructor(private usuariosService: UsuariosService,
     private activatedRoute: ActivatedRoute,
     private router: Router,

@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { CompartirInformacionService } from '../../servicios/compartir-informacion.service';
 import { AutenticacionService } from '../../servicios/autenticacion.service';
 import * as $ from 'jquery';
+import { UsuariosService } from '../../servicios/usuarios.service';
 import { URL_BACKEND } from "../../config/config";
 
 
@@ -22,12 +23,15 @@ export class ComercioComponent implements OnInit  {
   dataSuscription : Subscription;
   data : number;
   texto: string = "SI";
+  usuario: any = {};
   estadoPositivo: boolean = true;
-;  comentariolength:any;
+ comentariolength:any;
+  url_backend: string =URL_BACKEND;
   constructor(private activatedRoute: ActivatedRoute, 
               private comerciosService: ComerciosService,
               private comentariosService : ComentariosService,
               private router: Router,
+    private usuariosService: UsuariosService,
               private compartirInformacionService: CompartirInformacionService,
               public authService: AutenticacionService
               ) {
@@ -40,12 +44,23 @@ export class ComercioComponent implements OnInit  {
    this.dataSuscription = this.compartirInformacionService.dataSource.subscribe(json =>{
     this.comentariolength=json
     })
+    this.cargarUsuario();
+
     }
 
    Inicio(){//función que redirige a la página de inicio
     this.router.navigate(['/home']);
     }
 
+  cargarUsuario() {//carga el usuario a editar
+    this.activatedRoute.params.subscribe(params => {//subscribiéndome a los parámetros tenemos la id de comercio
+      this.usuariosService.getUsuario(2).subscribe((usuario => {
+
+        this.usuario = usuario
+      }))
+
+    })
+  }
   comoLlegar(){//función que redirige a la página link de cada uno de los comercios accediendo al id de la ruta
   let URL = window.location.pathname;
   let posicion = URL.charAt(URL.length - 1);

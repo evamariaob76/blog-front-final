@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   comercios: any = {};
   usuario: any = {};
   foto: string="";
+  url_backend: string = URL_BACKEND;
 
   constructor(private activatedRoute: ActivatedRoute,
               private comerciosService : ComerciosService,
@@ -77,7 +78,7 @@ export class HeaderComponent implements OnInit {
   cargarUsuario(){
     this.usuariosService.getUsuario(2).subscribe((usuario => {
       if(usuario.fotoPortada){
-        this.foto = URL_BACKEND+"/api/descargasAdmin/img/"+usuario.fotoPortada;
+        this.foto = this.url_backend+"/api/descargasAdmin/img/"+usuario.fotoPortada;
         }
     }));
   }

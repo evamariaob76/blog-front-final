@@ -10,6 +10,7 @@ import { URL_BACKEND } from "../../config/config";
 })
 export class InformacionPersonalComponent implements OnInit {
   usuario: any = {};
+  url_backend: string = URL_BACKEND;
 
   constructor(private usuariosService: UsuariosService,
               private activatedRoute: ActivatedRoute) { }

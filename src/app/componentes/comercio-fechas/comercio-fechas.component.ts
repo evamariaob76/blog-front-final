@@ -16,6 +16,8 @@ import { URL_BACKEND } from "../../config/config";
 export class ComercioFechasComponent implements OnInit{
   comercios: Comercio[] = [];
   termino : any;
+  url_backend: string = URL_BACKEND;
+
   
   constructor(private activatedRoute: ActivatedRoute,
               private comerciosService: ComerciosService) { }

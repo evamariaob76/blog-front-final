@@ -33,6 +33,8 @@ export class CrearComercioComponent implements OnInit {
   id: number;
   actividades : any=[];
   otros : string="";
+  url_backend: string = URL_BACKEND;
+
   constructor(private comerciosService: ComerciosService,
     private router: Router,
     private activatedRoute: ActivatedRoute,

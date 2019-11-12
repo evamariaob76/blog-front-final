@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../servicios/usuarios.service';
 import { ActivatedRoute } from '@angular/router';
+import { URL_BACKEND } from "../../config/config";
 
 @Component({
   selector: 'app-bio',
@@ -9,6 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BioComponent implements OnInit {
   usuario: any = {};
+  url_backend: string = URL_BACKEND;
+
 
   constructor(private usuariosService: UsuariosService,
               private activatedRoute: ActivatedRoute) { }
