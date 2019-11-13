@@ -25,8 +25,8 @@ export class HeaderComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private comerciosService : ComerciosService,
               private router : Router,
-    private _sanitizer: DomSanitizer,
-    private usuariosService: UsuariosService,
+              private _sanitizer: DomSanitizer,
+              private usuariosService: UsuariosService,
               public authService: AutenticacionService
               ) { }
 
