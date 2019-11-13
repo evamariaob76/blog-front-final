@@ -81,6 +81,7 @@ export class AutenticacionService {
     hasRole(role: string): boolean {
       if (this.usuario.roles.includes(role)) {//includes permite validar si existe algún elemento dentro del arreglo
         return true;
+        console.log('ebntro bien')
       }
       return false;
     }
