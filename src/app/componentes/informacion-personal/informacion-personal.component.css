@@ -90,13 +90,12 @@ a {
     color: #4F6E85;
     text-decoration: none;
     padding-top: 15px;
-    font-weight: 800;
+    font-weight: bold;
 }
 
 a:hover {
-    font-weight: 800;
+    font-size: 16px;
     color: #4F6E85;
-    font-size: 1.1em;
-    text-shadow: 0.1em 0.1em 0.09em #4F6E85;
-    text-decoration: none;
+    font-weight: bolder;
+    text-decoration: underline;
 }

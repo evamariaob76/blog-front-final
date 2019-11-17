@@ -26,6 +26,8 @@ export class ComercioComponent implements OnInit  {
   usuario: any = {};
   estadoPositivo: boolean = true;
  comentariolength:any;
+  private fragment: string;
+
   url_backend: string =URL_BACKEND;
   constructor(private activatedRoute: ActivatedRoute, 
               private comerciosService: ComerciosService,
@@ -38,15 +40,29 @@ export class ComercioComponent implements OnInit  {
   }
 
   ngOnInit() {
-    window.scrollTo(0, 0); // how far to scroll on each step
 
-    this.cargarComercio();//llamo a la función cargar comercio al cargar la página
-   this.dataSuscription = this.compartirInformacionService.dataSource.subscribe(json =>{
-    this.comentariolength=json
-    })
+    this.activatedRoute.params.subscribe(params => {
+      let id = params["id"];
+      console.log(params);
+    });
+    this.activatedRoute.fragment.subscribe(fragment => {
+      this.fragment = fragment;
+      if (!fragment) {
+        window.scrollTo(0, 0); // how far to scroll on each step
+        console.log(fragment + "frag");
+
+      }
+    });
+
+    this.cargarComercio(); //llamo a la función cargar comercio al cargar la página
     this.cargarUsuario();
 
-    }
+    this.dataSuscription = this.compartirInformacionService.dataSource.subscribe(
+      json => {
+        this.comentariolength = json;
+      }
+    );
+  }
 
    Inicio(){//función que redirige a la página de inicio
     this.router.navigate(['/home']);

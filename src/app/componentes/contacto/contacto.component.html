@@ -6,12 +6,12 @@
 </div>
 
 <div class="row formulario bg-light">
-    <div class="col-lg-12  ">
+    <div class="col-lg-12 .col-md-12 col-sm-12 .col-xs-12">
         <div class="comment-form-wrap pt-5  ">
             <h3 class="mb-5  "><span>Enviar Mensaje</span></h3>
             <div class="row ">
-                <div class="col-lg-2"></div>
-                <div class="col-md-8 ">
+                <div class="col-lg-3 col-md-1 col-sm-1 col-xs-1"></div>
+                <div class="col-lg-6  col-md-10 col-sm-10 col-xs-11">
                     <form #mensajeForm="ngForm" class="p-5 background ">
                         <div class="obligatorio">
                             * Todos los campos son obligatorios
@@ -73,11 +73,15 @@
                             </div>
                         </div>
 
-                        <button [ngClass]="{'boton': mensajeForm.valid}" (click)="enviarmail(mensajeForm);" class="btn btn-rounded botonDisabled" type="button" role="button">Crear</button>
-                        <div class="enviado" *ngIf="enviado==true">
-                            * Mensaje Enviado
-                        </div>
+                        <div class="form-group ">
+                            <button [ngClass]="{'boton': mensajeForm.valid}" class="btn btn-rounded botonDisabled " type="button" role="button" (click)='enviarmail(mensajeForm)' [disabled]="!mensajeForm.form.valid">Enviar</button>
 
+                            <div class="alert alert-info" role="alert" *ngIf="enviado==true">
+                                * Mensaje Enviado
+
+                            </div>
+
+                        </div>
                     </form>
 
                 </div>

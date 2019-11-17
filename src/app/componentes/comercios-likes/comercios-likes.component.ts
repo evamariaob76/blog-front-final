@@ -7,64 +7,69 @@ import { AutenticacionService } from '../../servicios/autenticacion.service';
 
 
 @Component({
-  selector: 'app-comercios-likes',
-  templateUrl: './comercios-likes.component.html',
-  styleUrls: ['./comercios-likes.component.css']
+  selector: "app-comercios-likes",
+  templateUrl: "./comercios-likes.component.html",
+  styleUrls: ["./comercios-likes.component.css"]
 })
 export class ComerciosLikesComponent implements OnInit {
- comercios : Comercio[]=[];
-paginador: any;
+  comercios: Comercio[] = [];
+  paginadorComercios: any;
 
+  constructor(
+    private comercioService: ComerciosService,
+    private activatedRoute: ActivatedRoute,
+    public authService: AutenticacionService
+  ) {}
 
-  constructor(  private comercioService: ComerciosService,
-                private activatedRoute: ActivatedRoute,
-                public authService : AutenticacionService
-
-    ) {}
-
-    ngOnInit() {
-  this.getComercios();
+  ngOnInit() {
+    this.getComercios();
   }
 
-  getComercios(){
-    this.activatedRoute.paramMap.subscribe(params => {//función que llama al servicio para poder hacer un listado mediante páginas
-      let page: number = +params.get('page');
+  getComercios() {
+    this.activatedRoute.paramMap.subscribe(params => {
+      //función que llama al servicio para poder hacer un listado mediante páginas
+      let page: number = +params.get("page");
       if (!page) {
         page = 0;
       }
-      this.comercioService.getComerciosAll(page)
+      this.comercioService
+        .getComerciosAll(page)
         .pipe(
           tap(response => {
-            console.log('LikesComponent: tap 3');
-            (response.content as Comercio[]).forEach(comercio => console.log(comercio.nombre));
+            console.log("LikesComponent: tap 3");
+            (response.content as Comercio[]).forEach(comercio =>
+              console.log(comercio.nombre)
+            );
           })
-        ).subscribe(response => {
+        )
+        .subscribe(response => {
           this.comercios = response.content as Comercio[];
-          this.paginador = response;
+          this.paginadorComercios = response;
         });
     });
   }
-    delete(comercio: Comercio): void {//función que llama al servicio delete de comercios para eliminar el comercio
-      swal.fire({
-        title: '¿Está seguro de que quiere eliminar este comercio?',//advertencia de seguridad previa a la eliminación del comercio
+  delete(comercio: Comercio): void {
+    //función que llama al servicio delete de comercios para eliminar el comercio
+    swal
+      .fire({
+        title: "¿Está seguro de que quiere eliminar este comercio?", //advertencia de seguridad previa a la eliminación del comercio
         text: `${comercio.nombre}`,
-        type: 'warning',
+        type: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si!'
-      }).then((result) => {
-        if (result.value) {
-          this.comercioService.delete(comercio.id).subscribe(
-            response => {
-              swal.fire(
-                'Comercio eliminado!',
-                'ha sido eliminado correctamente.',
-                'success')
-            }
-          )
-        }
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si!"
       })
-  
-    }
+      .then(result => {
+        if (result.value) {
+          this.comercioService.delete(comercio.id).subscribe(response => {
+            swal.fire(
+              "Comercio eliminado!",
+              "ha sido eliminado correctamente.",
+              "success"
+            );
+          });
+        }
+      });
   }
+}

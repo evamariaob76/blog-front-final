@@ -235,7 +235,7 @@ export class Comercio{
         actividad:string="";
         likes:number=0;
         createAt:Date;
-        entrada:string="";
+        resumen:string="";
         comentarios:[];
         visitas: number = 0;
     }

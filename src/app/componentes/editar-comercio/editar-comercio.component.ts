@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComerciosService, Comercio } from '../../servicios/comercios.service';
-import { EmailService } from '../../servicios/email.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import swal from 'sweetalert2';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { URL_BACKEND } from '../../config/config';
 
@@ -87,8 +85,6 @@ export class EditarComercioComponent implements OnInit {
     this.comerciosService.update(this.comercio).subscribe
       (json => {   
         this.visible = true;
-        swal.fire('Comercio Actualizado', `${json.cliente.nombre}`, 'success');
-
       })
   }
 

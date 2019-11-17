@@ -69,7 +69,7 @@
                 </div>
                 <div class="form-group">
                     <label for="cp">cp</label>
-                    <input type="text" id="cp" #cp="ngModel" [(ngModel)]="comercio.cp" name="cp" class="form-control" placeholder="cp" required minlength="5">
+                    <input type="text" id="cp" #cp="ngModel" [(ngModel)]="comercio.cp" name="cp" class="form-control" placeholder="cp ciudad" required minlength="5">
                     <div class="alert alert-danger" *ngIf="cp.invalid && (cp.dirty || cp.touched)">
                         <div *ngIf="cp.errors.required ">
                             CP de comercio es requerido
@@ -144,14 +144,14 @@
                 </div>update
 
                 <div class="form-group">
-                    <label for="descripcion">Descripción corta</label>
-                    <textarea id="descripcion" [(ngModel)]="comercio.descripcion" #descripcion="ngModel" name="descripcion" cols="30" rows="10" class="form-control" required minlength="20" placeholder="descripción corta"></textarea>
-                    <div class="alert alert-danger" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
-                        <div *ngIf="descripcion.errors.required ">
+                    <label for="resumen">Descripción corta</label>
+                    <textarea id="resumen" [(ngModel)]="comercio.resumen" #resumen="ngModel" name="resumen" cols="30" rows="10" class="form-control" required minlength="20" placeholder="descripción corta"></textarea>
+                    <div class="alert alert-danger" *ngIf="resumen.invalid && (resumen.dirty || resumen.touched)">
+                        <div *ngIf="resumen.errors.required ">
                             Descripción de comercio es requerido
                         </div>
 
-                        <div *ngIf="descripcion.errors.minlength ">
+                        <div *ngIf="resumen.errors.minlength ">
                             Descripción de comercio debe tener al menos 20 caracteres
                         </div>
                     </div>

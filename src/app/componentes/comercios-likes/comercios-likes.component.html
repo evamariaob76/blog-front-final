@@ -15,7 +15,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Comercio</th>
-                            <th scope="col">Fecha</th>
+                            <th id="ocultar" scope="col">Fecha</th>
                             <th scope="col">Likes</th>
                             <th scope="col">visitas</th>
 
@@ -27,7 +27,7 @@
                     <tbody>
                         <tr *ngFor="let comercio of comercios">
                             <td>{{comercio.nombre}}</td>
-                            <td>{{comercio.createAt| date: 'dd/MM/yy'}}</td>
+                            <td id="ocultar">{{comercio.createAt| date: 'dd/MM/yy'}}</td>
                             <td>{{comercio.likes}}</td>
                             <td>{{comercio.visitas}}</td>
                             <td><a [routerLink]="['/comentarios', comercio.id]">ver comentarios</a></td>
@@ -38,7 +38,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <app-paginator *ngIf="paginador" [paginador]="paginador"></app-paginator>
+                <app-paginator-comercios *ngIf="paginadorComercios" [paginadorComercios]="paginadorComercios"></app-paginator-comercios>
             </div>
         </div>
     </div>

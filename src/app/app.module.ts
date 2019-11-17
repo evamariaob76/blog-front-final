@@ -45,6 +45,8 @@ import { ClientesComponent } from './componentes/clientes/clientes.component';
 import { FormComponent } from './componentes/clientes/form.component';
 import { ComerciosLikesComponent } from './componentes/comercios-likes/comercios-likes.component';
 import { PaginatorComponent } from './componentes/paginator/paginator.component';
+import { PaginatorComerciosComponent } from "./componentes/paginatorComercios/paginatorComercios.component";
+
 import { UsuariosLoginComponent } from './componentes/usuarios-login/usuarios-login.component';
 import { MenuDinamicoComponent } from './componentes/menu-dinamico/menu-dinamico.component';
 import { HeaderComponent } from './componentes/header/header.component';
@@ -87,6 +89,7 @@ import { BodyUpdatedAdminComponent } from './componentes/body-updated-admin/body
     FormComponent,
     ComerciosLikesComponent,
     PaginatorComponent,
+    PaginatorComerciosComponent,
     UsuariosLoginComponent,
     MenuDinamicoComponent,
     HeaderComponent,
@@ -109,7 +112,7 @@ import { BodyUpdatedAdminComponent } from './componentes/body-updated-admin/body
     RecuperarPasswordComponent,
     ResetPasswordComponent,
     BodyComercioCreadoComponent,
-    BodyUpdatedAdminComponent,
+    BodyUpdatedAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -124,15 +127,15 @@ import { BodyUpdatedAdminComponent } from './componentes/body-updated-admin/body
     ChartsModule,
     IgxPieChartModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCo3-Ge_42mC3dm77XpBK748aAgn7lKZNw'
+      apiKey: "AIzaSyCo3-Ge_42mC3dm77XpBK748aAgn7lKZNw"
     })
   ],
-  providers: [      
+  providers: [
     ComerciosService,
     MenuLateralComponent,
     ClienteService,
-    {provide : LOCALE_ID, useValue: 'es-ES'}
-    ],
+    { provide: LOCALE_ID, useValue: "es-ES" }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

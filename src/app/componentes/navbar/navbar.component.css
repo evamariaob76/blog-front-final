@@ -1,6 +1,6 @@
 .menu,
 nav {
-    width: 1140px!important;
+    width: 1140px;
     padding: 0%;
     margin: 0%;
 }
@@ -93,13 +93,22 @@ nav ul button {
     padding: 5px!important;
 }
 
-@media (max-width: 414px) {
+@media (max-width:320px) {
+    nav div ul li a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 320px)and (max-width:450px) {
     .logo {
         width: 100%;
         text-align: center;
         position: relative;
         padding: 0px;
         margin: 0px;
+        font-size: 20px;
     }
     * {
         background: #4F6E85;
@@ -135,9 +144,6 @@ nav ul button {
     .menu {
         padding-right: 15px!important;
     }
-    .row {
-        padding-bottom: 150px;
-    }
     nav ul li {
         display: inline-block;
     }
@@ -145,98 +151,43 @@ nav ul button {
         height: 5px!important;
     }
     header {
-        height: 1vh;
+        height: 100px;
         background-size: 10px, 10px;
         background: none;
-    }
-    .principal {
-        margin-bottom: 150px;
     }
     button {
         margin-right: 40px;
     }
+    input {
+        font-size: 8px;
+    }
+    nav ul li a {
+        font-size: 10px;
+    }
 }
 
-@media(max-width: 360px) {
+@media(min-width: 424px)and (max-width:768px) {
     ul {
-        width: 350px
+        width: 715px
+    }
+}
+
+@media(min-width: 768px)and (max-width:1024px) {
+    ul {
+        width: 960px
     }
     header {
         background: #4F6E85;
         padding-bottom: 0px;
         margin-bottom: 0px;
-        height: 600px;
+        height: 100px;
     }
     input {
         background: white!important;
     }
 }
 
-@media (max-width: 414px) {
-    .logo {
-        width: 100%;
-        text-align: center;
-        position: relative;
-        padding: 0px;
-        margin: 0px;
-    }
-    * {
-        background: #4F6E85;
-    }
-    input {
-        background: white!important;
-        width: 100px;
-        font-size: 9px;
-    }
-    .menu {
-        clear: both;
-        float: left;
-        width: 100%;
-    }
-    .logo>span {
-        display: inline-block;
-        vertical-align: middle;
-        line-height: normal;
-    }
-    .menu {
-        display: inline-block;
-        vertical-align: middle;
-        line-height: normal;
-    }
-    .menu nav ul {
-        text-align: center;
-        padding: 0px;
-    }
-    nav ul {
-        padding: 0px!important;
-        margin: 0px!important;
-    }
-    .menu {
-        padding-right: 15px!important;
-    }
-    .row {
-        padding-bottom: 150px;
-    }
-    nav ul li {
-        display: inline-block;
-    }
-    li {
-        height: 5px!important;
-    }
-    header {
-        height: 1vh;
-        background-size: 10px, 10px;
-        background: none;
-    }
-    .principal {
-        margin-bottom: 150px;
-    }
-    button {
-        margin-right: 40px;
-    }
-}
-
-@media(min-width: 768px) and (max-width:1024px) {
+@media(max-width: 768px)and (min-width:420px) {
     ul {
         width: 720px
     }
@@ -244,15 +195,22 @@ nav ul button {
         background: #4F6E85;
         padding-bottom: 0px;
         margin-bottom: 0px;
-        height: 600px;
+        height: 100px;
     }
     input {
         background: white!important;
     }
-}
-
-@media (min-width:1024px) and (max-width:1200px) {
-    ul {
-        width: 960px
+    input {
+        background: white!important;
+        width: 100px;
+        font-size: 9px;
+    }
+    nav ul li {
+        display: inline-block;
+        padding: 10px 5px;
+    }
+    .col-lg-12 {
+        padding-top: 0px;
+        margin-top: 0px;
     }
 }

@@ -19,7 +19,7 @@ enviado:boolean = false;
   ngOnInit() {
   }
   enviarmail(mensajeForm: NgForm) {
-    this.emailService.sendEmailAdmin(this.Email.email, this.Email.texto,this.Email.apellido,this.Email.nombre).subscribe(
+    this.emailService.sendEmailAdmin(this.Email.nombre, this.Email.apellido,this.Email.email, this.Email.texto).subscribe(
       json => {
       });
     mensajeForm.reset({//reseto lo valores del formulario para la validación

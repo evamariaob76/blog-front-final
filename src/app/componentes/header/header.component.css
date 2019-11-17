@@ -12,9 +12,8 @@
     input {
         height: 40px;
         width: 200px;
-        font-size: 12px;
+        font-size: 13px;
         text-align: center;
-        font-style: italic;
     }
     
     header {
@@ -82,7 +81,7 @@
     nav div ul li a {
         text-decoration: none;
         color: #fff;
-        font-size: 16px;
+        font-size: 18px;
         font-family: 'Kaushan Script';
         font-weight: normal;
     }
@@ -109,6 +108,7 @@
             position: relative;
             padding: 0px;
             margin: 0px;
+            font-size: 20px;
         }
         * {
             background: #4F6E85;
@@ -167,6 +167,9 @@
         }
         input {
             font-size: 8px;
+        }
+        nav div ul li a {
+            font-size: 14px;
         }
     }
     
@@ -235,11 +238,17 @@
         input {
             font-size: 8px;
         }
+        nav div ul li a {
+            font-size: 14px;
+        }
     }
     
     @media(min-width: 424px)and (max-width:768px) {
         ul {
             width: 715px
+        }
+        nav div ul li a {
+            font-size: 14px;
         }
     }
     

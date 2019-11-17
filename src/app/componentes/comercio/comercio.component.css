@@ -36,6 +36,10 @@ ul {
     padding: 0;
 }
 
+.imagenes {
+    padding-left: 40px;
+}
+
 ul {
     display: flex;
     align-items: left;
@@ -98,16 +102,6 @@ h1 {
     padding-bottom: 0px;
 }
 
-.boton {
-    background: #00004d;
-    color: white
-}
-
-.boton:hover {
-    color: white;
-    background: #38688B;
-}
-
 .corazon {
     display: inline-block;
     font-size: 20px;
@@ -130,7 +124,7 @@ p {
     text-align: justify;
 }
 
-h1 {
+h2 {
     font-weight: bold;
     font-family: 'Merienda', cursive;
 }
@@ -166,4 +160,30 @@ span {
 .boton:hover {
     color: white;
     background: #38688B;
+}
+
+@media (max-width:1024px) {
+    .wrapper {
+        padding-top: 50px;
+    }
+}
+
+@media (max-width:414px) {
+    .wrapper {
+        padding-top: 120px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .editar {
+        margin-top: 30px;
+    }
+    ul li a {
+        font-size: 10px;
+    }
+    img {
+        padding-left: 40px;
+    }
+    .imagenAdmin {
+        display: none;
+    }
 }

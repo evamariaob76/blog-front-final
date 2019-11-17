@@ -1,16 +1,72 @@
-.contenedor {
-    padding-top: 50px;
+img {
+    width: 100%;
+    height: auto;
+}
+
+.container {
+    padding-bottom: 43px;
+}
+
+h2 {
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Merienda', cursive;
+    padding-top: 30px;
+}
+
+h2 span {
+    color: #4F6E85!important;
+}
+
+.encabezado {
+    color: #4F6E85!important;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.comercio {
+    color: black!important;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.entrada {
+    font-size: 14px;
+    padding-bottom: 0px;
+    font-family: "Josefin Sans";
+    text-align: justify;
+}
+
+a {
+    font-size: 15px;
+    color: #4F6E85!important;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.pie a:hover {
+    font-weight: 800;
+    color: #4F6E85;
+    font-size: 1.1em;
+    text-shadow: 0.1em 0.1em 0.09em #4F6E85;
 }
 
 .firma-card {
     background: #fff;
-    border: 1px solid;
-    border-color: #c7bdbd40;
+    border: 1px solid #4F6E85;
     margin: 1rem auto;
     border-radius: 5px;
     box-shadow: 0 4px 6px -1px rgb(198, 207, 234);
     margin-bottom: 1.6%;
     overflow: hidden;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    padding-top: 5px;
 }
 
 .firma-resim {
@@ -25,17 +81,8 @@
     transition: transform .2s;
 }
 
-img {
-    width: 100%;
-    height: auto;
-}
-
-.contenedor {
-    padding-bottom: 50px;
-}
-
-.noExisten {
-    padding-bottom: 250px;
+hr {
+    border: 0.5px solid #B8C5CE;
 }
 
 @media (max-width: 768px) {

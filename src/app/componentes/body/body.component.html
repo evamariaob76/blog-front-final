@@ -1,10 +1,10 @@
 <div class="container-fluid wrapper">
     <div class="row justify-content-center ">
 
-        <div class="col-md-6 mb-6 hijo" *ngFor="let comercio of comercios; let i=index ">
+        <div class="col-md-6 mb-6 col-sm-6 col-xs-12 col-12 hijo" *ngFor="let comercio of comercios; let i=index ">
 
             <div class="row" *ngIf="i<indice">
-                <div class="col-md-12 mb-4 ">
+                <div class="col-md-12mb-6 col-sm-6 col-xs-12 col-12 hijo">
 
                     <div class="card sombras" (mouseover)="sombreado()" style="width: 18rem;">
                         <img class="img-fluid" src="{{url_backend}}/api/descargas/img/{{comercio.img}}" alt={{comercio.img}}>
@@ -12,14 +12,14 @@
                             <h5 class="card-title">{{comercio.nombre}}</h5>
 
                             <p class="card-text capitalice"><small class="text-muted">{{comercio.actividad}}- {{comercio.createAt | date: 'mediumDate'}}</small></p>
-                            <p class="card-text entrada">{{comercio.entrada}}</p>
+                            <p class="card-text entrada">{{comercio.resumen}}</p>
 
                         </div>
 
                         <div class="card-footer social" (click)="corazones();">
                             <div class="row social">
 
-                                <div class="col-lg-6 col-md-3 col-sm-6 col-xs-12 ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-6 ">
                                     <a href='{{comercio.facebook}}' class="thumbnail ">
                                         <i class="fab fa-facebook-f"></i>
                                     </a>
@@ -30,14 +30,14 @@
                                     </a>
 
 
-                                    <a [routerLink]="[ '/comercios', comercio.id, {fragment: 'comments'}] " class="thumbnail ">
+                                    <a [routerLink]="[ '/comercios', comercio.id]" fragment='comments' class="thumbnail ">
                                         <i class="far fa-comment"></i>{{comercio.comentarios.length}}
 
                                     </a>
 
                                 </div>
 
-                                <div class=" col-lg-6 col-md-4 col-sm-6 col-xs-12 pie "> <a [routerLink]="[ '/comercios', comercio.id] "> ver más...</a>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-6 pie"> <a [routerLink]="[ '/comercios', comercio.id] "> ver más...</a>
                                 </div>
                             </div>
                         </div>

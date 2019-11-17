@@ -37,6 +37,7 @@ const RUTAS: Routes = [
     { path: 'clientes/form', component: FormComponent },
     { path: 'clientes/form/:id', component: FormComponent, canActivate: [AuthGuard, RolesGuard], data: {role: 'ROLE_ADMIN'} },
     { path: 'clientes/page/:page', component: ClientesComponent, canActivate: [AuthGuard, RolesGuard], data: { role: 'ROLE_ADMIN' }  },
+    { path: 'comercios/page/:page', component: ComerciosLikesComponent, canActivate: [AuthGuard, RolesGuard], data: { role: 'ROLE_ADMIN' }  },
     { path: 'likes', component: ComerciosLikesComponent, canActivate: [AuthGuard, RolesGuard], data: { role: 'ROLE_ADMIN' }   },
     { path: 'comentarios/:id', component: GetComentariosComponent },
     { path: 'crear/comercios', component: CrearComercioComponent, canActivate: [AuthGuard, RolesGuard], data: { role: 'ROLE_ADMIN' }  },

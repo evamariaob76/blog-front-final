@@ -187,4 +187,11 @@
            padding-top: 0px;
            text-align: center;
        }
+       h2 {
+           padding-top: 20px;
+           text-align: center;
+       }
+       .alert {
+           font-size: 12px;
+       }
    }

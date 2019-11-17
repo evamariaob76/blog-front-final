@@ -8,10 +8,6 @@ a {
     padding: 0px;
 }
 
-a:hover {
-    font-weight: bold;
-}
-
 img {
     width: 100%;
     height: auto;
@@ -83,17 +79,16 @@ ul {
 }
 
 .pie a {
-    font-size: 15px;
     color: #4F6E85!important;
     text-decoration: none;
     font-weight: bold;
 }
 
 .pie a:hover {
-    font-weight: 800;
+    font-size: 16px;
     color: #4F6E85;
-    font-size: 1.1em;
-    text-shadow: 0.1em 0.1em 0.09em #4F6E85;
+    font-weight: bolder;
+    text-decoration: underline;
 }
 
 @media (max-width: 768px) {
