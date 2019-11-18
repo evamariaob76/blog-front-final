@@ -250,7 +250,7 @@
 
                         <div class="col-lg-10 col-sm-10 col-10 img-padding-no firma-resim">
                             <p>Imagen 1</p>
-                            <img class="card-img-top img-thumbnail" src="{{url_backend}}/api/descargas/img/{{comercio.img}} " [alt]="comercio.nombre">
+                            <img class="card-img-top img-thumbnail" src="{{url_firebase}}{{comercio.img}}{{url_firebase2}}" [alt]="comercio.nombre">
                             <div class="row  vertical-align botonImg">
                                 <div class="col-lg-3 col-sm-3 col-3 my-auto"></div>
                                 <div class=" col-lg-6 col-sm-6 col-6 my-auto">
@@ -269,11 +269,11 @@
                         <div class="col-lg-10 col-sm-10 col-10 img-padding-no firma-resim">
                             <p>Imagen 2</p>
 
-                            <img class="card-img-top img-thumbnail" src="{{url_backend}}/api/descargas/img/{{comercio.img1}} " [alt]="comercio.nombre">
-                            <div class="row  vertical-align botonImg">
-                                <div class="col-lg-3 col-sm-3 col-3 my-auto"></div>
+                            <img class="card-img-top img-thumbnail" src="{{url_firebase}}{{comercio.img1}}{{url_firebase2}}" [alt]="comercio.nombre ">
+                            <div class="row vertical-align botonImg ">
+                                <div class="col-lg-3 col-sm-3 col-3 my-auto "></div>
 
-                                <div class=" col-lg-6 col-sm-6 col-6 my-auto">
+                                <div class=" col-lg-6 col-sm-6 col-6 my-auto ">
 
                                 </div>
 
@@ -281,13 +281,13 @@
                         </div>
                     </div>
                     <div class="firma-card row lista ">
-                        <div class="col-lg-1 col-sm-1 col-1 my-auto"></div>
-                        <div class="col-lg-10 col-sm-10 col-10 img-padding-no firma-resim">
+                        <div class="col-lg-1 col-sm-1 col-1 my-auto "></div>
+                        <div class="col-lg-10 col-sm-10 col-10 img-padding-no firma-resim ">
                             <p>Imagen 3</p>
-                            <img class="card-img-top img-thumbnail" src="{{url_backend}}/api/descargas/img/{{comercio.img2}} " [alt]="comercio.nombre">
-                            <div class="row  vertical-align botonImg">
-                                <div class="col-lg-3 col-sm-3 col-3 my-auto"></div>
-                                <div class=" col-lg-6 col-sm-6 col-6 my-auto">
+                            <img class="card-img-top img-thumbnail " src="{{url_firebase}}{{comercio.img2}}{{url_firebase2}} " [alt]="comercio.nombre ">
+                            <div class="row vertical-align botonImg ">
+                                <div class="col-lg-3 col-sm-3 col-3 my-auto "></div>
+                                <div class=" col-lg-6 col-sm-6 col-6 my-auto ">
 
                                 </div>
 
@@ -297,10 +297,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-center">
-                    <button type="button" class="btn btn-rounded boton" *ngIf="  comercio.img!=null " (click)="verCreado(comercio.id); "> Ver Comercio Creado</button>
+                <div class="text-center ">
+                    <button type="button " class="btn btn-rounded boton " *ngIf=" comercio.img!=null " (click)="verCreado(comercio.id); "> Ver Comercio Creado</button>
                 </div>
-                <p> <button *ngIf="  comercio.img!=null " class="btn btn-dark " type="button" role="button" (click)="nuevoComercio(); ">Crear nuevo Comercio
+                <p> <button *ngIf=" comercio.img!=null " class="btn btn-dark " type="button " role="button " (click)="nuevoComercio(); ">Crear nuevo Comercio
                     </button></p>
 
             </form>

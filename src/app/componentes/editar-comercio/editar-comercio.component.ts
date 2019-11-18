@@ -1,19 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { ComerciosService, Comercio } from '../../servicios/comercios.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { URL_BACKEND } from '../../config/config';
+import firebase from "@firebase/app";
+import "@firebase/firestore";
+import "@firebase/auth";
+import "@firebase/storage";
+import { environment } from "../../../environments/environment";
 
 @Component({
-  selector: 'app-editar-comercio',
-  templateUrl: './editar-comercio.component.html',
-  styleUrls: ['./editar-comercio.component.css']
+  selector: "app-editar-comercio",
+  templateUrl: "./editar-comercio.component.html",
+  styleUrls: ["./editar-comercio.component.css"]
 })
 export class EditarComercioComponent implements OnInit {
-
-  htmlStr: string = ""
-  htmlStr1: string = ""
-  htmlStr2: string = ""
+  htmlStr: string = "";
+  htmlStr1: string = "";
+  htmlStr2: string = "";
   estadoPositivo1: boolean = false;
   estadoPositivo2: boolean = false;
   estadoPositivo3: boolean = false;
@@ -26,31 +29,49 @@ export class EditarComercioComponent implements OnInit {
   visible: boolean = false;
   updateFoto = false;
   id: any = {};
-  url_backend : string = URL_BACKEND;
-  constructor(private comerciosService: ComerciosService,
+  url_backend: string = URL_BACKEND;
+  url_firebase: string =
+    "https://firebasestorage.googleapis.com/v0/b/pharmacyapp-b56e1.appspot.com/o/images%2F";
+  url_firebase2 = "?alt=media&token=572032c4-c176-4e3d-8d2d-c4c5a378c7ca";
+  constructor(
+    private comerciosService: ComerciosService,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-
-  ) { }
-
-  ngOnInit() {//al cargarse la página se llama a la funcion cargarComercio que mostrará el comercio en el caso de que se vaya a editar
+    private activatedRoute: ActivatedRoute
+  ) {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(environment.firebase);
+    }
+  }
+  ngOnInit() {
+    //al cargarse la página se llama a la funcion cargarComercio que mostrará el comercio en el caso de que se vaya a editar
     this.cargarComercio();
-
   }
 
-  cargarComercio() {//carga el comercio a editar
-    this.activatedRoute.params.subscribe(params => {//subscribiéndome a los parámetros tenemos la id de comercio
-      let id = params['id']
+  cargarComercio() {
+    //carga el comercio a editar
+    this.activatedRoute.params.subscribe(params => {
+      //subscribiéndome a los parámetros tenemos la id de comercio
+      let id = params["id"];
       if (id) {
-        this.comerciosService.getComercio(id).subscribe((comercio => this.comercio = comercio))
+        this.comerciosService
+          .getComercio(id)
+          .subscribe(comercio => {
+            (this.comercio = comercio)
+            this.getFirebase(this.comercio.img);
+            this.getFirebase(this.comercio.img1);
+            this.getFirebase(this.comercio.img2);
+
+
+          });
       }
-    })
+    });
   }
   mostrarHTML() {
     this.visible = true;
   }
 
-  seleccionarUnaFoto(event, id_foto) {//función que recoge la  información de img en el caso de actulizar una foto
+  seleccionarUnaFoto(event, id_foto) {
+    //función que recoge la  información de img en el caso de actulizar una foto
     this.archivo = event.target.files[0];
     switch (id_foto) {
       case 1:
@@ -65,34 +86,58 @@ export class EditarComercioComponent implements OnInit {
         this.upload1Foto(3);
         this.htmlStr2 = this.archivo.name;
         break;
-    }   
+    }
   }
-  
-  upload1Foto(id_img) {//Función que llama al Servicio y actualiza la foto
+
+  upload1Foto(id_img) {
+    //Función que llama al Servicio y actualiza la foto
     this.activatedRoute.params.subscribe(params => {
-      let id = params['id']
+      let id = params["id"];
 
-      this.comerciosService.subir1Foto(this.archivo, id, id_img)
+      this.comerciosService
+        .subir1Foto(this.archivo, id, id_img)
         .subscribe(json => {
-
           this.cargarComercio();
           this.updateFoto = true;
-        })
-    })
+        });
+    });
   }
 
-  update(): void {//función que llama al servicio correspondiente para actualizar el comercio
-    this.comerciosService.update(this.comercio).subscribe
-      (json => {   
-        this.visible = true;
+  update(): void {
+    //función que llama al servicio correspondiente para actualizar el comercio
+    this.comerciosService.update(this.comercio).subscribe(json => {
+      this.visible = true;
+    });
+  }
+
+  cancelar() {
+    //función que redirige al panel de administración si nos e quiere actualizar foto
+    this.router.navigate(["/admin"]);
+  }
+
+  nuevoComercio() {
+    //función que resetea los campos para incluir un nuevo comercio
+    this.router.navigate(["/crear/comercios"]);
+  }
+
+  getFirebase(img) {
+    var storage = firebase.storage();
+    var gsReference = storage.refFromURL(
+      "gs://pharmacyapp-b56e1.appspot.com/images/" + img
+    );
+    gsReference
+      .getDownloadURL()
+      .then(function(url) {
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = "blob";
+        xhr.onload = function(event) {
+          var blob = xhr.response;
+        };
+        xhr.open("GET", url);
+        xhr.send();
       })
-  }
-
-  cancelar() {//función que redirige al panel de administración si nos e quiere actualizar foto
-    this.router.navigate(['/admin'])
-  }
-
-  nuevoComercio() {//función que resetea los campos para incluir un nuevo comercio
-    this.router.navigate(['/crear/comercios']);
+      .catch(function(error) {
+        debugger;
+      });
   }
 } 

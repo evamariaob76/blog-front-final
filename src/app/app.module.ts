@@ -9,6 +9,7 @@ import { IgxPieChartModule } from "igniteui-angular-charts/ES5/igx-pie-chart-mod
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';  
 import { TruncatePipe } from './componentes/truncate.pipe';
+import { environment } from "../environments/environment";
 
 registerLocaleData(localeEs, 'es');
 
@@ -69,8 +70,11 @@ import { RecuperarPasswordComponent } from './componentes/recuperar-password/rec
 import { ResetPasswordComponent } from './componentes/reset-password/reset-password.component';
 import { BodyComercioCreadoComponent } from './componentes/body-comercio-creado/body-comercio-creado.component';
 import { BodyUpdatedAdminComponent } from './componentes/body-updated-admin/body-updated-admin.component';
+import * as firebase from "firebase";
+import "firebase/firestore";
 
 
+   // firebase.initializeApp(environment); //<-- where the magic happens
 
 @NgModule({
   declarations: [

@@ -4,11 +4,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
 import { ComerciosService, Comercio } from '../../servicios/comercios.service';
 import { NgForm } from '@angular/forms';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 import { CompartirInformacionService } from '../../servicios/compartir-informacion.service';
 import { AutenticacionService } from '../../servicios/autenticacion.service';
+import { UsuariosService, Usuario } from "../../servicios/usuarios.service";
 import { URL_BACKEND } from "../../config/config";
+import firebase from "@firebase/app";
+import "@firebase/firestore";
+import "@firebase/auth";
+import "@firebase/storage";
+import { environment } from "../../../environments/environment";
 
 @Component({
   selector: "app-comentarios",
@@ -20,6 +25,7 @@ export class ComentariosComponent implements OnInit {
   comentarios: any = {};
   fechaHoy: Date = new Date();
   comercio: Comercio = new Comercio();
+  usuario: Usuario;
   comprobar: boolean = false;
   noExistenComentarios: boolean = true;
   idComentario: any;
@@ -32,6 +38,10 @@ export class ComentariosComponent implements OnInit {
   ocultar = false;
   private fragment: string;
   urlBackend: string = URL_BACKEND;
+  url_backend: string = URL_BACKEND;
+  url_firebase: string =
+    "https://firebasestorage.googleapis.com/v0/b/pharmacyapp-b56e1.appspot.com/o/images%2F";
+  url_firebase2 = "?alt=media&token=572032c4-c176-4e3d-8d2d-c4c5a378c7ca";
 
   constructor(
     private comentariosService: ComentariosService,
@@ -39,18 +49,20 @@ export class ComentariosComponent implements OnInit {
     private router: Router,
     private comerciosService: ComerciosService,
     public authService: AutenticacionService,
-    private compartirInformacionService: CompartirInformacionService
-  ) { }
-
+    private compartirInformacionService: CompartirInformacionService,
+    private usuariosService: UsuariosService
+  ) 
+{
+  if (!firebase.apps.length) {
+    firebase.initializeApp(environment.firebase);
+  }
+}
   ngOnInit(): void {
-
-     this.activatedRoute.fragment.subscribe(fragment => { this.fragment = fragment;console.log(fragment + "frag");
+    this.activatedRoute.fragment.subscribe(fragment => {
+      this.fragment = fragment;
       if (fragment) {
         window.scrollTo(0, 240); // how far to scroll on each step
-        console.log('al punto coment')
       }
-console.log(fragment+'frag')
-    
     });
 
     this.activatedRoute.params.subscribe(params => {
@@ -98,7 +110,10 @@ console.log(fragment+'frag')
               }
             })
           )
-          .subscribe(comercio => (this.comercio = comercio));
+          .subscribe(comercio => {
+            this.comercio = comercio;
+            this.getFirebase(comercio.img);
+          });
       }
     });
   }
@@ -190,18 +205,15 @@ console.log(fragment+'frag')
     switch (this.comprobar) {
       case true:
         this.comprobar = false;
-        console.log(this.comprobar + "estoy en false");
         break;
       case false:
         this.comprobar = true;
-        console.log(this.comprobar + "estoy en true");
 
         break;
     }
   }
 
   cambiar(contestacionForm, id) {
-    console.log(this.comprobar + "estoy en cambiar");
 
     document.getElementById("contestacion" + id).style.marginLeft = "50px";
     if ((document.getElementById("contestacion" + id).style.display = "none")) {
@@ -256,5 +268,35 @@ console.log(fragment+'frag')
           });
       }
     });
+  }
+  cargarUsuario() {
+    //carga el usuario
+    this.activatedRoute.params.subscribe(params => {
+      this.usuariosService.getUsuario(2).subscribe(usuario => {
+        this.usuario = usuario;
+        this.getFirebase(usuario.img);
+      });
+    });
+  }
+
+  getFirebase(img) {
+    var storage = firebase.storage();
+    var gsReference = storage.refFromURL(
+      "gs://pharmacyapp-b56e1.appspot.com/images/" + img
+    );
+    gsReference
+      .getDownloadURL()
+      .then(function(url) {
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = "blob";
+        xhr.onload = function(event) {
+          var blob = xhr.response;
+        };
+        xhr.open("GET", url);
+        xhr.send();
+      })
+      .catch(function(error) {
+        debugger;
+      });
   }
 }

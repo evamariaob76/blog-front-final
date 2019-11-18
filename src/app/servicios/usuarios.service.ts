@@ -142,15 +142,16 @@ export class UsuariosService {
 
 
 export class Usuario {
-  id: number;
-  nombre: string;
-  username: string;
-  apellido: string;
-  createAt: string;
-  email: string;
-  bio: string;
-  descripcion: string;
-  fotoPortada: string;
-  password: string;
-  roles: string[] = [];
-}
+         id: number;
+         nombre: string;
+         username: string;
+         apellido: string;
+         createAt: string;
+         email: string;
+         bio: string;
+         descripcion: string;
+         fotoPortada: string;
+         password: string;
+         roles: string[] = [];
+         img: string = "";
+       }

@@ -34,14 +34,6 @@ export class ComerciosLikesComponent implements OnInit {
       }
       this.comercioService
         .getComerciosAll(page)
-        .pipe(
-          tap(response => {
-            console.log("LikesComponent: tap 3");
-            (response.content as Comercio[]).forEach(comercio =>
-              console.log(comercio.nombre)
-            );
-          })
-        )
         .subscribe(response => {
           this.comercios = response.content as Comercio[];
           this.paginadorComercios = response;

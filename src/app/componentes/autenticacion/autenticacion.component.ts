@@ -24,19 +24,12 @@ export class AutenticacionComponent implements OnInit {
                 private router : Router) {
      }
 
-     guardarCambios(){
-    console.log(this.form.value);
-    console.log(this.form);
-
-  }
   ngOnInit() {
     let page: number = 0;
 
     this.clienteService.getClientes(page).pipe(
       tap(response =>{
-        console.log("clientes componenet tap3");
         (response.content as Cliente[]). forEach(cliente =>{
-          console.log(cliente.nombre);
         });
 
       })

@@ -87,7 +87,7 @@
                         <li class="comment" id="comment" *ngIf="i<4  && comprobar==false">
                             <div id="comentariosInicio">
                                 <div class="vcard ">
-                                    <img src="../../../assets/img/madrid/1madrid.jpg" alt="imagen usuario">
+                                    <img src="{{url_firebase}}{{comercio.img}}{{url_firebase2}}" alt="imagen usuario">
                                 </div>
                                 <div class="comment-body">
                                     <h4>{{comentario.nombre}}</h4>
@@ -120,7 +120,7 @@
                             <div class="contestacion ">
                                 <div id=" comentariosInicio ">
                                     <div class="vcard ">
-                                        <img src="{{urlBackend}}/img//personal/imagen.jpg" alt="imagen admin ">
+                                        <img src="{{url_firebase}}{{usuario.img}}{{url_firebase2}}" alt="imagen admin ">
                                     </div>
                                     <div class="comment-body ">
                                         <h4>Amind dice... </h4>
@@ -153,7 +153,7 @@
                         <li class="comment" id="comment" *ngIf="comprobar ==true ">
                             <div id="comentariosInicio">
                                 <div class="vcard ">
-                                    <img src="../../../assets/img/madrid/1madrid.jpg" alt="imagen usuario">
+                                    <img src="{{url_firebase}}{{comercio.img}}{{url_firebase2}}" alt="imagen usuario">
                                 </div>
                                 <div class="comment-body">
                                     <h4>{{comentario.nombre}}</h4>
@@ -186,7 +186,7 @@
                             <div class="contestacion ">
                                 <div id=" comentariosInicio ">
                                     <div class="vcard ">
-                                        <img src="{{urlBackend}}/img//personal/imagen.jpg" alt="Imagen admin ">
+                                        <img src="{{url_firebase}}{{usuario.img}}{{url_firebase2}}" alt="Imagen admin ">
                                     </div>
                                     <div class="comment-body ">
                                         <h4>Amind dice... </h4>
