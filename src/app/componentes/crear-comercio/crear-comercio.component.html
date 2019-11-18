@@ -30,7 +30,7 @@
 
                     <label for="latitud">Grupo de actividad </label>
                     <button class="iBoton" (click)="informacionActividad()"> i*</button>
-                    <p class="" [ngClass]="{'i': informacionBooleanActividad}" id="act"> </p>
+                    <p [ngClass]="{'i': informacionBooleanActividad}" id="act"> </p>
                     <input pattern="([a-zA-Z]+)([s])" type="text" class="form-control" id="actividad" #actividad="ngModel" [(ngModel)]="comercio.actividad" name="actividad" required minlength="4" placeholder="actividad">
                     <div class="alert alert-danger" *ngIf="actividad.invalid && (actividad.dirty || actividad.touched)">
                         <div *ngIf="actividad.errors.required ">
@@ -84,7 +84,7 @@
                 </div>
                 <div class="form-group">
                     <label for="facebook">Facebook </label>
-                    <input pattern="(https://www.facebook.com/){1}[aA0-zZ9/]+" class="form-control" id="facebook" #facebook="ngModel" [(ngModel)]="comercio.facebook" name="facebook" required placeholder="https://www.facebook.com/...">
+                    <input pattern="^https://.*?.facebook.com/(.*)$" class="form-control" id="facebook" #facebook="ngModel" [(ngModel)]="comercio.facebook" name="facebook" required placeholder="https://www.facebook.com/...">
                     <div class="alert alert-danger" *ngIf="facebook.invalid && (facebook.dirty || facebook.touched)">
                         <div *ngIf="facebook.errors.required ">
                             Facebook de comercio es requerido
@@ -100,7 +100,7 @@
                     <label for="latitud">Coordenadas : Latitud </label>
                     <button class="iBoton" (click)="informacionLat()"> i*</button>
                     <p class="" [ngClass]="{'i': informacionBooleanLat}" id="lat"> </p>
-                    <input pattern="^([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}" type="text" class="form-control" id="latitud" #latitud="ngModel" [(ngModel)]="comercio.lat" name="latitud" required minlength="6" placeholder="latitud">
+                    <input pattern="^([1-8]?[1-9]|[1-9]0)\.{1}\d{1,8}" type="text" class="form-control" id="latitud" #latitud="ngModel" [(ngModel)]="comercio.lat" name="latitud" required minlength="6" placeholder="latitud">
                     <div class="alert alert-danger" *ngIf="latitud.invalid && (latitud.dirty || latitud.touched)">
                         <div *ngIf="latitud.errors.required ">
                             Latitud de comercio es requerido
@@ -117,7 +117,7 @@
                     <label for="longitud">Coordenadas : longitud </label>
                     <button class="iBoton" (click)="informacionLong()"> i*</button>
                     <p class="" [ngClass]="{'i': informacionBooleanLong}" id="lon"> </p>
-                    <input pattern="^-([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}" type="text" class="form-control" id="longitud" #longitud="ngModel" [(ngModel)]="comercio.lng" name="longitud" required minlength="6" placeholder="longitud">
+                    <input pattern="^-([1-8]?[1-9]|[1-9]0)\.{1}\d{1,8}" type="text" class="form-control" id="longitud" #longitud="ngModel" [(ngModel)]="comercio.lng" name="longitud" required minlength="6" placeholder="longitud">
                     <div class="alert alert-danger" *ngIf="longitud.invalid && (longitud.dirty || longitud.touched)">
                         <div *ngIf="longitud.errors.required ">
                             Longitud de comercio es requerido
@@ -145,7 +145,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="resumen">Descripción corta</label>
+                    <label for="resumen">Descripción corta</label><small>      (máximo 300 caracteres)</small>
                     <textarea id="resumen" [(ngModel)]="comercio.resumen" #resumen="ngModel" name="resumen" cols="30" rows="6" class="form-control" required minlength="20" maxlength="300" placeholder="descripción corta"></textarea>
                     <div class="alert alert-danger" *ngIf="resumen.invalid && (resumen.dirty || resumen.touched)">
                         <div *ngIf="resumen.errors.required ">
@@ -158,8 +158,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="parrafoOne">Contenido Primer Párrafo</label>
-                    <textarea id="parrafoOne" [(ngModel)]="comercio.parrafoOne" #parrafoOne="ngModel" name="parrafoOne" cols="30" rows="10" class="form-control" placeholder="Contenido primer párrafo" required minlength="50"></textarea>
+                    <label for="parrafoOne">Contenido Primer Párrafo</label><small> (mínimo 100 caracteres)</small>
+                    <textarea id="parrafoOne" [(ngModel)]="comercio.parrafoOne" #parrafoOne="ngModel" name="parrafoOne" cols="30" rows="10" class="form-control" placeholder="Contenido primer párrafo" required minlength="100"></textarea>
                 </div>
                 <div class="alert alert-danger" *ngIf="parrafoOne.invalid && (parrafoOne.dirty || parrafoOne.touched)">
                     <div *ngIf="parrafoOne.errors.required ">
@@ -167,12 +167,12 @@
                     </div>
 
                     <div *ngIf="parrafoOne.errors.minlength ">
-                        El contenido del primer párrafo de comercio debe tener al menos 50 caracteres
+                        El contenido del primer párrafo de comercio debe tener al menos 100 caracteres
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="parrafoTwo">Contenido Segundo Párrafo</label>
-                    <textarea id="parrafoTwo" [(ngModel)]="comercio.parrafoTwo" #parrafoTwo="ngModel" name="parrafoTwo" cols="30" rows="10" class="form-control" placeholder="Contenido segundo párrafo" required minlength="50"></textarea>
+                    <label for="parrafoTwo">Contenido Segundo Párrafo</label> <small> (mínimo 100 caracteres)</small>
+                    <textarea id="parrafoTwo" [(ngModel)]="comercio.parrafoTwo" #parrafoTwo="ngModel" name="parrafoTwo" cols="30" rows="10" class="form-control" placeholder="Contenido segundo párrafo" required minlength="100"></textarea>
                 </div>
                 <div class="alert alert-danger" *ngIf="parrafoTwo.invalid && (parrafoTwo.dirty || parrafoTwo.touched)">
                     <div *ngIf="parrafoTwo.errors.required ">
@@ -180,7 +180,7 @@
                     </div>
 
                     <div *ngIf="parrafoTwo.errors.minlength ">
-                        El contenido del segundo párrafo de comercio debe tener al menos 50 caracteres
+                        El contenido del segundo párrafo de comercio debe tener al menos 100 caracteres
                     </div>
                 </div>
                 <button [disabled]="!comercioForm.valid" [ngClass]="{'boton': comercioForm.valid}" class="btn btn-rounded botonDisabled" type="button" role="button" (click)='mostrarHTML()' *ngIf="!comercio.id else mostrar">Crear</button>

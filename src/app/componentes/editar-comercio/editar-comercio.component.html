@@ -30,27 +30,33 @@
 
                 </div>
                 <div class="form-group">
-                    <label for="actividad">Actividad</label>
-                    <input type="text" class="form-control" id="actividad" #actividad="ngModel" [(ngModel)]="comercio.actividad" required minlength="5" name="actividad" placeholder="actividad">
 
+                    <label for="latitud">Grupo de actividad </label>
+                    <button class="iBoton" (click)="informacionActividad()"> i*</button>
+                    <p [ngClass]="{'i': informacionBooleanActividad}" id="act"> </p>
+                    <input pattern="([a-zA-Z]+)([s])" type="text" class="form-control" id="actividad" #actividad="ngModel" [(ngModel)]="comercio.actividad" name="actividad" required minlength="4" placeholder="actividad">
                     <div class="alert alert-danger" *ngIf="actividad.invalid && (actividad.dirty || actividad.touched)">
                         <div *ngIf="actividad.errors.required ">
-                            Actividad de comercio es requerido
+                            Grupo de actividad de comercio es requerido
                         </div>
 
-                        <div *ngIf="actividad.errors.minlength ">
-                            Actividad de comercio debe tener al menos 3 caracteres
+                        <div *ngIf="actividad.errors ">
+                            Grupo de actividad de comercio debe tener al menos 4 caracteres y debe estar en plural
                         </div>
+
                     </div>
-
-
                 </div>
                 <div class="form-group">
-                    <label for="aparicion">Fecha de inicio de actividad</label>
-                    <input type="text" class="form-control" id="aparicion" [(ngModel)]="comercio.aparicion" name="aparicion" placeholder="fecha de inicio de actividad">
-
-
-
+                    <label for="aparicion">Año de inicio de actividad</label>
+                    <input type="text" pattern="[0-9]{4}" class="form-control" id="aparicion" [(ngModel)]="comercio.aparicion" #aparicion="ngModel" name="aparicion" placeholder="año de inicio de actividad" required minlength="4" maxlength="4">
+                    <div class="alert alert-danger" *ngIf="aparicion.invalid && (aparicion.dirty || aparicion.touched)">
+                        <div *ngIf="aparicion.errors.required ">
+                            Año de inicio de actividad es requerido
+                        </div>
+                        <div *ngIf="aparicion.errors ">
+                            Año de inicio de actividad debe tener 4 caracteres numéricos
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="direccion">Dirección</label>
@@ -69,43 +75,39 @@
                 </div>
                 <div class="form-group">
                     <label for="cp">cp</label>
-                    <input type="text" id="cp" #cp="ngModel" [(ngModel)]="comercio.cp" name="cp" class="form-control" placeholder="cp ciudad" required minlength="5">
+                    <input pattern="[0-9]{5}\s+[aA-zZ]{3,20}" type="text" id="cp" #cp="ngModel" [(ngModel)]="comercio.cp" name="cp" class="form-control" placeholder="cp ciudad" required minlength="5">
                     <div class="alert alert-danger" *ngIf="cp.invalid && (cp.dirty || cp.touched)">
                         <div *ngIf="cp.errors.required ">
                             CP de comercio es requerido
                         </div>
 
-                        <div *ngIf="cp.errors.minlength ">
-                            CP de comercio debe tener al menos 5 caracteres
+                        <div *ngIf="cp.errors ">
+                            No es un formato válido, debe de ser cp y ciudad
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="facebook">Facebook </label>
-                    <input type="text" class="form-control" id="facebook" #facebook="ngModel" [(ngModel)]="comercio.facebook" name="facebook" required minlength="15" placeholder="facebook">
+                    <input pattern="^https://.*?.facebook.com/(.*)$" class="form-control" id="facebook" #facebook="ngModel" [(ngModel)]="comercio.facebook" name="facebook" required placeholder="https://www.facebook.com/...">
                     <div class="alert alert-danger" *ngIf="facebook.invalid && (facebook.dirty || facebook.touched)">
                         <div *ngIf="facebook.errors.required ">
                             Facebook de comercio es requerido
                         </div>
 
-                        <div *ngIf="facebook.errors.minlength ">
-                            Facebook de comercio debe tener al menos 10 caracteres
+                        <div *ngIf="facebook.errors ">
+                            No es un formato válido, debe de ser https://www.facebook.com/...
                         </div>
                     </div>
-
-
-
                 </div>
                 <div class="form-group">
                     <label for="latitud">Coordenadas : Latitud </label>
-                    <input type="text" class="form-control" id="latitud" #latitud="ngModel" [(ngModel)]="comercio.lat" name="latitud" required minlength="10" placeholder="latitud">
+                    <input pattern="^([1-8]?[1-9]|[1-9]0)\.{1}\d{1,8}" type="text" class="form-control" id="latitud" #latitud="ngModel" [(ngModel)]="comercio.lat" name="latitud" required minlength="10" placeholder="latitud">
                     <div class="alert alert-danger" *ngIf="latitud.invalid && (latitud.dirty || latitud.touched)">
                         <div *ngIf="latitud.errors.required ">
                             Latitud de comercio es requerido
                         </div>
-
-                        <div *ngIf="latitud.errors.minlength ">
-                            Latitud de comercio debe tener al menos 10 caracteres
+                        <div *ngIf="latitud.errors ">
+                            No es un formato válido
                         </div>
                     </div>
 
@@ -113,54 +115,51 @@
                 </div>
                 <div class="form-group">
                     <label for="longitud">Coordenadas : Longitud </label>
-                    <input type="text" class="form-control" id="longitud" #longitud="ngModel" [(ngModel)]="comercio.lng" name="longitud" required minlength="10" placeholder="longitud">
+                    <input pattern="^-([1-8]?[1-9]|[1-9]0)\.{1}\d{1,8}" type="text" class="form-control" id="longitud" #longitud="ngModel" [(ngModel)]="comercio.lng" name="longitud" required minlength="10" placeholder="longitud">
                     <div class="alert alert-danger" *ngIf="longitud.invalid && (latitud.dirty || longitud.touched)">
                         <div *ngIf="longitud.errors.required ">
                             Longitud de comercio es requerido
                         </div>
 
-                        <div *ngIf="longitud.errors.minlength ">
-                            Longitud de comercio debe tener al menos 10 caracteres
+
+                        <div *ngIf="longitud.errors ">
+                            No es un formato válido
                         </div>
                     </div>
 
 
                 </div>
                 <div class="form-group">
-                    <label for="telefono">Teléfono </label>
-                    <input type="text" class="form-control" #telefono="ngModel" id="telefono" [(ngModel)]="comercio.telefono" #telefono="ngModel" name="telefono" required minlength="9" placeholder="teléfono">
-
+                    <label for="longitud">Teléfono </label>
+                    <input pattern="[96]{1}?[0-9]{8}" type="text" class="form-control" id="telefono" #telefono="ngModel" [(ngModel)]="comercio.telefono" name="telefono" required minlength="9" placeholder="telefono">
                     <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
                         <div *ngIf="telefono.errors.required ">
                             Teléfono de comercio es requerido
                         </div>
 
-                        <div *ngIf="telefono.errors.minlength ">
-                            Teléfono de comercio debe tener al menos 9 caracteres
+                        <div *ngIf="telefono.errors ">
+                            Teléfono de comercio debe tener al menos 9 caracteres y sin espacios
                         </div>
                     </div>
-
-
-                </div>update
+                </div>
 
                 <div class="form-group">
-                    <label for="resumen">Descripción corta</label>
-                    <textarea id="resumen" [(ngModel)]="comercio.resumen" #resumen="ngModel" name="resumen" cols="30" rows="10" class="form-control" required minlength="20" placeholder="descripción corta"></textarea>
+                    <label for="resumen">Descripción corta</label><small> (máximo 300 caracteres)</small>
+                    <textarea id="resumen" [(ngModel)]="comercio.resumen" #resumen="ngModel" name="resumen" cols="30" rows="6" class="form-control" required minlength="20" maxlength="300" placeholder="descripción corta"></textarea>
                     <div class="alert alert-danger" *ngIf="resumen.invalid && (resumen.dirty || resumen.touched)">
                         <div *ngIf="resumen.errors.required ">
                             Descripción de comercio es requerido
                         </div>
 
                         <div *ngIf="resumen.errors.minlength ">
-                            Descripción de comercio debe tener al menos 20 caracteres
+                            Descripción de comercio debe tener al menos 20 caracteres y menos de 300
                         </div>
                     </div>
-
                 </div>
 
                 <div class="form-group">
-                    <label for="parrafoOne">Contenido Primer Párrafo</label>
-                    <textarea id="parrafoOne" [(ngModel)]="comercio.parrafoOne" #parrafoOne="ngModel" name="parrafoOne" cols="30" rows="10" class="form-control" placeholder="Contenido primer párrafo" required minlength="50"></textarea>
+                    <label for="parrafoOne">Contenido Primer Párrafo</label><small> (mínimo 100 caracteres)</small>
+                    <textarea id="parrafoOne" [(ngModel)]="comercio.parrafoOne" #parrafoOne="ngModel" name="parrafoOne" cols="30" rows="10" class="form-control" placeholder="Contenido primer párrafo" required minlength="100"></textarea>
                 </div>
                 <div class="alert alert-danger" *ngIf="parrafoOne.invalid && (parrafoOne.dirty || parrafoOne.touched)">
                     <div *ngIf="parrafoOne.errors.required ">
@@ -168,12 +167,12 @@
                     </div>
 
                     <div *ngIf="parrafoOne.errors.minlength ">
-                        El contenido del primer párrafo de comercio debe tener al menos 50 caracteres
+                        El contenido del primer párrafo de comercio debe tener al menos 100 caracteres
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="parrafoTwo">Contenido Segundo Párrafo</label>
-                    <textarea id="parrafoTwo" [(ngModel)]="comercio.parrafoTwo" #parrafoTwo="ngModel" name="parrafoTwo" cols="30" rows="10" class="form-control" placeholder="Contenido segundo párrafo" required minlength="50"></textarea>
+                    <textarea id="parrafoTwo" [(ngModel)]="comercio.parrafoTwo" #parrafoTwo="ngModel" name="parrafoTwo" cols="30" rows="10" class="form-control" placeholder="Contenido segundo párrafo" required minlength="100"></textarea>
                 </div>
                 <div class="alert alert-danger" *ngIf="parrafoTwo.invalid && (parrafoTwo.dirty || parrafoTwo.touched)">
                     <div *ngIf="parrafoTwo.errors.required ">
@@ -181,7 +180,7 @@
                     </div>
 
                     <div *ngIf="parrafoTwo.errors.minlength ">
-                        El contenido del segundo párrafo de comercio debe tener al menos 50 caracteres
+                        El contenido del segundo párrafo de comercio debe tener al menos 100 caracteres
                     </div>
                 </div>
 

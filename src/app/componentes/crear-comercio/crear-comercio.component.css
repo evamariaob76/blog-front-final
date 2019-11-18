@@ -63,6 +63,10 @@ span {
     margin-top: 20px;
 }
 
+label>label {
+    font-size: 10 px;
+}
+
 #comercio {
     font-size: 1em;
     text-transform: uppercase;

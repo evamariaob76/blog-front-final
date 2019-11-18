@@ -1,3 +1,8 @@
+.contenedor {
+    padding: 0px;
+    margin-top: 30px;
+}
+
 .sidebar-box {
     margin-bottom: 4em;
     font-size: 15px;
@@ -84,6 +89,7 @@ p {
 
 .informacionPersonal {
     padding-top: 80px;
+    width: 100%;
 }
 
 a {
