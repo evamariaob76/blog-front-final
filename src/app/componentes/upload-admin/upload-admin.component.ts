@@ -7,6 +7,7 @@ import firebase from "@firebase/app";
 import "@firebase/firestore";
 import "@firebase/auth";
 import "@firebase/storage";
+import { environment } from "../../../environments/environment";
 
 @Component({
   selector: "app-upload-admin",
@@ -32,8 +33,12 @@ export class UploadAdminComponent implements OnInit {
     private usuariosService: UsuariosService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) {}
-
+  ) 
+{
+  if (!firebase.apps.length) {
+    firebase.initializeApp(environment.firebase);
+  }
+}
   ngOnInit() {
     this.cargarUsuario();
   }
