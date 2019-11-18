@@ -104,7 +104,6 @@ export class UploadAdminComponent implements OnInit {
     }
   }
   getFirebase(img) {
-    console.log("entro");
     var storage = firebase.storage();
     var pathReference = storage.ref("images/a.jpg");
     var gsReference = storage.refFromURL(
@@ -113,8 +112,6 @@ export class UploadAdminComponent implements OnInit {
     gsReference
       .getDownloadURL()
       .then(function(url) {
-        // `url` is the download URL for 'images/a.jpg'
-        // This can be downloaded directly:
         var xhr = new XMLHttpRequest();
         xhr.responseType = "blob";
         xhr.onload = function(event) {
@@ -122,11 +119,9 @@ export class UploadAdminComponent implements OnInit {
         };
         xhr.open("GET", url);
         xhr.send();
-        console.log("la url es:   " + url);
       })
       .catch(function(error) {
         debugger;
-        console.log("metido en el cath");
       });
   }
 }

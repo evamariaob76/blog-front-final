@@ -53,16 +53,12 @@ export class EditarComercioComponent implements OnInit {
       //subscribiéndome a los parámetros tenemos la id de comercio
       let id = params["id"];
       if (id) {
-        this.comerciosService
-          .getComercio(id)
-          .subscribe(comercio => {
-            (this.comercio = comercio)
-            this.getFirebase(this.comercio.img);
-            this.getFirebase(this.comercio.img1);
-            this.getFirebase(this.comercio.img2);
-
-
-          });
+        this.comerciosService.getComercio(id).subscribe(comercio => {
+          this.comercio = comercio;
+          this.getFirebase(this.comercio.img);
+          this.getFirebase(this.comercio.img1);
+          this.getFirebase(this.comercio.img2);
+        });
       }
     });
   }
@@ -118,6 +114,9 @@ export class EditarComercioComponent implements OnInit {
   nuevoComercio() {
     //función que resetea los campos para incluir un nuevo comercio
     this.router.navigate(["/crear/comercios"]);
+  }
+  verEditado(id) {
+    this.router.navigate(["/comercioCreado", id]);
   }
 
   getFirebase(img) {

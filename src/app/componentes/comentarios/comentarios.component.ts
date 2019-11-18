@@ -51,13 +51,13 @@ export class ComentariosComponent implements OnInit {
     public authService: AutenticacionService,
     private compartirInformacionService: CompartirInformacionService,
     private usuariosService: UsuariosService
-  ) 
-{
-  if (!firebase.apps.length) {
-    firebase.initializeApp(environment.firebase);
+  ) {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(environment.firebase);
+    }
   }
-}
   ngOnInit(): void {
+    this.cargarUsuario();
     this.activatedRoute.fragment.subscribe(fragment => {
       this.fragment = fragment;
       if (fragment) {
@@ -214,7 +214,6 @@ export class ComentariosComponent implements OnInit {
   }
 
   cambiar(contestacionForm, id) {
-
     document.getElementById("contestacion" + id).style.marginLeft = "50px";
     if ((document.getElementById("contestacion" + id).style.display = "none")) {
       document.getElementById("contestacion" + id).style.display = "inline";
