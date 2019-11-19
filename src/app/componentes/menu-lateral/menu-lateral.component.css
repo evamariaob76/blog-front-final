@@ -59,6 +59,7 @@ button:focus {
     /*Opera*/
     -ms-animation: aparecer 4s ease-out 1;
     /*Internet Explorer*/
+    padding-top: 50px;
 }
 
 @keyframes aparecer {

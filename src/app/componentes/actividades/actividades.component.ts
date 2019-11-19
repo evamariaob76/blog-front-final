@@ -3,6 +3,7 @@ import { ComerciosService, Comercio } from '../../servicios/comercios.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MenuLateralComponent } from '../menu-lateral/menu-lateral.component';
 import { URL_BACKEND } from "../../config/config";
+import { tap } from "rxjs/operators";
 import firebase from "@firebase/app";
 import "@firebase/firestore";
 import "@firebase/auth";
@@ -21,7 +22,8 @@ export class ActividadesComponent implements OnInit {
   nombre: string;
   comercio: any = [];
   url_backend: string = URL_BACKEND;
-  url_firebase: string ="https://firebasestorage.googleapis.com/v0/b/pharmacyapp-b56e1.appspot.com/o/images%2F";
+  url_firebase: string =
+    "https://firebasestorage.googleapis.com/v0/b/pharmacyapp-b56e1.appspot.com/o/images%2F";
   url_firebase2 = "?alt=media&token=572032c4-c176-4e3d-8d2d-c4c5a378c7ca";
 
   constructor(
@@ -29,33 +31,29 @@ export class ActividadesComponent implements OnInit {
     private router: Router,
     private comerciosService: ComerciosService,
     private menuLateralComponent: MenuLateralComponent
-  ) 
-{
-  if (!firebase.apps.length) {
-    firebase.initializeApp(environment.firebase);
-  }
-}
-  ngOnInit() {
-    this.activatedRoute.params.subscribe(params => {
-      this.nombre = params["nombre"];
-      this.comerciosService
-        .findByName(this.nombre)
-        .subscribe(comercios => {
-          (this.comercios = comercios)
-               for (let comercio of this.comercios) {
-        this.getFirebase(comercio.img);
-      }
-        });
-    });
+  ) {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(environment.firebase);
+    }
   }
 
+  ngOnInit() {
+    this.activatedRoute.params.subscribe(params => {
+      let nombre = params["nombre"];
+      this.comerciosService.findByName(nombre).subscribe(comercios => {
+        this.comercios = comercios;
+        for (let comercio of this.comercios) {
+          this.getFirebase(comercio.img);
+        }
+      });
+    });
+  }
   verComercio(i: number) {
     this.router.navigate(["/comercio", i]);
   }
 
-    getFirebase(img) {
+  getFirebase(img) {
     var storage = firebase.storage();
-    var pathReference = storage.ref("images/a.jpg");
     var gsReference = storage.refFromURL(
       "gs://pharmacyapp-b56e1.appspot.com/images/" + img
     );
@@ -70,9 +68,7 @@ export class ActividadesComponent implements OnInit {
         xhr.open("GET", url);
         xhr.send();
       })
-      .catch(function(error) {
-        debugger;
-      });
+      .catch(function(error) {});
   }
 }
 

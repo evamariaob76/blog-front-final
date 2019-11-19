@@ -107,3 +107,16 @@ ul {
         padding-left: 0px;
     }
 }
+
+@media (min-width: 768px) and (max-width:1024px) {
+    .entrada {
+        font-size: 12px;
+    }
+    h4 {
+        font-size: 18px!important;
+    }
+    h2,
+    .container {
+        margin-top: 50px;
+    }
+}

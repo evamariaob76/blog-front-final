@@ -5,3 +5,9 @@
 .row {
     padding: 0px;
 }
+
+@media (max-width:414px) {
+    .header {
+        height: 300px;
+    }
+}

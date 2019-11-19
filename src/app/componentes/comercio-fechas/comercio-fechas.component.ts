@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ComerciosService, Comercio } from '../../servicios/comercios.service';
 import { tap } from 'rxjs/operators';
-import { Pipe, PipeTransform } from '@angular/core';
 import { URL_BACKEND } from "../../config/config";
 import firebase from "@firebase/app";
 import "@firebase/firestore";
@@ -54,7 +53,6 @@ export class ComercioFechasComponent implements OnInit {
   }
   getFirebase(img) {
     var storage = firebase.storage();
-    var pathReference = storage.ref("images/a.jpg");
     var gsReference = storage.refFromURL(
       "gs://pharmacyapp-b56e1.appspot.com/images/" + img
     );
@@ -70,7 +68,6 @@ export class ComercioFechasComponent implements OnInit {
         xhr.send();
       })
       .catch(function(error) {
-        debugger;
       });
   }
 }

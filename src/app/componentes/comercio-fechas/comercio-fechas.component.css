@@ -101,3 +101,24 @@ hr {
         padding-left: 0px;
     }
 }
+
+@media (min-width: 768px) and (max-width:1024px) {
+    .entrada {
+        font-size: 12px;
+    }
+    h4 {
+        font-size: 18px!important;
+    }
+    h2,
+    .container,
+    .contenedor {
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    img {
+        width: 250px;
+        height: 200px;
+    }
+}
