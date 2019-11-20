@@ -74,11 +74,12 @@ export class CrearComercioComponent implements OnInit {
       this.id = json.comercio.id;
       this.uploadFotos(this.id);
       this.visibleFoto = true;
+
       this.getFirebase(this.comercio.img)
-            this.getFirebase(this.comercio.img1);
+      this.getFirebase(this.comercio.img1);
       this.getFirebase(this.comercio.img2);
 
-      // this.enviarmail(this.id);//función que hace que cuando se crea un comercio nuevo mande un mail de información
+      this.enviarmail(this.id);//función que hace que cuando se crea un comercio nuevo mande un mail de información
     });
   }
   seleccionarFoto(event) {

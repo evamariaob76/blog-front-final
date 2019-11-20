@@ -56,7 +56,7 @@ export class ComercioComponent implements OnInit {
     this.activatedRoute.fragment.subscribe(fragment => {
       this.fragment = fragment;
       if (!fragment) {
-        window.scrollTo(0, 0); // how far to scroll on each step
+        window.scrollTo(0, 0); 
       }
     });
 

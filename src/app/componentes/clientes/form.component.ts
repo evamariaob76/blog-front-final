@@ -23,10 +23,10 @@ export class FormComponent implements OnInit {
   clientes: Cliente[]=[]
   admin : boolean = false;
   form: FormGroup;
- cliente: Cliente = new Cliente();
- creadoCliente : boolean = false;
+   cliente: Cliente = new Cliente();
+   creadoCliente : boolean = false;
   usuarioExiste: boolean= false;
-private titulo: string =" Crear cliente";
+  private titulo: string =" Crear cliente";
   constructor(private clienteService: ClienteService, 
               private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -36,6 +36,9 @@ private titulo: string =" Crear cliente";
           
                }
   ngOnInit() {
+   
+    window.scrollTo(0, 0); 
+  
     this.cargarCliente();
 }
 

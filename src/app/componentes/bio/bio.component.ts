@@ -36,7 +36,10 @@ export class BioComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.usuariosService.getUsuario(2).subscribe(usuario => {
         this.usuario = usuario;
-        this.getFirebase(usuario.img);
+        if(usuario.img){
+                  this.getFirebase(usuario.img);
+
+        }
       });
     });
   }

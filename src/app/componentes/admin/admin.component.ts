@@ -30,12 +30,9 @@ export class AdminComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.activatedRoute.fragment.subscribe(fragment => {
-      this.fragment = fragment;
-      if (fragment) {
-        window.scrollTo(0, 240); // how far to scroll on each step
-      }
-    });
+  
+    window.scrollTo(0, 0); 
+
     if (this.authService.isAuthenticated) {
       this.comerciosService
         .getComercios()

@@ -17,6 +17,8 @@ enviado:boolean = false;
   constructor( private emailService : EmailService) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0); 
+
   }
   enviarmail(mensajeForm: NgForm) {
     this.emailService.sendEmailAdmin(this.Email.nombre, this.Email.apellido,this.Email.email, this.Email.texto).subscribe(

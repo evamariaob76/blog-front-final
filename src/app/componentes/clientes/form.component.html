@@ -12,7 +12,7 @@
             <h3 *ngIf="authService.isAuthenticated()==false" class="mb-5  "><span>Suscribirse</span></h3>
             <h3 *ngIf="authService.isAuthenticated()==true && cliente.username && authService.hasRole('ROLE_ADMIN')" class="mb-5  "><span>Editar suscriptor</span></h3>
             <h3 *ngIf="authService.isAuthenticated()==true &&  !cliente.username && authService.hasRole('ROLE_ADMIN')" class="mb-5  "><span>Crear suscriptor</span></h3>
-            <p *ngIf="authService.isAuthenticated()==false" class="mb-5  ">* Al suscribirte te informaremos en tu mail cuando se actualice el blog</p>
+            <p class="mb-5  ">* Al suscribirte te informaremos en tu mail cuando se actualice el blog</p>
 
             <div class="row ">
                 <div class="col-lg-3 col-md-1 col-sm-1 col-xs-1"></div>
@@ -75,7 +75,7 @@
                             </div>
                         </div>
                         <div class="form-group ">
-                            <button [ngClass]="{'boton': clienteForm.valid}" class="btn btn-rounded botonDisabled " type="button" role="button" (click)='create(clienteForm)' *ngIf="!cliente.id else mostrar" [disabled]="!clienteForm.form.valid">Crear</button>
+                            <button [ngClass]="{'boton': clienteForm.valid}" class="btn btn-rounded botonDisabled " type="button" role="button" (click)='create(clienteForm)' *ngIf="!cliente.id else mostrar" [disabled]="!clienteForm.form.valid">Suscribirse</button>
                             <ng-template #mostrar>
                                 <button [ngClass]="{'boton': clienteForm.valid}" class="btn btn-rounded botonDisabled" role="button" (click)='update()' [disabled]="!clienteForm.form.valid">Editar</button>
                             </ng-template>
