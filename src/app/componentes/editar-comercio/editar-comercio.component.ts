@@ -20,7 +20,9 @@ export class EditarComercioComponent implements OnInit {
   estadoPositivo1: boolean = false;
   estadoPositivo2: boolean = false;
   estadoPositivo3: boolean = false;
-
+  informacionBooleanLat: boolean = false;
+  informacionBooleanLong: boolean = false;
+  informacionBooleanActividad: boolean = false;
   comercio: any = {};
   fechaHoy: Date = new Date();
   archivo: File;
@@ -119,6 +121,49 @@ export class EditarComercioComponent implements OnInit {
     this.router.navigate(["/comercioCreado", id]);
   }
 
+  informacionActividad() {
+    switch (this.informacionBooleanActividad) {
+      case false:
+        document.getElementById("act").innerHTML =
+          "El grupo de actividad se refiere a la actividad global del comercio, y en plural,  por ejemplo : restaurantes, hoteles, etc";
+        this.informacionBooleanActividad = true;
+        break;
+
+      case true:
+        document.getElementById("act").innerHTML = "";
+        this.informacionBooleanActividad = false;
+        break;
+    }
+  }
+
+  informacionLat() {
+    switch (this.informacionBooleanLat) {
+      case false:
+        document.getElementById("lat").innerHTML =
+          "Hacer click en el siguiente enlace <a target='_blank'href='https://www.google.es/maps/?hl=es'>Maps.</a> Introducir la calle en el buscador incluyendo el número. Situarse sobre la chincheta, click en el botón derecho del ratón y seleccionar ¿Qué hay aquí?. En la subventana, el primer dato corresponde a latitud";
+        this.informacionBooleanLat = true;
+        break;
+
+      case true:
+        document.getElementById("lat").innerHTML = "";
+        this.informacionBooleanLat = false;
+        break;
+    }
+  }
+  informacionLong() {
+    switch (this.informacionBooleanLong) {
+      case false:
+        document.getElementById("lon").innerHTML =
+          "Hacer click en el siguiente enlace <a  target='_blank' href='https://www.google.es/maps/?hl=es'>Maps.</a> Introducir la calle en el buscador incluyendo el número. Situarse sobre la chincheta, click en el botón derecho del ratón y seleccionar ¿Qué hay aquí?. En la subventana, el segundo dato corresponde a longitud";
+        this.informacionBooleanLong = true;
+        break;
+
+      case true:
+        document.getElementById("lon").innerHTML = "";
+        this.informacionBooleanLong = false;
+        break;
+    }
+  }
   getFirebase(img) {
     var storage = firebase.storage();
     var gsReference = storage.refFromURL(

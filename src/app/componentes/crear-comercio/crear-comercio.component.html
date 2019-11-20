@@ -6,7 +6,7 @@
 </div>
 
 <div class="row formulario bg-light" *ngIf="!visible">
-    <div class="col-lg-12  ">
+    <div class="col-lg-12 columna">
         <div class="comment-form-wrap pt-5  ">
             <h2>Crear un comercio</h2>
 
@@ -30,7 +30,7 @@
 
                     <label for="latitud">Grupo de actividad </label>
                     <button class="iBoton" (click)="informacionActividad()"> i*</button>
-                    <p [ngClass]="{'i': informacionBooleanActividad}" id="act"> </p>
+                    <p class="i" [ngClass]="{'i': informacionBooleanActividad}" id="act"> </p>
                     <input pattern="([a-zA-Z]+)([s])" type="text" class="form-control" id="actividad" #actividad="ngModel" [(ngModel)]="comercio.actividad" name="actividad" required minlength="4" placeholder="actividad">
                     <div class="alert alert-danger" *ngIf="actividad.invalid && (actividad.dirty || actividad.touched)">
                         <div *ngIf="actividad.errors.required ">
@@ -99,7 +99,7 @@
 
                     <label for="latitud">Coordenadas : Latitud </label>
                     <button class="iBoton" (click)="informacionLat()"> i*</button>
-                    <p class="" [ngClass]="{'i': informacionBooleanLat}" id="lat"> </p>
+                    <p class="i" [ngClass]="{'i': informacionBooleanLat}" id="lat"> </p>
                     <input pattern="^([1-8]?[1-9]|[1-9]0)\.{1}\d{1,8}" type="text" class="form-control" id="latitud" #latitud="ngModel" [(ngModel)]="comercio.lat" name="latitud" required minlength="6" placeholder="latitud">
                     <div class="alert alert-danger" *ngIf="latitud.invalid && (latitud.dirty || latitud.touched)">
                         <div *ngIf="latitud.errors.required ">
@@ -116,7 +116,7 @@
 
                     <label for="longitud">Coordenadas : longitud </label>
                     <button class="iBoton" (click)="informacionLong()"> i*</button>
-                    <p class="" [ngClass]="{'i': informacionBooleanLong}" id="lon"> </p>
+                    <p class="i" [ngClass]="{'i': informacionBooleanLong}" id="lon"> </p>
                     <input pattern="^-([1-8]?[1-9]|[1-9]0)\.{1}\d{1,8}" type="text" class="form-control" id="longitud" #longitud="ngModel" [(ngModel)]="comercio.lng" name="longitud" required minlength="6" placeholder="longitud">
                     <div class="alert alert-danger" *ngIf="longitud.invalid && (longitud.dirty || longitud.touched)">
                         <div *ngIf="longitud.errors.required ">
@@ -246,9 +246,9 @@
 
                 <div class="container" *ngIf="comercio.img && comercio.nombre">
                     <div class="firma-card row lista ">
-                        <div class="col-lg-1 col-sm-1 col-1 my-auto"></div>
+                        <div class="col-lg-2 col-sm-0 col-xs-0 col-0 my-auto"></div>
 
-                        <div class="col-lg-10 col-sm-10 col-10 img-padding-no firma-resim">
+                        <div class="col-lg-8 col-sm-12 col-xs-12 col-12 img-padding-no firma-resim">
                             <p>Imagen 1</p>
                             <img class="card-img-top img-thumbnail" src="{{url_firebase}}{{comercio.img}}{{url_firebase2}}" [alt]="comercio.nombre">
                             <div class="row  vertical-align botonImg">
@@ -264,9 +264,9 @@
 
                     </div>
                     <div class="firma-card row lista ">
-                        <div class="col-lg-1 col-sm-1 col-1 my-auto"></div>
+                        <div class="col-lg-2 col-sm-0 col-xs-0 col-0 my-auto"></div>
 
-                        <div class="col-lg-10 col-sm-10 col-10 img-padding-no firma-resim">
+                        <div class="col-lg-8 col-sm-12 col-xs-12 col-12 img-padding-no firma-resim">
                             <p>Imagen 2</p>
 
                             <img class="card-img-top img-thumbnail" src="{{url_firebase}}{{comercio.img1}}{{url_firebase2}}" [alt]="comercio.nombre ">
@@ -281,8 +281,9 @@
                         </div>
                     </div>
                     <div class="firma-card row lista ">
-                        <div class="col-lg-1 col-sm-1 col-1 my-auto "></div>
-                        <div class="col-lg-10 col-sm-10 col-10 img-padding-no firma-resim ">
+                        <div class="col-lg-2 col-sm-0 col-xs-0 col-0 my-auto"></div>
+
+                        <div class="col-lg-8 col-sm-12 col-xs-12 col-12 img-padding-no firma-resim">
                             <p>Imagen 3</p>
                             <img class="card-img-top img-thumbnail " src="{{url_firebase}}{{comercio.img2}}{{url_firebase2}} " [alt]="comercio.nombre ">
                             <div class="row vertical-align botonImg ">
