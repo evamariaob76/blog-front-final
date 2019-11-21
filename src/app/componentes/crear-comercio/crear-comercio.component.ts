@@ -72,6 +72,7 @@ export class CrearComercioComponent implements OnInit {
     this.comerciosService.create(this.comercio).subscribe(json => {
       swal.fire("Comercio creado:", `${json.comercio.nombre}`, "success");
       this.id = json.comercio.id;
+      this.enviarmail(this.id);//función que hace que cuando se crea un comercio nuevo mande un mail de información
       this.uploadFotos(this.id);
       this.visibleFoto = true;
 
@@ -79,7 +80,6 @@ export class CrearComercioComponent implements OnInit {
       this.getFirebase(this.comercio.img1);
       this.getFirebase(this.comercio.img2);
 
-      this.enviarmail(this.id);//función que hace que cuando se crea un comercio nuevo mande un mail de información
     });
   }
   seleccionarFoto(event) {
@@ -135,6 +135,7 @@ export class CrearComercioComponent implements OnInit {
   }
   enviarmail(id) {
     this.emailService.sendEmail(id).subscribe();
+    console.log('mailok');
   }
   informacionLat() {
     switch (this.informacionBooleanLat) {

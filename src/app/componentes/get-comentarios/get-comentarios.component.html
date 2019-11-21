@@ -14,13 +14,13 @@
             </h5>
             <div class="card-body text-info">
 
-                <div *ngIf="comentarios?.length==0" class="alert alert-info">No hay registros ern la base de datos</div>
-                <table class="table table-striped" *ngIf="comentario">
+                <div *ngIf="!comentarios" class="alert alert-info">No hay registros ern la base de datos</div>
+                <table class="table table-striped" *ngIf="comentarios">
                     <thead>
                         <tr>
                             <th scope="col">Nombre Comercio</th>
                             <th scope="col">Nombre Suscriptor</th>
-                            <th scope="col">Id de Comentario</th>
+                            <th class="ocultar" scope="col">Id de Comentario</th>
                             <th scope="col">Comentarios</th>
                         </tr>
                     </thead>
@@ -28,7 +28,7 @@
                         <tr *ngFor="let comentari of comentario">
                             <td>{{comercio.nombre}}</td>
                             <td>{{comentari.nombre}}</td>
-                            <td>{{comentari.id}}</td>
+                            <td class="ocultar">{{comentari.id}}</td>
                             <td>{{comentari.comentario}}</td>
 
                         </tr>

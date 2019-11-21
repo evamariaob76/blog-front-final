@@ -21,6 +21,8 @@ export class AdminComponent implements OnInit {
   totaldef: any[] = [];
   comerciosLikes: Comercio[] = [];
   private fragment: string;
+  terminaBucle: boolean=false;
+  numero:number=0;
 
   constructor(
     public authService: AutenticacionService,
@@ -42,40 +44,71 @@ export class AdminComponent implements OnInit {
             let variable = response.length;
             response.reverse(); // Los comercios insertados más recientes aparecerán en primer lugar
             for (this.i = 0; this.i < variable; this.i++) {
-              this.totalLikes += comercios[this.i].likes; //suma de todos los likes para utilizar en la fórmula de la gráfica de pastel
+              this.totalLikes += comercios[this.i].likes;
+              if (this.i+1==variable) {
+                this.terminaBucle = true;
+                this.cargarGraficas();
+              }}
+          })
+        )
+        .subscribe(comercios => (this.comercios = comercios));
+
+    }
+    this.getMaxLikes();
+    this.getMaxVisitas();
+  }
+
+  cargarGraficas(){
+    this.activatedRoute.fragment.subscribe(fragment => {
+      this.fragment = fragment;
+      if (fragment) {
+        window.scrollTo(0, 240); // how far to scroll on each step
+      }
+    });
+    if (this.authService.isAuthenticated) {
+      this.comerciosService
+        .getComercios()
+        .pipe(
+          tap(response => {
+            let comercios = response as Comercio[];
+            let variable = response.length;
+            response.reverse(); // Los comercios insertados más recientes aparecerán en primer lugar
+            for (this.i = 0; this.i < variable; this.i++) {
               this.barChartLabels.push(comercios[this.i].nombre); //añado cada uno de los nombres de los comercios a la data de la gráfica barra
               this.barChartData[0].data.push(response[this.i].likes); //añado los likes de los comercios a la  data de la gráfica barra
               this.barChartData[1].data.push(
                 response[this.i].comentarios.length
               ); //añado cada uno de los comentarios (longitud total)  a la data de la gráfica barra
               this.barChartData[2].data.push(response[this.i].visitas); //añado cada uno de las visitas de los comercios a la  data de la gráfica barra
-              this.pieChartLabels.push(response[this.i].nombre); //añado cada uno de los nombres de los comercios a la gráfica pastel
-              this.pieChartData.push(response[this.i].likes); //añado los likes de los comercios a la data de gráfica pastel para utilizarlo en una función
-              this.pieChartData[this.i] =
-                Math.round(
-                  ((this.pieChartData[this.i] * 100) / this.totalLikes) * 10
-                ) / 10;
+             
 
-              if (this.i == 10 || this.i <= variable) {
-                this.updatebarChartOptions(this.i);
-                this.updatepieChartOptions(this.i);
+              if (this.i == 10 || this.i <= variable ) {
+                if (response[this.i].likes>0){
+                this.pieChartLabels.push(response[this.i].nombre); //añado cada uno de los nombres de los comercios a la gráfica pastel
+                  this.numero =  this.pieChartLabels.length;
+                }
+                this.pieChartData.push(response[this.i].likes); //añado los likes de los comercios a la data de gráfica pastel para utilizarlo en una función
+                this.pieChartData[this.i] =
+                  Math.round(
+                    ((this.pieChartData[this.i] * 100) / this.totalLikes) * 10
+                  ) / 10;
+                this.updatebarChartOptions(this.i+1);
+                this.updatepieChartOptions(this.numero);
+                console.log('nombre=' + response[this.i].nombre);
+                console.log('likes=' + response[this.i].likes);
+
+                  
               }
             }
-            /*for (let x = 1; x < response.length; x++){//utilizo  los datos del pieCVharData para calcualr porcentaje de likes de cada comercio y lo añado al array
-             this.pieChartData[x] = Math.round(((this.pieChartData[x] * 100 / this.totalLikes)) * 10) / 10;
-              if (x == 10 || this.i > response.length) {
-                continue;
-              }
-            }*/
           })
         )
         .subscribe(comercios => (this.comercios = comercios));
-      this.getMaxLikes();
-      this.getMaxVisitas();
+  
     }
   }
-
   cargarComercio(): void {
+    if (this.authService.isAuthenticated) {
+
     //llama a ComerciosService para cargar todos los comercios en pantalla
     this.activatedRoute.params.subscribe(params => {
       let id = params["id"];
@@ -86,8 +119,11 @@ export class AdminComponent implements OnInit {
       }
     });
   }
+  }
 
   getMaxLikes(): void {
+    if (this.authService.isAuthenticated) {
+
     this.comerciosService
       .getMaxLikes()
       .pipe(
@@ -95,11 +131,13 @@ export class AdminComponent implements OnInit {
           let comercios = response as Comercio[];
           for (let i = 1; i < response.length; i++) {
             this.barChartLabels2.push(response[i].nombre);
-            this.barChartData2[0].data.push(response[i].likes); //añado los likes de los comercios a la  data de la gráfica barra
+            this.barChartData2[0].data.push(response[i].likes);
+            console.log('responseLikes:'+response) //añado los likes de los comercios a la  data de la gráfica barra
           }
         })
       )
       .subscribe(comercios => (this.comercios = comercios));
+    }
   }
 
   getMaxVisitas(): void {
@@ -164,7 +202,7 @@ export class AdminComponent implements OnInit {
       responsive: true,
       maintainAspectRatio: false,
       title: {
-        text: "Porcentaje de likes de los últimos " + number + " comercios",
+        text: "Porcentaje de likes de los comercios  " + number + " con mas likes",
         fontSize: 20,
         fontColor: "black",
         display: true
@@ -212,7 +250,7 @@ export class AdminComponent implements OnInit {
       scales: { xAxes: [{}], yAxes: [{}] },
       title: {
         text:
-          "Interacción de los navegantes con los últimos " +
+          "Interacción de los navegantes con los últimos  " +
           number +
           "  comercios",
         fontSize: 20,

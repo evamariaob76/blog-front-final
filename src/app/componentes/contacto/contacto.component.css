@@ -54,4 +54,17 @@
            .alert {
                font-size: 12px;
            }
+           h3 {
+               font-size: 20px!important;
+               margin-top: 20px;
+           }
+           .form-group {
+               font-size: 15px!important;
+           }
+       }
+       
+       @media (min-width:768px) and (max-width:1024px) {
+           .formulario {
+               padding-top: 0px;
+           }
        }

@@ -92,7 +92,6 @@ export class ComerciosService {
           return throwError(e);
         }),
         tap((response: any) => {
-          console.log('ComerciosService: tap 1');
           (response.content as Comercio[]).forEach(comercio => console.log(comercio.nombre));
         }),
         map((response: any) => {
@@ -104,7 +103,6 @@ export class ComerciosService {
           return response;
         }),
         tap(response => {
-          console.log('ClienteService: tap 2');
           (response.content as Comercio[]).forEach(comercio => console.log(comercio.nombre));
         })
       );

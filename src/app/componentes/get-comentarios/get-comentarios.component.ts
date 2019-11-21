@@ -3,6 +3,7 @@ import { Comentario, ComentariosService } from '../../servicios/comentarios.serv
 import { ActivatedRoute, Router } from '@angular/router';
 import { ComerciosService, Comercio } from '../../servicios/comercios.service';
 import { AutenticacionService } from '../../servicios/autenticacion.service';
+import { tap } from 'rxjs/operators';
 
 
 @Component({
@@ -33,7 +34,11 @@ export class GetComentariosComponent implements OnInit {
     this.activatedRoute.params.subscribe(params =>{
     let id = params['id']
       if (id){
-        this.comentariosService.getComentarioComercio(id).subscribe((comentarios => this.comentarios = comentarios));
+        this.comentariosService.getComentarioComercio(id).pipe(
+          tap(response => {
+        this.comentario = response;
+          })
+        ).subscribe((comentarios => {this.comentarios = comentarios}));
       }
     })
   }
