@@ -197,7 +197,7 @@ export class AdminComponent implements OnInit {
       responsive: true,
       maintainAspectRatio: false,
       title: {
-        text: "Porcentaje de likes de los comercios  " + number + " con mas likes",
+        text: "Porcentaje de likes de los " + number + " comercios con mas likes",
         fontSize: 20,
         fontColor: "black",
         display: true
