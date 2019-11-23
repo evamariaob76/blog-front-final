@@ -66,10 +66,12 @@ export class ClientesComponent implements OnInit {
   }
   
   delete(cliente: Cliente):void{
+let nombre=cliente.nombre.toUpperCase();
+let apellido=cliente.apellido.toUpperCase();
 
   swal.fire({
     title: '¿Está seguro de que quiere eliminar esta entrada?',
-    text: `${cliente.nombre}{cliente.apellido}`,
+    text: `${nombre+ '  '+apellido }`,
     type: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',

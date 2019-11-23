@@ -8,6 +8,8 @@ import firebase from "@firebase/app";
 import "@firebase/firestore";
 import "@firebase/auth";
 import "@firebase/storage";
+import { environment } from "../../../environments/environment";
+
 
 @Component({
   selector: "app-crear-comercio",
@@ -43,7 +45,11 @@ export class CrearComercioComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private emailService: EmailService
-  ) {}
+  ) {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(environment.firebase);
+    }
+  }
 
   ngOnInit() {
     this.actividad(); //al cargarse la página se llama a la funcion cargarComercio que mostrará el comercio en el caso de que se vaya a editar
@@ -53,12 +59,13 @@ export class CrearComercioComponent implements OnInit {
     //carga el comercio a editar
     this.comerciosService
       .getComercio(id)
-      .subscribe(comercio => {(this.comercio = comercio)
-if(this.comercio.img){
-        this.getFirebase(this.comercio.img)
-        this.getFirebase(this.comercio.img1);
-        this.getFirebase(this.comercio.img2);
-}
+      .subscribe(comercio => {
+        (this.comercio = comercio)
+        if (this.comercio.img) {
+          this.getFirebase(this.comercio.img)
+          this.getFirebase(this.comercio.img1);
+          this.getFirebase(this.comercio.img2);
+        }
       });
   }
   actividad() {
@@ -79,7 +86,7 @@ if(this.comercio.img){
     this.comerciosService.create(this.comercio).subscribe(json => {
       swal.fire("Comercio creado:", `${json.comercio.nombre}`, "success");
       this.id = json.comercio.id;
-  
+
       this.enviarmail(this.id);//función que hace que cuando se crea un comercio nuevo mande un mail de información
       this.uploadFotos(this.id);
       this.visibleFoto = true;
@@ -144,8 +151,8 @@ if(this.comercio.img){
   }
   enviarmail(id) {
     this.emailService.sendEmail(id).subscribe();
-    console.log('mailok');
   }
+  
   informacionLat() {
     switch (this.informacionBooleanLat) {
       case false:
@@ -199,16 +206,16 @@ if(this.comercio.img){
     );
     gsReference
       .getDownloadURL()
-      .then(function(url) {
+      .then(function (url) {
         var xhr = new XMLHttpRequest();
         xhr.responseType = "blob";
-        xhr.onload = function(event) {
+        xhr.onload = function (event) {
           var blob = xhr.response;
         };
         xhr.open("GET", url);
         xhr.send();
       })
-      .catch(function(error) {
+      .catch(function (error) {
         debugger;
       });
   }

@@ -190,7 +190,8 @@ input[id="img2"] {
 }
 
 p {
-    margin: 0px;
+    font-style: italic;
+    font-weight: bold;
     text-align: center;
 }
 

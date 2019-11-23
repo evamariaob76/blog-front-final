@@ -33,6 +33,11 @@ export class RecuperarPasswordComponent implements OnInit {
 
 
   enviarPassword(mensajeForm: NgForm) {
+    this.Email.nombre=this.Email.nombre.split(' ').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' ');
+    this.Email.apellido = this.Email.apellido.split(' ').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' ');
+    this.Email.username = this.Email.username.toLowerCase();
+
+
     this.emailService.sendPassword(this.Email.nombre, this.Email.apellido, this.Email.username, this.Email.email ).subscribe(
       json => {
 
