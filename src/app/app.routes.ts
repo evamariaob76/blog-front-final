@@ -51,8 +51,7 @@ const RUTAS: Routes = [
     { path: 'uploadAmin', component: BodyUpdatedAdminComponent, canActivate: [AuthGuard, RolesGuard], data: { role: 'ROLE_ADMIN' }  },
 
 
-    { path: '**', pathMatch: 'full', redirectTo: 'home' },
-    { path: 'resetPasword', pathMatch: 'prefix', redirectTo: 'resetPasword' }
+    { path: '**', pathMatch: 'full', redirectTo: 'home' }
 
 ]; 
 

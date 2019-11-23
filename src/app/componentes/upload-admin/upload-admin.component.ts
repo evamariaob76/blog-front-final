@@ -16,6 +16,8 @@ import { environment } from "../../../environments/environment";
 })
 export class UploadAdminComponent implements OnInit {
   archivo: File;
+  archivo1: File;
+
   id: number = 2;
   usuario: any = {};
   estadoPositivo1: boolean = false;
@@ -49,16 +51,18 @@ export class UploadAdminComponent implements OnInit {
     this.estadoPositivo1 = true; //variable que hace cambiar el color al subir una imagen en la img1
     this.htmlStr = this.archivo.name;
     this.uploadFotos(this.id);
-    this.getFirebase(this.archivo.name);
+    this.usuario.img = this.archivo.name;
+    this.getFirebase(this.usuario.img);
 
   }
   seleccionarFotoPortada(event) {
     //función que recoge la  información de img
-    this.archivo = event.target.files[0];
+    this.archivo1= event.target.files[0];
     this.estadoPositivo2 = true; //variable que hace cambiar el color al subir una imagen en la img1
-    this.htmlStr1 = this.archivo.name;
+    this.htmlStr1 = this.archivo1.name;
+    this.usuario.fotoPortada = this.archivo1.name;
     this.uploadFotoPortada(this.id);
-    this.getFirebase(this.archivo.name);
+    this.getFirebase(this.usuario.fotoPortada);
 
   }
   cargarUsuario() {

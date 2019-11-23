@@ -183,7 +183,10 @@
                         El contenido del segundo párrafo de comercio debe tener al menos 200 caracteres
                     </div>
                 </div>
-                <button [disabled]="!comercioForm.valid" [ngClass]="{'boton': comercioForm.valid}" class="btn btn-rounded botonDisabled" type="button" role="button" (click)='mostrarHTML()' *ngIf="!comercio.id else mostrar">Crear</button>
+                <button [ngClass]="{'boton': comercioForm.valid}" class="btn btn-rounded botonDisabled" type="button" role="button" (click)='mostrarHTML()' *ngIf="!comercio.id else mostrar">Crear</button>
+
+                <!--                <button [disabled]="!comercioForm.valid" [ngClass]="{'boton': comercioForm.valid}" class="btn btn-rounded botonDisabled" type="button" role="button" (click)='mostrarHTML()' *ngIf="!comercio.id else mostrar">Crear</button>
+-->
                 <ng-template #mostrar>
                 </ng-template>
 
@@ -244,11 +247,11 @@
                     * guarde para crear un nuevo comercio </p>
 
 
-                <div class="container" *ngIf="comercio.img && comercio.nombre">
+                <div class="container">
                     <div class="firma-card row lista ">
                         <div class="col-lg-2 col-sm-0 col-xs-0 col-0 my-auto"></div>
 
-                        <div class="col-lg-8 col-sm-12 col-xs-12 col-12 img-padding-no firma-resim">
+                        <div class="col-lg-8 col-sm-12 col-xs-12 col-12 img-padding-no firma-resim" *ngIf="comercio.img && comercio.nombre">
                             <p>Imagen 1</p>
                             <img class="card-img-top img-thumbnail" src="{{url_firebase}}{{comercio.img}}{{url_firebase2}}" [alt]="comercio.nombre">
                             <div class="row  vertical-align botonImg">
@@ -266,7 +269,7 @@
                     <div class="firma-card row lista ">
                         <div class="col-lg-2 col-sm-0 col-xs-0 col-0 my-auto"></div>
 
-                        <div class="col-lg-8 col-sm-12 col-xs-12 col-12 img-padding-no firma-resim">
+                        <div class="col-lg-8 col-sm-12 col-xs-12 col-12 img-padding-no firma-resim" *ngIf="comercio.img1 && comercio.nombre">
                             <p>Imagen 2</p>
 
                             <img class="card-img-top img-thumbnail" src="{{url_firebase}}{{comercio.img1}}{{url_firebase2}}" [alt]="comercio.nombre ">
@@ -283,7 +286,7 @@
                     <div class="firma-card row lista ">
                         <div class="col-lg-2 col-sm-0 col-xs-0 col-0 my-auto"></div>
 
-                        <div class="col-lg-8 col-sm-12 col-xs-12 col-12 img-padding-no firma-resim">
+                        <div class="col-lg-8 col-sm-12 col-xs-12 col-12 img-padding-no firma-resim" *ngIf="comercio.img2 && comercio.nombre">
                             <p>Imagen 3</p>
                             <img class="card-img-top img-thumbnail " src="{{url_firebase}}{{comercio.img2}}{{url_firebase2}} " [alt]="comercio.nombre ">
                             <div class="row vertical-align botonImg ">
@@ -299,9 +302,9 @@
                     </div>
                 </div>
                 <div class="text-center ">
-                    <button type="button " class="btn btn-rounded boton " *ngIf=" comercio.img!=null " (click)="verCreado(comercio.id); "> Ver Comercio Creado</button>
+                    <button type="button " class="btn btn-rounded boton " *ngIf=" visibleFoto==true " (click)="verCreado(comercio.id); "> Ver Comercio Creado</button>
                 </div>
-                <p> <button *ngIf=" comercio.img!=null " class="btn btn-dark " type="button " role="button " (click)="nuevoComercio(); ">Crear nuevo Comercio
+                <p> <button *ngIf=" visibleFoto==true " class="btn btn-dark " type="button " role="button " (click)="nuevoComercio(); ">Crear nuevo Comercio
                     </button></p>
 
             </form>
