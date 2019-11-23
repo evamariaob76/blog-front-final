@@ -52,7 +52,7 @@ const RUTAS: Routes = [
 
 
     { path: '**', pathMatch: 'full', redirectTo: 'home' },
-    { path: '*', pathMatch: 'full', redirectTo: 'resetPasword' }
+    { path: 'resetPasword', pathMatch: 'prefix', redirectTo: 'resetPasword' }
 
 ]; 
 
