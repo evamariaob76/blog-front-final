@@ -74,18 +74,29 @@ export class EditarComercioComponent implements OnInit {
   seleccionarUnaFoto(event, id_foto) {
     //función que recoge la  información de img en el caso de actulizar una foto
     this.archivo = event.target.files[0];
+    this.archivo1 = event.target.files[0];
+    this.archivo2 = event.target.files[0];
+
     switch (id_foto) {
       case 1:
         this.upload1Foto(1);
         this.htmlStr = this.archivo.name;
+        this.comercio.img=this.archivo.name;
+        this.getFirebase(this.comercio.img);
+    
         break;
       case 2:
-        this.upload1Foto(2);
-        this.htmlStr1 = this.archivo.name;
+        this.upload1Foto1(2);
+        this.htmlStr1 = this.archivo1.name;
+        this.comercio.img1 = this.archivo1.name;
+        this.getFirebase(this.comercio.img1);
+
         break;
       case 3:
-        this.upload1Foto(3);
-        this.htmlStr2 = this.archivo.name;
+        this.upload1Foto2(3);
+        this.htmlStr2 = this.archivo2.name;
+        this.comercio.img2 = this.archivo2.name;
+        this.getFirebase(this.comercio.img2);
         break;
     }
   }
@@ -98,12 +109,34 @@ export class EditarComercioComponent implements OnInit {
       this.comerciosService
         .subir1Foto(this.archivo, id, id_img)
         .subscribe(json => {
-          this.cargarComercio();
           this.updateFoto = true;
         });
     });
   }
+  upload1Foto1(id_img) {
+    //Función que llama al Servicio y actualiza la foto
+    this.activatedRoute.params.subscribe(params => {
+      let id = params["id"];
 
+      this.comerciosService
+        .subir1Foto(this.archivo1, id, id_img)
+        .subscribe(json => {
+          this.updateFoto = true;
+        });
+    });
+  }
+  upload1Foto2(id_img) {
+    //Función que llama al Servicio y actualiza la foto
+    this.activatedRoute.params.subscribe(params => {
+      let id = params["id"];
+
+      this.comerciosService
+        .subir1Foto(this.archivo2, id, id_img)
+        .subscribe(json => {
+          this.updateFoto = true;
+        });
+    });
+  }
   update(): void {
     this.comercio.actividad = this.comercio.actividad.toLowerCase();
     //función que llama al servicio correspondiente para actualizar el comercio
