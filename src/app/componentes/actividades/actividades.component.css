@@ -91,7 +91,7 @@ ul {
     text-decoration: underline;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 416px) {
     .firma-logo {
         width: calc(33.66667% - .75rem);
         height: 6.5rem;
@@ -106,6 +106,12 @@ ul {
         padding-right: 0px;
         padding-left: 0px;
     }
+    h2 {
+        font-size: 20px;
+    }
+    span {
+        font-size: 12px;
+    }
 }
 
 @media (min-width: 768px) and (max-width:1024px) {
@@ -117,6 +123,6 @@ ul {
     }
     h2,
     .container {
-        margin-top: 50px;
+        margin-top: 120px;
     }
 }

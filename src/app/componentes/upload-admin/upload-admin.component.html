@@ -1,5 +1,5 @@
 <div class="row   bg-light ">
-    <div class="col-lg-12 col-md-12 col-12">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
         <h2 class="center-block">Actualice los datos que quiera cambiar:
 
             <p id="usuario">{{usuario.nombre}} {{usuario.apellido}}</p>
@@ -8,7 +8,7 @@
     </div>
 </div>
 <div class="row bg-light">
-    <div class="col-lg-12 col-md-12  col-12">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
         <form class="p-5 " #AdminForm="ngForm">
 
             <div class="row">
@@ -55,13 +55,13 @@
 
                     <div class="form-group">
                         <label for="descripcion">Resumen Biografía  </label> (max 400 caracteres)
-                        <textarea cols="40" rows="7" type="descripcion" maxlength="400" minlength="50" minlengrh class="form-control" #descripcion="ngModel" id="descripcion" [(ngModel)]="usuario.descripcion" name="descripcion" required></textarea>
+                        <textarea cols="40" rows="7" type="descripcion" maxlength="570" minlength="100" class="form-control" #descripcion="ngModel" id="descripcion" [(ngModel)]="usuario.descripcion" name="descripcion" required></textarea>
                         <div class="alert alert-danger" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
                             <div *ngIf="descripcion.errors.required ">
                                 Resumen es requerido
                             </div>
                             <div *ngIf="descripcion.errors.minlength ">
-                                Resumen debe tener al menos de 50 caracteres
+                                Resumen debe tener al menos de 100 caracteres
                             </div>
                         </div>
 
@@ -93,7 +93,7 @@
 
                     </div>
                     <div class="row   botonImg">
-                        <div class=" col-lg-12  col-md-12  col-12 my-auto  text-center container-logo ">
+                        <div class=" col-lg-12  col-md-12 col-sm-12 col-12 my-auto  text-center container-logo ">
                             <div class="form-group">
 
                                 <label [ngClass]="{'estadoTrue':estadoPositivo1,'estadoFalse':!estadoPositivo1}" for="img">Foto PERSONAL </label>
@@ -107,7 +107,7 @@
 
                     </div>
                     <div class="row portada">
-                        <div class="col-lg-12 col-md-12  col-12 my-auto container-logo">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 my-auto container-logo">
                             <div class="row  ">
                                 <div class=" col-lg-12 ">
                                     <img style="max-width: 500px" src="{{url_firebase}}{{usuario.fotoPortada}}{{url_firebase2}}">
@@ -115,7 +115,7 @@
 
                             </div>
                             <div class="row   botonImg">
-                                <div class=" col-lg-12 col-md-12  col-12 my-auto  text-center container-logo ">
+                                <div class=" col-lg-12 col-md-12 col-sm-12  col-12 my-auto  text-center container-logo ">
 
                                     <div class="form-group">
 

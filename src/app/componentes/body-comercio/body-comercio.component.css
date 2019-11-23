@@ -1,11 +1,9 @@
-.col-lg-4 {
-    padding-top: 100px;
-}
-
 .comercio {
     background: #FFFFFF;
 }
 
-.row {
-    padding: 0px;
+@media (min-width:1024px) {
+    .menu-lateral {
+        padding-top: 200px;
+    }
 }

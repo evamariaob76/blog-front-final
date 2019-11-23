@@ -45,7 +45,7 @@ export class ClienteService {
           "no tienes acceso a este recurso",
         "warning"
       );
-      this.router.navigate(["/admin"]);
+      this.router.navigate(["/home"]);
       return true;
     }
 

@@ -105,35 +105,25 @@
         }
     }
     
-    @media (width:768px) {
-        * {
-            font-size: 10px;
-        }
-        .contenedor {
-            width: 680px;
-            margin: 0px;
-        }
-        button {
-            font-size: 12px;
-        }
-        th,
-        td {
-            padding: 4px!important;
-        }
-        .row {
-            padding-top: 30px;
-        }
-    }
-    
     @media (width:1024px) {
         th,
         td {
             padding: 4px!important;
         }
         .row {
-            padding-top: 40px;
+            padding-top: 150px!important;
         }
         .contenedor {
             margin: 0px;
+        }
+    }
+    
+    @media (width:768px) {
+        th,
+        td {
+            padding: 4px!important;
+        }
+        .row {
+            padding-top: 0px!important;
         }
     }

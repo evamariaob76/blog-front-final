@@ -169,6 +169,30 @@ button:hover {
 
 @media (max-width:414px) {
     button {
+        font-size: 13px;
+    }
+    p a {
         font-size: 12px;
+    }
+    .titulo {
+        font-size: 14px;
+    }
+    .actualizaciones {
+        padding-bottom: 50px;
+    }
+}
+
+@media (width:320px) {
+    button {
+        font-size: 12px;
+    }
+    p a {
+        font-size: 12px;
+    }
+    .titulo {
+        font-size: 14px;
+    }
+    .actualizaciones {
+        padding-bottom: 50px;
     }
 }

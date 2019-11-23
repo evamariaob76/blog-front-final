@@ -41,10 +41,12 @@ export class ClientesComponent implements OnInit {
         });
     });*/
     this.getClientes();
+
   }
 
 
   getClientes() {
+
     this.activatedRoute.paramMap.subscribe(params => {//función que llama al servicio para poder hacer un listado mediante páginas
       let page: number = +params.get('page');
       if (!page) {
@@ -53,7 +55,7 @@ export class ClientesComponent implements OnInit {
       this.clientesService.getClientes(page)
         .pipe(
           tap(response => {
-            console.log('LikesComponent: tap 3');
+
             (response.content as Cliente[]).forEach(cliente => console.log(cliente.nombre));
           })
         ).subscribe(response => {
@@ -77,6 +79,8 @@ export class ClientesComponent implements OnInit {
     if (result.value) {
       this.clientesService.delete(cliente.id).subscribe(
         responde=>{
+          this.getClientes();
+
           this.clientes = this.clientes.filter (cli => cli !==cliente)
 
                 swal.fire(

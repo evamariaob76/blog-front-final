@@ -110,3 +110,42 @@ a:hover {
     font-weight: bolder;
     text-decoration: underline;
 }
+
+@media (max-width:360px) {
+    p {
+        font-size: 12px;
+    }
+    h2 {
+        font-size: 16px;
+    }
+}
+
+@media (width:360px) {
+    .bio {
+        width: 360px;
+    }
+}
+
+@media (width:414px) {
+    .bio {
+        width: 414px;
+    }
+}
+
+@media (width:411px) {
+    .bio {
+        width: 411px;
+    }
+}
+
+@media (width:375px) {
+    .bio {
+        width: 375px;
+    }
+}
+
+@media (width:320px) {
+    .bio {
+        width: 320px;
+    }
+}

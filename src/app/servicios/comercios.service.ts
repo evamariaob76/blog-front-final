@@ -34,7 +34,7 @@ export class ComerciosService {
   private isNoAutorizado(e): boolean {
     if (e.status == 401 || e.status == 403) {//no autorizado/servidor ha denegado els ervicio
       swal.fire('Acceso denegado', 'Hola: ' + this.authService.usuario.username + "no tienes acceso a este recurso", 'warning');
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/home']);
       return true;
     }
     return false

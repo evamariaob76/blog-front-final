@@ -53,7 +53,13 @@ export class CrearComercioComponent implements OnInit {
     //carga el comercio a editar
     this.comerciosService
       .getComercio(id)
-      .subscribe(comercio => (this.comercio = comercio));
+      .subscribe(comercio => {(this.comercio = comercio)
+if(this.comercio.img){
+        this.getFirebase(this.comercio.img)
+        this.getFirebase(this.comercio.img1);
+        this.getFirebase(this.comercio.img2);
+}
+      });
   }
   actividad() {
     this.comerciosService.actividad().subscribe(params => {
@@ -69,16 +75,19 @@ export class CrearComercioComponent implements OnInit {
     this.comercio.createAt = this.fechaHoy;
     this.comercio.likes = 0;
     this.comercio.visitas = 0;
+    this.comercio.actividad = this.comercio.actividad.toLowerCase();
     this.comerciosService.create(this.comercio).subscribe(json => {
       swal.fire("Comercio creado:", `${json.comercio.nombre}`, "success");
       this.id = json.comercio.id;
+  
       this.enviarmail(this.id);//función que hace que cuando se crea un comercio nuevo mande un mail de información
       this.uploadFotos(this.id);
       this.visibleFoto = true;
-
-      this.getFirebase(this.comercio.img)
-      this.getFirebase(this.comercio.img1);
-      this.getFirebase(this.comercio.img2);
+      if (this.comercio.img != null) {
+        this.getFirebase(this.comercio.img);
+        this.getFirebase(this.comercio.img1);
+        this.getFirebase(this.comercio.img2);
+      }
 
     });
   }

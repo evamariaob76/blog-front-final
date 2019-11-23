@@ -59,13 +59,18 @@ form {
     border: 1px solid #4F6E85;
 }
 
-@media (max-width:414px) {
-    .formulario {
-        padding: 0px;
+@media (max-width:700px) {
+    .alert {
+        font-size: 10px;
     }
-    .row,
-    .formulario {
-        margin: 0px;
-        padding: 0px;
+    h3 {
+        font-size: 16px!important;
+        margin-top: 0px;
+    }
+    .form-group,
+    .obligatorio,
+    p,
+    input {
+        font-size: 10px!important;
     }
 }

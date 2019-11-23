@@ -55,6 +55,7 @@ export class ComerciosLikesComponent implements OnInit {
       .then(result => {
         if (result.value) {
           this.comercioService.delete(comercio.id).subscribe(response => {
+            this.getComercios();
             swal.fire(
               "Comercio eliminado!",
               "ha sido eliminado correctamente.",

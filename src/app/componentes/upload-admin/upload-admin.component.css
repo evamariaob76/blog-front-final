@@ -173,13 +173,13 @@
        margin: 0px;
    }
    
-   @media (max-width:1024px) {
+   @media (width:1024px) {
        img {
            max-width: 400px!important;
        }
    }
    
-   @media (max-width:760px) {
+   @media (width:760px) {
        img {
            max-width: 250px!important;
        }
@@ -193,5 +193,18 @@
        }
        .alert {
            font-size: 12px;
+       }
+   }
+   
+   @media (max-width:416px) {
+       h2 {
+           font-size: 20px!important;
+           padding-top: 150px;
+       }
+       .alert {
+           font-size: 12px;
+       }
+       img {
+           width: 250px;
        }
    }

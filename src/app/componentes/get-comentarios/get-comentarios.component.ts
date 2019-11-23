@@ -30,6 +30,7 @@ export class GetComentariosComponent implements OnInit {
     this.cargarComercio();
   }
 
+
   cargarComentario():void{
     this.activatedRoute.params.subscribe(params =>{
     let id = params['id']

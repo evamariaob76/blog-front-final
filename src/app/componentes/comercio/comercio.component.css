@@ -164,11 +164,137 @@ span {
 
 @media (max-width:1024px) {
     .wrapper {
-        padding-top: 50px;
+        padding-top: 145px;
     }
 }
 
-@media (max-width:414px) {
+@media (width:360px) {
+    p {
+        font-size: 12px;
+    }
+    .wrapper {
+        padding-top: 145px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .editar {
+        margin-top: 30px;
+    }
+    ul li a {
+        font-size: 10px;
+    }
+    img {
+        padding-left: 0px;
+    }
+    .imagenAdmin {
+        display: none;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    button {
+        font-size: 12px;
+        padding: 2px;
+    }
+    .cabecera {
+        margin: 0px;
+        height: 30px;
+        padding: 0px;
+    }
+    .editar {
+        padding: 0px!important;
+        margin: 0px;
+    }
+    .boton {
+        font-size: 12px!important;
+    }
+}
+
+@media (width:320px) {
+    p {
+        font-size: 12px;
+    }
+    .wrapper {
+        padding-top: 145px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .editar {
+        margin-top: 30px;
+    }
+    ul li a {
+        font-size: 10px;
+    }
+    img {
+        padding-left: 0px;
+    }
+    .imagenAdmin {
+        display: none;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    button {
+        font-size: 12px;
+        padding: 2px;
+    }
+    .cabecera {
+        margin: 0px;
+        height: 30px;
+        padding: 0px;
+    }
+    .editar {
+        padding: 0px!important;
+        margin: 0px;
+    }
+    .boton {
+        font-size: 12px!important;
+    }
+}
+
+@media (width:375px) {
+    p {
+        font-size: 12px;
+    }
+    .wrapper {
+        padding-top: 145px;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .editar {
+        margin-top: 30px;
+    }
+    ul li a {
+        font-size: 10px;
+    }
+    img {
+        padding-left: 0px;
+    }
+    .imagenAdmin {
+        display: none;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    button {
+        font-size: 12px;
+        padding: 2px;
+    }
+    .cabecera {
+        margin: 0px;
+        height: 30px;
+        padding: 0px;
+    }
+    .editar {
+        padding: 0px!important;
+        margin: 0px;
+    }
+    .boton {
+        font-size: 12px!important;
+    }
+}
+
+@media (width:414px) {
     .wrapper {
         padding-top: 120px;
         padding-left: 30px;
@@ -185,5 +311,11 @@ span {
     }
     .imagenAdmin {
         display: none;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    .boton {
+        font-size: 12px!important;
     }
 }

@@ -4,7 +4,7 @@
             <h2 class="mb-4 ">{{comercio.nombre}}</h2>
         </div>
         <div class="row social ">
-            <div class="col-lg-10 col-md-10 mb-10 col-sm-12 col-xs-12 col-12 cabecera">
+            <div class="col-lg-10 col-md-10 mb-10 col-sm-12 col-xs-10 col-10 cabecera">
                 <ul>
                     <li>
                         <div class=" bio text-muted imagenAdmin"><img src="{{url_firebase}}{{usuario.img}}{{url_firebase2}}" alt="Imgen Admin">
@@ -30,9 +30,10 @@
 
                     <li>
                         <span>
-                        <a (click)="corazones()" class="like"  class="mouse" (click)="corazones()" href="javascript:void(0);" (click)="addLike(comercio.id);">
+                            <a (click)="corazones()" class="like" class="mouse" (click)="corazones()"
+                                href="javascript:void(0);" (click)="addLike(comercio.id);">
 
-                            <small><span class="corazon">&#10084;</span> <span>{{comercio.likes}}</span></small>
+                                <small><span class="corazon">&#10084;</span> <span>{{comercio.likes}}</span></small>
                         </a>
                         </span>
                     </li>
@@ -43,9 +44,10 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-lg-2 col-md-2 mb-2 col-sm-2 col-xs-12 col-12">
+            <div class="col-lg-2 col-md-2 mb-2 col-sm-2 col-xs-2 col-2 editar">
                 <div class="editar" *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">
-                    <button [routerLink]="['/editar', comercio.id]" class="btn btn-rounded boton cabecera"> Editar </button>
+                    <button [routerLink]="['/editar', comercio.id]" class="btn btn-rounded boton cabecera"> Editar
+                    </button>
                 </div>
             </div>
 

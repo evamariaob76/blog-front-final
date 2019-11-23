@@ -7,6 +7,7 @@ import "@firebase/firestore";
 import "@firebase/auth";
 import "@firebase/storage";
 import { environment } from "../../../environments/environment";
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: "app-editar-comercio",
@@ -57,9 +58,11 @@ export class EditarComercioComponent implements OnInit {
       if (id) {
         this.comerciosService.getComercio(id).subscribe(comercio => {
           this.comercio = comercio;
+          if(this.comercio.img!=null){
           this.getFirebase(this.comercio.img);
           this.getFirebase(this.comercio.img1);
           this.getFirebase(this.comercio.img2);
+          }
         });
       }
     });
@@ -102,9 +105,12 @@ export class EditarComercioComponent implements OnInit {
   }
 
   update(): void {
+    this.comercio.actividad = this.comercio.actividad.toLowerCase();
     //función que llama al servicio correspondiente para actualizar el comercio
-    this.comerciosService.update(this.comercio).subscribe(json => {
+    this.comerciosService.update(this.comercio).subscribe(comercio => {
+      this.comercio=comercio;
       this.visible = true;
+      this.cargarComercio();
     });
   }
 
@@ -183,5 +189,6 @@ export class EditarComercioComponent implements OnInit {
       .catch(function(error) {
         debugger;
       });
-  }
+  
+}
 } 

@@ -72,17 +72,19 @@
         </div>
     </div>
 </div>
+<h3 class="mb-12"> Comentarios</h3>
+
+<hr>
+<h4 class="mb-12" *ngIf="noExistenComentarios===true"> No existen comentarios </h4>
 
 <div class="row container-fluid rowComentarios" id="mostrar">
-    <div class="col-md-1 col-lg-1 main-content">
+    <div class="col-md-1 col-1 col-xs-1 col-lg-1 main-content">
     </div>
-    <div class="col-md-12 col-lg-12 col-sm-12 col-12 main-content">
+    <div class="col-md-12 col-lg-12 col-sm-12 col-12 col-xs-12 main-content">
         <div class="div">
             <div class="pt-12">
-                <h3 class="mb-12"> Comentarios</h3>
-                <hr>
-                <h4 class="mb-12" *ngIf="noExistenComentarios===true"> No existen comentarios </h4>
-                <form #contestacionForm="ngForm">
+
+                <form id="contestacionForm" #contestacionForm="ngForm">
                     <ul class="comment-list" *ngFor="let comentario of comercio.comentarios; let i=index">
                         <li class="comment" id="comment" *ngIf="i<4  && comprobar==false">
                             <div id="comentariosInicio">
@@ -98,7 +100,7 @@
                                     <button class="btn btn-rounded btn-danger" (click)="eliminar(comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">eliminar</button>
                                     <div>
                                         <div id="contestacion{{comentario.id}}" class="ocultar">
-                                            <textarea name="contestacion " cols="30 " rows="3 " required minlength="2" [(ngModel)]="coment" #contestacion="ngModel"></textarea>
+                                            <textarea class="contestacion" name="contestacion " cols="30 " rows="3 " required minlength="2" [(ngModel)]="coment" #contestacion="ngModel"></textarea>
                                             <div class="alert alert-danger" style="margin-left:50px" *ngIf="contestacion.invalid && (contestacion.dirty || contestacion.touched)">
                                                 <div *ngIf="contestacion.errors.minlength ">
                                                     La contestación debe tener al menos 2 caracteres
@@ -122,10 +124,10 @@
                                     <div class="vcard ">
                                         <img src="{{url_firebase}}{{usuario.img}}{{url_firebase2}}" alt="imagen admin ">
                                     </div>
-                                    <div class="comment-body ">
+                                    <div class="comment-body comment-body-admin ">
                                         <h4>Amind dice... </h4>
                                         <div class="meta ">{{comentario.fecha |date:'fullDate'}} </div>
-                                        <p>{{comentario.contestacion}}</p>
+                                        <p id="admin">{{comentario.contestacion}}</p>
                                         <div *ngIf="ocultar==false">
                                             <button class="btn btn-rounded boton" id="contestarAdmin{{comentario.id}}" (click)="cambiarAdmin(contestacionForm,comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">editar</button>
                                             <button class="btn btn-rounded btn-danger" id="eliminar" (click)="eliminarContestacion(comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">eliminar</button>
@@ -133,7 +135,7 @@
                                         <div>
 
                                             <div id="contestacionAmin{{comentario.id}}" class="ocultar">
-                                                <textarea name="contestacion " cols="30 " rows="3 " required minlength="2" [(ngModel)]="coment" #contestacion="ngModel"></textarea>
+                                                <textarea id="contestacion" class="contestacion" name="contestacion " cols="40 " rows="3 " required minlength="2" [(ngModel)]="coment" #contestacion="ngModel"></textarea>
                                                 <div id="contestacionFormulario" class="alert alert-danger" style="margin-left:50px" *ngIf="contestacion.invalid && contestacion.touched">
                                                     <div id="contestacionFormulario" *ngIf="contestacion.invalid && (contestacion.dirty || contestacion.touched)">
                                                         La contestación debe tener al menos 2 caracteres
@@ -164,7 +166,7 @@
                                     <button class="btn btn-rounded btn-danger" (click)="eliminar(comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">eliminar</button>
                                     <div>
                                         <div id="contestacion{{comentario.id}}" class="ocultar">
-                                            <textarea name="contestacion " cols="30 " rows="3 " required minlength="2" [(ngModel)]="coment" #contestacion="ngModel"></textarea>
+                                            <textarea class="contestacion" name="contestacion " cols="30 " rows="3 " required minlength="2" [(ngModel)]="coment" #contestacion="ngModel"></textarea>
                                             <div class="alert alert-danger" style="margin-left:50px" *ngIf="contestacion.invalid && (contestacion.dirty || contestacion.touched)">
                                                 <div *ngIf="contestacion.errors.minlength ">
                                                     La contestación debe tener al menos 2 caracteres
@@ -188,10 +190,10 @@
                                     <div class="vcard ">
                                         <img src="{{url_firebase}}{{usuario.img}}{{url_firebase2}}" alt="Imagen admin ">
                                     </div>
-                                    <div class="comment-body ">
+                                    <div class="comment-body comment-body-admin ">
                                         <h4>Amind dice... </h4>
                                         <div class="meta ">{{comentario.fecha |date:'fullDate'}} </div>
-                                        <p>{{comentario.contestacion}}</p>
+                                        <p id="admin">{{comentario.contestacion}}</p>
                                         <div *ngIf="ocultar==false">
                                             <button class="btn btn-rounded boton" id="contestarAdmin{{comentario.id}}" (click)="cambiarAdmin(contestacionForm,comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">editar</button>
                                             <button class="btn btn-rounded btn-danger" id="eliminar" (click)="eliminarContestacion(comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">eliminar</button>
@@ -199,7 +201,7 @@
                                         <div>
 
                                             <div id="contestacionAmin{{comentario.id}}" class="ocultar">
-                                                <textarea name="contestacion " cols="30 " rows="3 " required minlength="2" [(ngModel)]="coment" #contestacion="ngModel"></textarea>
+                                                <textarea id="contestacion" class="contestacion" name="contestacion " cols="40 " rows="3 " required minlength="2" [(ngModel)]="coment" #contestacion="ngModel"></textarea>
                                                 <div id="contestacionFormulario" class="alert alert-danger" style="margin-left:50px" *ngIf="contestacion.invalid && contestacion.touched">
                                                     <div id="contestacionFormulario" *ngIf="contestacion.invalid && (contestacion.dirty || contestacion.touched)">
                                                         La contestación debe tener al menos 2 caracteres
@@ -228,11 +230,11 @@
     <div class="col-md-1 col-lg-1 main-content">
     </div>
     <div class="col-md-10 col-lg-12 main-content">
-        <button class="btn btn-rounded boton boton" (click)="mostrar() " *ngIf="comprobar==false && myClass==false ">ver
+        <button class="btn btn-rounded  boton ver" (click)="mostrar() " *ngIf="comprobar==false && myClass==false ">ver
             todos
             los
             comentarios...</button>
-        <button class="btn btn-rounded boton boton" (click)="mostrar() " *ngIf="comprobar==true">mostrar menos
+        <button class="btn btn-rounded  boton ver" (click)="mostrar() " *ngIf="comprobar==true">mostrar menos
             comentarios...</button>
 
     </div>
