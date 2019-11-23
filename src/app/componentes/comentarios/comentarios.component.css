@@ -178,11 +178,17 @@ P {
     p {
         width: 620px;
     }
+    #comentario {
+        width: 610px;
+    }
     #admin {
         width: 525px;
     }
     .ver {
         margin-left: 0px;
+    }
+    .NoExisten {
+        padding-left: 50px;
     }
 }
 
@@ -216,7 +222,12 @@ P {
     }
     button {
         margin-bottom: 15px;
-        ;
+    }
+    #comentario {
+        width: 425px;
+    }
+    .NoExisten {
+        padding-left: 50px;
     }
 }
 
@@ -272,7 +283,7 @@ P {
         width: 225px;
         margin: 0px;
     }
-    h4 {
+    .NoExisten {
         padding-left: 40px!important;
     }
     hr {
@@ -327,7 +338,7 @@ P {
         font-size: 12px!important;
     }
     .meta {
-        width: 200px;
+        width: 210px;
         font-size: 11px!important;
     }
     #admin {
@@ -365,7 +376,7 @@ P {
         margin: 0px!important;
         padding: 0px!important;
     }
-    h4 {
+    .NoExisten {
         padding-left: 20px!important;
     }
 }
@@ -422,7 +433,7 @@ P {
         width: 225px;
         margin: 0px;
     }
-    h4 {
+    .NoExisten {
         padding-left: 40px!important;
     }
     hr {
@@ -478,7 +489,7 @@ P {
         font-size: 12px!important;
     }
     .meta {
-        width: 200px;
+        width: 240px;
         font-size: 11px!important;
     }
     #admin {
@@ -516,7 +527,7 @@ P {
         margin: 0px!important;
         padding: 0px!important;
     }
-    h4 {
+    .NoExisten {
         padding-left: 20px!important;
     }
 }
@@ -565,7 +576,7 @@ P {
         font-size: 12px!important;
     }
     .meta {
-        width: 200px;
+        width: 240px;
         font-size: 11px!important;
     }
     #admin {
@@ -603,13 +614,13 @@ P {
         margin: 0px!important;
         padding: 0px!important;
     }
-    h4 {
+    .NoExisten {
         padding-left: 20px!important;
     }
 }
 
 @media (min-width:1024px) {
-    h4 {
+    .NoExisten {
         padding-left: 50px;
     }
 }

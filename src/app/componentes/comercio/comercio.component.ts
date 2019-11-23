@@ -156,7 +156,6 @@ export class ComercioComponent implements OnInit {
 
   getFirebase(img) {
     var storage = firebase.storage();
-    var pathReference = storage.ref("images/a.jpg");
     var gsReference = storage.refFromURL(
       "gs://pharmacyapp-b56e1.appspot.com/images/" + img
     );

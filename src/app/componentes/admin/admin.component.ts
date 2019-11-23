@@ -94,10 +94,6 @@ export class AdminComponent implements OnInit {
                   ) / 10;
                 this.updatebarChartOptions(this.i+1);
                 this.updatepieChartOptions(this.numero);
-                console.log('nombre=' + response[this.i].nombre);
-                console.log('likes=' + response[this.i].likes);
-
-                  
               }
             }
           })
@@ -132,7 +128,6 @@ export class AdminComponent implements OnInit {
           for (let i = 1; i < response.length; i++) {
             this.barChartLabels2.push(response[i].nombre);
             this.barChartData2[0].data.push(response[i].likes);
-            console.log('responseLikes:'+response) //añado los likes de los comercios a la  data de la gráfica barra
           }
         })
       )

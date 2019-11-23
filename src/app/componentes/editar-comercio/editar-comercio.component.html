@@ -209,7 +209,7 @@
                 <p> * las fotos se actualizan en el comercio automáticamente al seleccionarlas </p>
                 <p *ngIf=" updateFoto==false"> * pulse cancelar si no desea cambiar las fotos </p>
 
-                <div class="container ">
+                <div class="container " *ngIf="comercio.img && comercio.img1&&comercio.img2">
                     <div class="firma-card row lista ">
                         <div class="col-lg-2 col-sm-0 col-xs-0 col-0 my-auto"></div>
 

@@ -6,7 +6,7 @@
             <div class="row columna" *ngIf="i<indice">
                 <div class="col-md-12 mb-6 col-sm-6 col-xs-12 col-12 hijo">
 
-                    <div class="card sombras" (mouseover)="sombreado()" style="width: 18rem;">
+                    <div class="card sombras" (mouseover)="sombreado()" style="width: 18rem;" *ngIf="comercio.img ">
                         <img class="img-fluid" src="{{url_firebase}}{{comercio.img}}{{url_firebase2}}" alt={{comercio.img}}>
                         <div class="card-body ">
                             <h5 class="card-title">{{comercio.nombre}}</h5>

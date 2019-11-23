@@ -75,7 +75,7 @@
 <h3 class="mb-12"> Comentarios</h3>
 
 <hr>
-<h4 class="mb-12" *ngIf="noExistenComentarios===true"> No existen comentarios </h4>
+<h4 class="mb-12 NoExisten" *ngIf="noExistenComentarios===true"> No existen comentarios </h4>
 
 <div class="row container-fluid rowComentarios" id="mostrar">
     <div class="col-md-1 col-1 col-xs-1 col-lg-1 main-content">
@@ -95,12 +95,15 @@
                                     <h4>{{comentario.nombre}}</h4>
                                     <div class="meta">{{comentario.fecha |date:'fullDate'}} </div>
                                     <p>{{comentario.comentario}}</p>
+
+
+
                                     <button class="btn btn-rounded boton" id="contestar{{comentario.id}}" *ngIf="comentario.contestacion==null && authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')" (click)="cambiar(contestacionForm,comentario.id) ">contestar</button>
 
                                     <button class="btn btn-rounded btn-danger" (click)="eliminar(comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">eliminar</button>
                                     <div>
                                         <div id="contestacion{{comentario.id}}" class="ocultar">
-                                            <textarea class="contestacion" name="contestacion " cols="30 " rows="3 " required minlength="2" [(ngModel)]="coment" #contestacion="ngModel"></textarea>
+                                            <textarea class="contestacion" name="contestacion " cols="40 " rows="3 " required minlength="2" [(ngModel)]="coment" #contestacion="ngModel"></textarea>
                                             <div class="alert alert-danger" style="margin-left:50px" *ngIf="contestacion.invalid && (contestacion.dirty || contestacion.touched)">
                                                 <div *ngIf="contestacion.errors.minlength ">
                                                     La contestación debe tener al menos 2 caracteres
@@ -110,7 +113,10 @@
                                                 </div>
                                             </div>
                                             <div class="botones">
-                                                <button class="btn btn-rounded boton" id="guardar" [disabled]="!contestacionForm.form.valid" (click)="update(contestacionForm,comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">guardar</button>
+
+
+
+                                                <button class="btn btn-rounded botonDisabled" id="guardar" [ngClass]="{'boton': contestacionForm.valid}" [disabled]="!contestacionForm.form.valid" (click)="update(contestacionForm,comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">guardar</button>
                                                 <button class="btn btn-rounded boton" (click)="cancelar(contestacionForm,comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">cancelar</button>
                                             </div>
                                         </div>
@@ -142,7 +148,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="botones">
-                                                    <button class="btn btn-rounded boton" id="guardar" [disabled]="!contestacionForm.form.valid" (click)="update(contestacionForm,comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">guardar</button>
+                                                    <button class="btn btn-rounded botonDisabled" [ngClass]="{'boton': contestacionForm.valid}" id="guardar" [disabled]="!contestacionForm.form.valid" (click)="update(contestacionForm,comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">guardar</button>
                                                     <button class="btn btn-rounded boton" id="cancelar" (click)="cancelar(contestacionForm,comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">cancelar</button>
                                                 </div>
                                             </div>
@@ -166,7 +172,7 @@
                                     <button class="btn btn-rounded btn-danger" (click)="eliminar(comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">eliminar</button>
                                     <div>
                                         <div id="contestacion{{comentario.id}}" class="ocultar">
-                                            <textarea class="contestacion" name="contestacion " cols="30 " rows="3 " required minlength="2" [(ngModel)]="coment" #contestacion="ngModel"></textarea>
+                                            <textarea class="contestacion" name="contestacion " cols="40 " rows="3 " required minlength="2" [(ngModel)]="coment" #contestacion="ngModel"></textarea>
                                             <div class="alert alert-danger" style="margin-left:50px" *ngIf="contestacion.invalid && (contestacion.dirty || contestacion.touched)">
                                                 <div *ngIf="contestacion.errors.minlength ">
                                                     La contestación debe tener al menos 2 caracteres
@@ -176,7 +182,7 @@
                                                 </div>
                                             </div>
                                             <div class="botones">
-                                                <button class="btn btn-rounded boton" id="guardar" [disabled]="!contestacionForm.form.valid" (click)="update(contestacionForm,comentario.id) ">guardar</button>
+                                                <button class="btn btn-rounded botonDisabled" id="guardar" [ngClass]="{'boton': contestacionForm.valid}" [disabled]="!contestacionForm.form.valid" (click)="update(contestacionForm,comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">guardar</button>
                                                 <button class="btn btn-rounded boton" (click)="cancelar(contestacionForm,comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">cancelar</button>
                                             </div>
                                         </div>
@@ -208,7 +214,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="botones">
-                                                    <button class="btn btn-rounded boton" id="guardar" [disabled]="!contestacionForm.form.valid" (click)="update(contestacionForm,comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">guardar</button>
+                                                    <button class="btn btn-rounded botonDisabled" id="guardar" [ngClass]="{'boton': contestacionForm.valid}" [disabled]="!contestacionForm.form.valid" (click)="update(contestacionForm,comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">guardar</button>
                                                     <button class="btn btn-rounded boton" id="cancelar" (click)="cancelar(contestacionForm,comentario.id) " *ngIf="authService.isAuthenticated()==true  && authService.hasRole('ROLE_ADMIN')">cancelar</button>
                                                 </div>
                                             </div>

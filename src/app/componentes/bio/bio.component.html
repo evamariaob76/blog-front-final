@@ -6,8 +6,8 @@
 
 
         <div class="sidebar-box">
-            <div class="bio text-center">
-                <img src="{{url_firebase}}{{usuario.img}}{{url_firebase2}}" alt="Image Placeholder" class="img-fluid">
+            <div class="bio text-center" *ngIf="usuario.img.length>1">
+                <img src="{{url_firebase}}{{usuario.img}}{{url_firebase2}}?" alt="imagen adminr" class="img-fluid">
                 <div class="bio-body">
                     <h2>Eva Ortiz</h2>
                     <p>{{usuario.bio}}</p>

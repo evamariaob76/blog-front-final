@@ -22,45 +22,49 @@ export class BioComponent implements OnInit {
     private usuariosService: UsuariosService,
     private activatedRoute: ActivatedRoute
   ) 
-   {
- if (!firebase.apps.length) {
-   firebase.initializeApp(environment.firebase);
- }     }
+  {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(environment.firebase);
+    }
+  }
 
   ngOnInit() {
     this.cargarUsuario();
   }
 
-  cargarUsuario() {
+    cargarUsuario() {
     //carga el usuario
     this.activatedRoute.params.subscribe(params => {
-      this.usuariosService.getUsuario(2).subscribe(usuario => {
-        this.usuario = usuario;
-        if(usuario.img){
-                  this.getFirebase(usuario.img);
+      this.usuariosService
+        .getUsuario(2)
+        .subscribe(usuario => {(this.usuario = usuario)
+          if(usuario.img){
+           this.getFirebase(usuario.img)
 
-        }
-      });
+          }
+        });
     });
   }
   getFirebase(img) {
     var storage = firebase.storage();
-    var pathReference = storage.ref("images/a.jpg");
     var gsReference = storage.refFromURL(
-      "gs://pharmacyapp-b56e1.appspot.com/images/" + img
+      "gs://pharmacyapp-b56e1.appspot.com/images/"+ img
     );
     gsReference
       .getDownloadURL()
-      .then(function(url) {
+      .then(function (url) {
+        if (url) {
         var xhr = new XMLHttpRequest();
         xhr.responseType = "blob";
-        xhr.onload = function(event) {
+
+        xhr.onload = function (event) {
           var blob = xhr.response;
         };
-        xhr.open("GET", url);
+        xhr.open("GET", url,true);
         xhr.send();
+}
       })
-      .catch(function(error) {
+      .catch(function (error) {
         debugger;
       });
   }

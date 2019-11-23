@@ -58,7 +58,7 @@ export class EditarComercioComponent implements OnInit {
       if (id) {
         this.comerciosService.getComercio(id).subscribe(comercio => {
           this.comercio = comercio;
-          if(this.comercio.img!=null){
+          if (this.comercio.img != null && this.comercio.img1 != null && this.comercio.img2 != null ){
           this.getFirebase(this.comercio.img);
           this.getFirebase(this.comercio.img1);
           this.getFirebase(this.comercio.img2);

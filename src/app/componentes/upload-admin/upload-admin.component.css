@@ -97,8 +97,14 @@
    
    .imagen,
    p {
-       font-size: 12px;
+       font-size: 14px;
        font-style: italic;
+   }
+   
+   p span {
+       font-size: 14px;
+       font-style: italic;
+       font-weight: bold;
    }
    
    input[id="img"],
