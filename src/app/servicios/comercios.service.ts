@@ -148,7 +148,15 @@ export class ComerciosService {
       })
     );
   }
-
+  findLastLikes(): Observable<any> {
+    return this.http.get<any>(`${this.url}/lastLikes`, { headers: this.agregarAuthorizationHeader() }).pipe(
+      catchError(e => {
+        if (e.staus == 400) {
+          return throwError(e);
+        }
+      })
+    );
+  }
   getMaxVisitas(): Observable<any> {
     return this.http.get<any>(`${this.url}/maxVisitas`, { headers: this.agregarAuthorizationHeader() }).pipe(
       catchError(e => {

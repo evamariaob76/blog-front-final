@@ -52,7 +52,6 @@ export class AdminComponent implements OnInit {
             } 
             response.reverse(); // Los comercios insertados más recientes aparecerán en primer lugar
             for (this.i = 0; this.i < this.variable ; this.i++) {
-              this.totalLikes += comercios[this.i].likes;
 
               if (this.i + 1 == this.variable) {
                 this.terminaBucle = true;
@@ -66,6 +65,7 @@ export class AdminComponent implements OnInit {
     }
     this.getMaxLikes();
     this.getMaxVisitas();
+    this.findLastLikes();
   }
 
   cargarGraficas() {
@@ -94,6 +94,7 @@ export class AdminComponent implements OnInit {
             }
             for (this.i = 0; this.i < this.variable2; this.i++) {
               this.barChartLabels.push(comercios[this.i].nombre); //añado cada uno de los nombres de los comercios a la data de la gráfica barra
+              this.totalLikes += comercios[this.i].likes;
 
               this.barChartData[0].data.push(response[this.i].likes); //añado los likes de los comercios a la  data de la gráfica barra
               this.barChartData[1].data.push(
@@ -101,22 +102,7 @@ export class AdminComponent implements OnInit {
               ); //añado cada uno de los comentarios (longitud total)  a la data de la gráfica barra
               this.barChartData[2].data.push(response[this.i].visitas); //añado cada uno de las visitas de los comercios a la  data de la gráfica barra
 
-
-                  this.pieChartLabels.push(response[this.i].nombre); //añado cada uno de los nombres de los comercios a la gráfica pastel
-                  this.numero = this.pieChartLabels.length;
-                  this.pieChartData.push(response[this.i].likes); //añado los likes de los comercios a la data de gráfica pastel para utilizarlo en una función
-                  this.pieChartData[this.i] =
-                    Math.round(
-                      ((this.pieChartData[this.i] * 100) / this.totalLikes) * 10
-                    ) / 10;
-                 /*console.log(response[this.i].nombre + 'likes' + response[this.i].likes + '/macth' + Math.round(
-                    ((this.pieChartData[this.i] * 100) / this.totalLikes) * 10
-                  ) / 10)*/
-
-                
-               
                 this.updatebarChartOptions(this.i + 1);
-                this.updatepieChartOptions(this.numero);
               
             }
           })
@@ -147,9 +133,28 @@ export class AdminComponent implements OnInit {
         .pipe(
           tap(response => {
             let comercios = response as Comercio[];
-            for (let i = 1; i < response.length; i++) {
+            for (let i = 0; i <response.length; i++) {
               this.barChartLabels2.push(comercios[i].nombre);
               this.barChartData2[0].data.push(comercios[i].likes);
+            }
+          })
+        )
+        .subscribe(comercios => (this.comercios = comercios));
+    }
+  }
+  
+  findLastLikes(): void {
+    if (this.authService.isAuthenticated) {
+      this.comerciosService
+        .findLastLikes()
+        .pipe(
+          tap(response => {
+            this.updatepieChartOptions(response.length);
+
+            let comercios = response as Comercio[];
+            for (let i = 0; i < response.length; i++) {
+              this.pieChartLabels.push(response[i].nombre); //añado cada uno de los nombres de los comercios a la gráfica pastel
+              this.pieChartData.push(Math.round(response[i].likes * 100 / this.totalLikes)); //añado los likes de los comercios a la data de gráfica pastel para utilizarlo en una función
             }
           })
         )
@@ -163,7 +168,7 @@ export class AdminComponent implements OnInit {
       .pipe(
         tap(response => {
           let comercios = response as Comercio[];
-          for (let i = 1; i < response.length; i++) {
+          for (let i = 0; i < response.length; i++) {
             this.barChartLabels3.push(comercios[i].nombre);
             this.barChartData3[0].data.push(comercios[i].visitas); //añado los likes de los comercios a la  data de la gráfica barra
           }
@@ -219,7 +224,7 @@ export class AdminComponent implements OnInit {
       responsive: true,
       maintainAspectRatio: false,
       title: {
-        text: "Porcentaje de likes de los últimos  " + number + " comercios introducidos",
+        text: "Porcentaje de likes de los últimos  " + number + " comercios introducidos que tienen likes",
         fontSize: 20,
         fontColor: "black",
         display: true
