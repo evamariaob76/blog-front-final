@@ -44,7 +44,7 @@ const RUTAS: Routes = [
     { path: 'admin', component: BodyAdminComponent },
     { path: 'mes/:mes', component: BodyFechasComponent },
     { path: 'bio', component: BioComponent },
-    { path: 'resetPasword', component: ResetPasswordComponent },
+    { path: 'home/resetPasword', component: ResetPasswordComponent },
     { path: 'password', component: RecuperarPasswordComponent },
     { path: 'contacto/form', component: ContactoComponent },
     { path: 'editar/:id', component: EditarComercioComponent, canActivate: [AuthGuard, RolesGuard], data: { role: 'ROLE_ADMIN' } },
