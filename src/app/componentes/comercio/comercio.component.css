@@ -85,13 +85,19 @@ h1 {
 
 .fa-facebook-f,
 .fa-comment {
-    font-size: 15px;
+    font-size: 18px;
     color: #B2BABB;
+    margin-top: 5px;
 }
 
 .social a {
     padding-right: 6px;
     color: #B2BABB;
+}
+
+span {
+    text-align: center;
+    vertical-align: center;
 }
 
 .cabecera {
@@ -100,6 +106,10 @@ h1 {
     margin-top: 0px;
     height: 40px;
     padding-bottom: 0px;
+}
+
+.length {
+    padding-top: 20px!important;
 }
 
 .corazon {
@@ -250,6 +260,14 @@ span {
     .boton {
         font-size: 12px!important;
     }
+    .fa-facebook-f,
+    .fa-comment {
+        font-size: 14px;
+    }
+    .corazon {
+        font-size: 16px;
+        padding-top: 2px;
+    }
 }
 
 @media (width:375px) {
@@ -294,7 +312,7 @@ span {
     }
 }
 
-@media (width:414px) {
+@media (min-width:411px) and (max-width:414px) {
     .wrapper {
         padding-top: 120px;
         padding-left: 30px;
