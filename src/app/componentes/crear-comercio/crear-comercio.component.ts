@@ -8,8 +8,6 @@ import firebase from "@firebase/app";
 import "@firebase/firestore";
 import "@firebase/auth";
 import "@firebase/storage";
-import { environment } from "../../../environments/environment";
-
 
 @Component({
   selector: "app-crear-comercio",
@@ -37,7 +35,7 @@ export class CrearComercioComponent implements OnInit {
   actividades: any = [];
   otros: string = "";
   url_backend: string = URL_BACKEND;
-  url_firebase: string ="https://firebasestorage.googleapis.com/v0/b/pharmacyapp-b56e1.appspot.com/o/images%2F";
+  url_firebase: string = "https://firebasestorage.googleapis.com/v0/b/pharmacyapp-b56e1.appspot.com/o/images%2F";
   url_firebase2 = "?alt=media&token=572032c4-c176-4e3d-8d2d-c4c5a378c7ca";
 
   constructor(
@@ -45,11 +43,7 @@ export class CrearComercioComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private emailService: EmailService
-  ) {
-    if (!firebase.apps.length) {
-      firebase.initializeApp(environment.firebase);
-    }
-  }
+  ) { }
 
   ngOnInit() {
     this.actividad(); //al cargarse la página se llama a la funcion cargarComercio que mostrará el comercio en el caso de que se vaya a editar
@@ -61,14 +55,11 @@ export class CrearComercioComponent implements OnInit {
       .getComercio(id)
       .subscribe(comercio => {
         (this.comercio = comercio)
-       /* if(comercio.img&&comercio.img1&&comercio.img2){
-              this.getFirebase(this.comercio.img)
-        this.getFirebase(this.comercio.img1)
-        this.getFirebase(this.comercio.img2)  
-        }*/
-  
-
-        
+        if (this.comercio.img) {
+          this.getFirebase(this.comercio.img)
+          this.getFirebase(this.comercio.img1);
+          this.getFirebase(this.comercio.img2);
+        }
       });
   }
   actividad() {
@@ -85,7 +76,7 @@ export class CrearComercioComponent implements OnInit {
     this.comercio.createAt = this.fechaHoy;
     this.comercio.likes = 0;
     this.comercio.visitas = 0;
-    //this.comercio.actividad = this.comercio.actividad.toLowerCase();
+    this.comercio.actividad = this.comercio.actividad.toLowerCase();
     this.comerciosService.create(this.comercio).subscribe(json => {
       swal.fire("Comercio creado:", `${json.comercio.nombre}`, "success");
       this.id = json.comercio.id;
@@ -93,7 +84,11 @@ export class CrearComercioComponent implements OnInit {
       this.enviarmail(this.id);//función que hace que cuando se crea un comercio nuevo mande un mail de información
       this.uploadFotos(this.id);
       this.visibleFoto = true;
-
+      if (this.comercio.img != null) {
+        this.getFirebase(this.comercio.img);
+        this.getFirebase(this.comercio.img1);
+        this.getFirebase(this.comercio.img2);
+      }
 
     });
   }
@@ -101,30 +96,18 @@ export class CrearComercioComponent implements OnInit {
     //función que recoge la  información de img
     this.archivo = event.target.files[0];
     this.htmlStr = this.archivo.name;
-    this.comercio.img = this.archivo.name;
-    this.getFirebase(this.comercio.img);
-    console.log('img' + this.archivo.name)
     this.estadoPositivo1 = true; //variable que hace cambiar el color al subir una imagen en la img1
   }
   seleccionarFoto1(event) {
     //función que recoge la  información de img1
     this.archivo1 = event.target.files[0];
-    this.htmlStr1 = this.archivo1.name;
-    this.comercio.img1 = this.archivo1.name;
-    this.getFirebase(this.comercio.img1)
-    console.log('img1' + this.archivo.name)
-
+    this.htmlStr1 = this.archivo.name;
     this.estadoPositivo2 = true; //variable que hace cambiar el color al subir una imagen en la img2
-    
   }
   seleccionarFoto2(event) {
     //función que recoge la  información de img2
     this.archivo2 = event.target.files[0];
-    this.htmlStr2 = this.archivo2.name;
-    this.comercio.img2 = this.archivo2.name;
-    this.getFirebase(this.comercio.img2);
-    console.log('img2' + this.archivo2.name)
-
+    this.htmlStr2 = this.archivo.name;
     this.estadoPositivo3 = true; //variable que hace cambiar el color al subir una imagen en la img3
   }
 
@@ -140,13 +123,20 @@ export class CrearComercioComponent implements OnInit {
         .subscribe(response => {
           if (response.type == 4) {
             this.visibleFoto = true;
+            this.cargarComercio(id);
             //i++;
           }
-          this.cargarComercio(id);
-
         });
     }
   }
+  /*actualizarFoto(): void {//función que llama al servicio  insertar todas las fotos al comercio creado
+    this.comerciosService.update(this.comercio).subscribe
+      (json => {
+
+        this.cargarComercio();
+      })
+    this.visible = true;
+  }*/
 
   nuevoComercio() {
     //función que resetea los campos para incluir un nuevo comercio
@@ -155,8 +145,8 @@ export class CrearComercioComponent implements OnInit {
   }
   enviarmail(id) {
     this.emailService.sendEmail(id).subscribe();
+    console.log('mailok');
   }
-  
   informacionLat() {
     switch (this.informacionBooleanLat) {
       case false:
@@ -207,7 +197,7 @@ export class CrearComercioComponent implements OnInit {
     var pathReference = storage.ref("images/a.jpg");
     var gsReference = storage.refFromURL(
       "gs://pharmacyapp-b56e1.appspot.com/images/" + img
-    );console.log('img'+img)
+    );
     gsReference
       .getDownloadURL()
       .then(function (url) {

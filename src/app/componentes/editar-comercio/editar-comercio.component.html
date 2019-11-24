@@ -163,7 +163,7 @@
 
                 <div class="form-group">
                     <label for="parrafoOne">Contenido Primer Párrafo</label><small> (mínimo 100 caracteres)</small>
-                    <textarea id="parrafoOne" [(ngModel)]="comercio.parrafoOne" #parrafoOne="ngModel" name="parrafoOne" cols="30" rows="10" class="form-control" placeholder="Contenido primer párrafo" required minlength="200"></textarea>
+                    <textarea id="parrafoOne" [(ngModel)]="comercio.parrafoOne" #parrafoOne="ngModel" name="parrafoOne" cols="30" rows="10" class="form-control" placeholder="Contenido primer párrafo" required minlength="160"></textarea>
                 </div>
                 <div class="alert alert-danger" *ngIf="parrafoOne.invalid && (parrafoOne.dirty || parrafoOne.touched)">
                     <div *ngIf="parrafoOne.errors.required ">
@@ -171,12 +171,12 @@
                     </div>
 
                     <div *ngIf="parrafoOne.errors.minlength ">
-                        El contenido del primer párrafo de comercio debe tener al menos 200 caracteres
+                        El contenido del primer párrafo de comercio debe tener al menos 160 caracteres
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="parrafoTwo">Contenido Segundo Párrafo</label>
-                    <textarea id="parrafoTwo" [(ngModel)]="comercio.parrafoTwo" #parrafoTwo="ngModel" name="parrafoTwo" cols="30" rows="10" class="form-control" placeholder="Contenido segundo párrafo" required minlength="200"></textarea>
+                    <textarea id="parrafoTwo" [(ngModel)]="comercio.parrafoTwo" #parrafoTwo="ngModel" name="parrafoTwo" cols="30" rows="10" class="form-control" placeholder="Contenido segundo párrafo" required minlength="160"></textarea>
                 </div>
                 <div class="alert alert-danger" *ngIf="parrafoTwo.invalid && (parrafoTwo.dirty || parrafoTwo.touched)">
                     <div *ngIf="parrafoTwo.errors.required ">
@@ -184,7 +184,7 @@
                     </div>
 
                     <div *ngIf="parrafoTwo.errors.minlength ">
-                        El contenido del segundo párrafo de comercio debe tener al menos 200 caracteres
+                        El contenido del segundo párrafo de comercio debe tener al menos 160 caracteres
                     </div>
                 </div>
 
@@ -209,7 +209,7 @@
                 <p> * las fotos se actualizan en el comercio automáticamente al seleccionarlas </p>
                 <p *ngIf=" updateFoto==false"> * pulse cancelar si no desea cambiar las fotos </p>
 
-                <div class="container " *ngIf="comercio.img && comercio.img1&&comercio.img2">
+                <div class="container ">
                     <div class="firma-card row lista ">
                         <div class="col-lg-2 col-sm-0 col-xs-0 col-0 my-auto"></div>
 
