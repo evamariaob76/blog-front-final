@@ -1,6 +1,6 @@
 import { Component, OnInit, ɵConsole } from '@angular/core';
 import { AutenticacionService } from '../../servicios/autenticacion.service';
-import { ComerciosService, Comercio} from '../../servicios/comercios.service';
+import { ComerciosService, Comercio } from '../../servicios/comercios.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
@@ -21,19 +21,21 @@ export class AdminComponent implements OnInit {
   totaldef: any[] = [];
   comerciosLikes: Comercio[] = [];
   private fragment: string;
-  terminaBucle: boolean=false;
-  numero:number=0;
+  terminaBucle: boolean = false;
+  numero: number = 0;
+  variable: number;
+  variable2: number;
 
   constructor(
     public authService: AutenticacionService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private comerciosService: ComerciosService
-  ) {}
+  ) { }
 
   ngOnInit() {
-  
-    window.scrollTo(0, 0); 
+
+    window.scrollTo(0, 0);
 
     if (this.authService.isAuthenticated) {
       this.comerciosService
@@ -41,14 +43,22 @@ export class AdminComponent implements OnInit {
         .pipe(
           tap(response => {
             let comercios = response as Comercio[];
-            let variable = response.length;
+            if (response.length <10) {
+              this.variable = response.length;
+            }
+            else {
+              this.variable = 10;
+
+            } 
             response.reverse(); // Los comercios insertados más recientes aparecerán en primer lugar
-            for (this.i = 0; this.i < variable; this.i++) {
+            for (this.i = 0; this.i < this.variable ; this.i++) {
               this.totalLikes += comercios[this.i].likes;
-              if (this.i+1==variable) {
+
+              if (this.i + 1 == this.variable) {
                 this.terminaBucle = true;
                 this.cargarGraficas();
-              }}
+              }
+            }
           })
         )
         .subscribe(comercios => (this.comercios = comercios));
@@ -58,7 +68,7 @@ export class AdminComponent implements OnInit {
     this.getMaxVisitas();
   }
 
-  cargarGraficas(){
+  cargarGraficas() {
     this.activatedRoute.fragment.subscribe(fragment => {
       this.fragment = fragment;
       if (fragment) {
@@ -71,67 +81,79 @@ export class AdminComponent implements OnInit {
         .pipe(
           tap(response => {
             let comercios = response as Comercio[];
-            let variable = response.length;
+            // let variable = response.length;
             response.reverse(); // Los comercios insertados más recientes aparecerán en primer lugar
-            for (this.i = 0; this.i < variable; this.i++) {
+
+            if (response.length <10) {
+              this.variable2 = response.length;
+
+            }
+            else {
+              this.variable2 = 10;
+
+            }
+            for (this.i = 0; this.i < this.variable2; this.i++) {
               this.barChartLabels.push(comercios[this.i].nombre); //añado cada uno de los nombres de los comercios a la data de la gráfica barra
+
               this.barChartData[0].data.push(response[this.i].likes); //añado los likes de los comercios a la  data de la gráfica barra
               this.barChartData[1].data.push(
                 response[this.i].comentarios.length
               ); //añado cada uno de los comentarios (longitud total)  a la data de la gráfica barra
               this.barChartData[2].data.push(response[this.i].visitas); //añado cada uno de las visitas de los comercios a la  data de la gráfica barra
-             
 
-              if (this.i == 10 || this.i <= variable ) {
-                if (response[this.i].likes>0){
-                this.pieChartLabels.push(response[this.i].nombre); //añado cada uno de los nombres de los comercios a la gráfica pastel
-                  this.numero =  this.pieChartLabels.length;
-                }
-                this.pieChartData.push(response[this.i].likes); //añado los likes de los comercios a la data de gráfica pastel para utilizarlo en una función
-                this.pieChartData[this.i] =
-                  Math.round(
+
+                  this.pieChartLabels.push(response[this.i].nombre); //añado cada uno de los nombres de los comercios a la gráfica pastel
+                  this.numero = this.pieChartLabels.length;
+                  this.pieChartData.push(response[this.i].likes); //añado los likes de los comercios a la data de gráfica pastel para utilizarlo en una función
+                  this.pieChartData[this.i] =
+                    Math.round(
+                      ((this.pieChartData[this.i] * 100) / this.totalLikes) * 10
+                    ) / 10;
+                 /*console.log(response[this.i].nombre + 'likes' + response[this.i].likes + '/macth' + Math.round(
                     ((this.pieChartData[this.i] * 100) / this.totalLikes) * 10
-                  ) / 10;
-                this.updatebarChartOptions(this.i+1);
+                  ) / 10)*/
+
+                
+               
+                this.updatebarChartOptions(this.i + 1);
                 this.updatepieChartOptions(this.numero);
-              }
+              
             }
           })
         )
         .subscribe(comercios => (this.comercios = comercios));
-  
+
     }
   }
   cargarComercio(): void {
     if (this.authService.isAuthenticated) {
 
-    //llama a ComerciosService para cargar todos los comercios en pantalla
-    this.activatedRoute.params.subscribe(params => {
-      let id = params["id"];
-      if (id) {
-        this.comerciosService
-          .getComercio(id)
-          .subscribe(comercio => (this.comercio = comercio));
-      }
-    });
-  }
+      //llama a ComerciosService para cargar todos los comercios en pantalla
+      this.activatedRoute.params.subscribe(params => {
+        let id = params["id"];
+        if (id) {
+          this.comerciosService
+            .getComercio(id)
+            .subscribe(comercio => (this.comercio = comercio));
+        }
+      });
+    }
   }
 
   getMaxLikes(): void {
     if (this.authService.isAuthenticated) {
-
-    this.comerciosService
-      .getMaxLikes()
-      .pipe(
-        tap(response => {
-          let comercios = response as Comercio[];
-          for (let i = 1; i < response.length; i++) {
-            this.barChartLabels2.push(response[i].nombre);
-            this.barChartData2[0].data.push(response[i].likes);
-          }
-        })
-      )
-      .subscribe(comercios => (this.comercios = comercios));
+      this.comerciosService
+        .getMaxLikes()
+        .pipe(
+          tap(response => {
+            let comercios = response as Comercio[];
+            for (let i = 1; i < response.length; i++) {
+              this.barChartLabels2.push(comercios[i].nombre);
+              this.barChartData2[0].data.push(comercios[i].likes);
+            }
+          })
+        )
+        .subscribe(comercios => (this.comercios = comercios));
     }
   }
 
@@ -142,8 +164,8 @@ export class AdminComponent implements OnInit {
         tap(response => {
           let comercios = response as Comercio[];
           for (let i = 1; i < response.length; i++) {
-            this.barChartLabels3.push(response[i].nombre);
-            this.barChartData3[0].data.push(response[i].visitas); //añado los likes de los comercios a la  data de la gráfica barra
+            this.barChartLabels3.push(comercios[i].nombre);
+            this.barChartData3[0].data.push(comercios[i].visitas); //añado los likes de los comercios a la  data de la gráfica barra
           }
         })
       )
@@ -197,7 +219,7 @@ export class AdminComponent implements OnInit {
       responsive: true,
       maintainAspectRatio: false,
       title: {
-        text: "Porcentaje de likes de los " + number + " comercios con mas likes",
+        text: "Porcentaje de likes de los últimos  " + number + " comercios introducidos",
         fontSize: 20,
         fontColor: "black",
         display: true

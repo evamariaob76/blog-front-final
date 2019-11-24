@@ -97,8 +97,8 @@ export class ClienteService {
           }
           if (e.status == 500) {
             swal.fire(
-              "el comercio ya existe en la base de datos :",
-              cliente.username,
+              "el usuario o el email ya existe en la base de datos :",
+              'username:' + cliente.username+ '  email:'+cliente.email,
               "error"
             );
             return throwError(e);
