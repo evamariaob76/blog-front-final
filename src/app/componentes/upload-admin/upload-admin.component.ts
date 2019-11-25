@@ -16,8 +16,6 @@ import { environment } from "../../../environments/environment";
 })
 export class UploadAdminComponent implements OnInit {
   archivo: File;
-  archivo1: File;
-
   id: number = 2;
   usuario: any = {};
   estadoPositivo1: boolean = false;
@@ -35,12 +33,11 @@ export class UploadAdminComponent implements OnInit {
     private usuariosService: UsuariosService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) 
-{
-  if (!firebase.apps.length) {
-    firebase.initializeApp(environment.firebase);
+  ) {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(environment.firebase);
+    }
   }
-}
   ngOnInit() {
     this.cargarUsuario();
   }
@@ -51,18 +48,16 @@ export class UploadAdminComponent implements OnInit {
     this.estadoPositivo1 = true; //variable que hace cambiar el color al subir una imagen en la img1
     this.htmlStr = this.archivo.name;
     this.uploadFotos(this.id);
-    this.usuario.img = this.archivo.name;
-    this.getFirebase(this.usuario.img);
+    this.getFirebase(this.archivo.name);
 
   }
   seleccionarFotoPortada(event) {
     //función que recoge la  información de img
-    this.archivo1= event.target.files[0];
+    this.archivo = event.target.files[0];
     this.estadoPositivo2 = true; //variable que hace cambiar el color al subir una imagen en la img1
-    this.htmlStr1 = this.archivo1.name;
-    this.usuario.fotoPortada = this.archivo1.name;
+    this.htmlStr1 = this.archivo.name;
     this.uploadFotoPortada(this.id);
-    this.getFirebase(this.usuario.fotoPortada);
+    this.getFirebase(this.archivo.name);
 
   }
   cargarUsuario() {
@@ -115,16 +110,16 @@ export class UploadAdminComponent implements OnInit {
     );
     gsReference
       .getDownloadURL()
-      .then(function(url) {
+      .then(function (url) {
         var xhr = new XMLHttpRequest();
         xhr.responseType = "blob";
-        xhr.onload = function(event) {
+        xhr.onload = function (event) {
           var blob = xhr.response;
         };
         xhr.open("GET", url);
         xhr.send();
       })
-      .catch(function(error) {
+      .catch(function (error) {
         debugger;
       });
   }
