@@ -37,7 +37,6 @@ export class AdminComponent implements OnInit {
 
     window.scrollTo(0, 0);
 
-    if (this.authService.isAuthenticated) {
       this.comerciosService
         .getComercios()
         .pipe(
@@ -61,11 +60,11 @@ export class AdminComponent implements OnInit {
           })
         )
         .subscribe(comercios => (this.comercios = comercios));
+      this.getMaxLikes();
+      this.getMaxVisitas();
+      this.findLastLikes();
+    
 
-    }
-    this.getMaxLikes();
-    this.getMaxVisitas();
-    this.findLastLikes();
   }
 
   cargarGraficas() {
@@ -75,7 +74,6 @@ export class AdminComponent implements OnInit {
         window.scrollTo(0, 240); // how far to scroll on each step
       }
     });
-    if (this.authService.isAuthenticated) {
       this.comerciosService
         .getComercios()
         .pipe(
@@ -109,10 +107,9 @@ export class AdminComponent implements OnInit {
         )
         .subscribe(comercios => (this.comercios = comercios));
 
-    }
+    
   }
   cargarComercio(): void {
-    if (this.authService.isAuthenticated) {
 
       //llama a ComerciosService para cargar todos los comercios en pantalla
       this.activatedRoute.params.subscribe(params => {
@@ -123,11 +120,10 @@ export class AdminComponent implements OnInit {
             .subscribe(comercio => (this.comercio = comercio));
         }
       });
-    }
+    
   }
 
   getMaxLikes(): void {
-    if (this.authService.isAuthenticated) {
       this.comerciosService
         .getMaxLikes()
         .pipe(
@@ -140,7 +136,7 @@ export class AdminComponent implements OnInit {
           })
         )
         .subscribe(comercios => (this.comercios = comercios));
-    }
+    
   }
   
   findLastLikes(): void {

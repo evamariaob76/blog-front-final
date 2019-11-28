@@ -88,25 +88,19 @@ export class ClienteService {
       );
   }
   create(cliente: Cliente): Observable<any> {
-    return this.http
-      .post<any>(this.urlEndPoint, cliente, { headers: this.httpHeaders })
-      .pipe(
-        catchError(e => {
-          if (e.staus == 400) {
-            return throwError(e);
-          }
-          if (e.status == 500) {
-            swal.fire(
-              "el usuario o el email ya existe en la base de datos :",
-              'username:' + cliente.username+ '  email:'+cliente.email,
-              "error"
-            );
-            return throwError(e);
-          }
-          swal.fire(e.error.mensaje, e.error.error, "error");
+    return this.http.post<any>(this.urlEndPoint, cliente, { headers: this.httpHeaders }).pipe(
+      catchError(e => {
+        if (e.staus == 400) {
           return throwError(e);
-        })
-      );
+        }
+        if (e.status == 500) {
+          swal.fire('el username o email ya existe en la base de datos :', cliente.username, 'error');
+          return throwError(e);
+        }
+        swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      })
+    );
   }
 
   getCliente(id): Observable<Cliente> {

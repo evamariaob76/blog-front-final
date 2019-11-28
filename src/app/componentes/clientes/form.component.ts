@@ -47,7 +47,7 @@ export class FormComponent implements OnInit {
     (json => {
       this.creadoCliente = true;
       this.cliente= new Cliente;
-      clienteForm.reset({//reseto lo valores del formulario para la validación
+     clienteForm.reset({//reseto lo valores del formulario para la validación
         value: undefined
       })
     }) 
