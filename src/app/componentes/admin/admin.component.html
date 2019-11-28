@@ -1,4 +1,4 @@
-<div class="row principal">
+<div class="row principal" *ngIf="authService.isAuthenticated()==true">
     <a id="administrador"></a>
 
     <div class=" col-lg-12 col-sm-12 col-12 text-center col">
