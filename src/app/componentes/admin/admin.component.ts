@@ -31,12 +31,17 @@ export class AdminComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private comerciosService: ComerciosService
-  ) { }
+  ) {
+ }
 
   ngOnInit() {
 
     window.scrollTo(0, 0);
 
+
+
+
+    
       this.comerciosService
         .getComercios()
         .pipe(
@@ -55,15 +60,18 @@ export class AdminComponent implements OnInit {
               if (this.i + 1 == this.variable) {
                 this.terminaBucle = true;
                 this.cargarGraficas();
+                
               }
             }
+            this.getMaxLikes();
+            this.getMaxVisitas();
+            this.findLastLikes();
+
           })
         )
         .subscribe(comercios => (this.comercios = comercios));
-      this.getMaxLikes();
-      this.getMaxVisitas();
-      this.findLastLikes();
-    
+
+
 
   }
 
@@ -140,14 +148,12 @@ export class AdminComponent implements OnInit {
   }
   
   findLastLikes(): void {
-    if (this.authService.isAuthenticated) {
       this.comerciosService
         .findLastLikes()
         .pipe(
           tap(response => {
             this.updatepieChartOptions(response.length);
-
-            let comercios = response as Comercio[];
+           // let comercios = response as Comercio[];
             for (let i = 0; i < response.length; i++) {
               this.pieChartLabels.push(response[i].nombre); //añado cada uno de los nombres de los comercios a la gráfica pastel
               this.pieChartData.push(Math.round(response[i].likes * 100 / this.totalLikes)); //añado los likes de los comercios a la data de gráfica pastel para utilizarlo en una función
@@ -155,7 +161,7 @@ export class AdminComponent implements OnInit {
           })
         )
         .subscribe(comercios => (this.comercios = comercios));
-    }
+    
   }
 
   getMaxVisitas(): void {
