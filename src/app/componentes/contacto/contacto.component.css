@@ -1,43 +1,93 @@
        * {
-           font-family: 'Amaranth', sans-serif;
+           font-family: 'Dosis', sans-serif;
        }
        
-       .formulario {
-           padding-top: 80px;
-           padding-bottom: 150px;
+       label {
+           margin-right: 15px;
+       }
+       
+       form {
+           padding: 0px;
+           margin: 0px;
+       }
+       
+       form,
+       .form-group,
+       .row {
+           padding: 0px;
+       }
+       
+       .row {
+           margin: 1%;
+           font-size: 15px;
        }
        
        .botonDisabled {
-           background: #00004d;
+           background: rgba(179, 194, 124, 0.3);
        }
        
        .boton {
-           background: #00004d;
-           color: white
+           background: rgba(41, 64, 29);
+           color: white;
+           font-size: 15px;
        }
        
        .boton:hover {
            color: white;
-           background: #38688B;
+           font-weight: bolder;
+       }
+       
+       .danger {
+           background: rgb(197, 202, 180);
+           font-size: smaller;
+           padding: 1%;
+           margin: 0px;
+           color: red!important;
+       }
+       
+       .alert {
+           color: rgba(41, 64, 29);
+           font-size: smaller;
+           padding: 1%;
+           margin: 0px;
+           text-align: center;
+       }
+       
+       .btn-rounded {
+           font-size: 12px;
+           margin-left: 5%;
+           margin-top: 2%;
        }
        
        h3 {
            font-weight: bold;
-           text-align: center;
        }
        
+       h2 {
+           text-align: center;
+           font-weight: bold;
+           font-size: larger;
+           padding-top: 15px;
+           padding-bottom: 15px;
+       }
+       /*.background {
+           background: rgba(179, 194, 124, 0.3);
+           border: 1px solid rgba(41, 64, 29);
+       }*/
+       
        .background {
-           background: white;
+           background: rgba(179, 194, 124);
+           border: 1px solid rgba(41, 64, 29);
        }
        
        .enviado {
-           text-align: center;
-           color: #4F6E85;
+           text-align: left;
+           color: rgba(179, 194, 124);
            font-weight: bold;
        }
        
        .obligatorio {
-           color: #4F6E85;
+           color: rgba(179, 194, 124, 0.3);
            font-weight: bold;
            padding-bottom: 20px;
        }
@@ -46,8 +96,10 @@
            font-weight: bolder;
        }
        
-       form {
-           border: 1px solid black;
+       * {
+           font-family: 'Dosis', sans-serif;
+           text-align: left;
+           color: rgba(41, 64, 29);
        }
        
        @media (max-width:700px) {
@@ -69,5 +121,15 @@
        @media (min-width:768px) and (max-width:1024px) {
            .formulario {
                padding-top: 80px;
+           }
+       }
+       
+       @media (min-width:1000px) and (max-width:1400px) {
+           label,
+           h2 {
+               font-size: smaller;
+           }
+           form {
+               margin-bottom: 100px;
            }
        }

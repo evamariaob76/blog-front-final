@@ -31,12 +31,12 @@ export class EmailService {
       }),
     );
   }
-  sendEmailAdmin(nombre : string, apellido : string, email: string, texto : string): Observable<any> {
+  sendEmailAdmin(nombre : string,  email: string, telefono : string, empresa:string): Observable<any> {
     let formData = new FormData();
     formData.append("nombre", nombre);
-    formData.append("apellido", apellido);
     formData.append("email", email);
-    formData.append("texto", texto);
+    formData.append("telefono", telefono);
+    formData.append("empresa", empresa);
 
     return this.http.post<any>(`${this.url}/admin`, formData ,{ headers: this.httpHeaders }).pipe(
       catchError(e => {
@@ -72,6 +72,8 @@ export class EmailService {
   texto: string ;
   email: string ;
   username: string;
+  telefono: string;
+  empresa: string;
 
 };
 

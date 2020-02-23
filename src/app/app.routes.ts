@@ -24,8 +24,6 @@ import { BodyComercioCreadoComponent } from './componentes/body-comercio-creado/
 import { BodyUpdatedAdminComponent } from './componentes/body-updated-admin/body-updated-admin.component';
 
 
-
-
 const RUTAS: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'comercios/:id', component: BodyComercioComponent },
