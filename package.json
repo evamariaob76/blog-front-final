@@ -41,7 +41,7 @@
         "@types/chart.js": "^2.8.5",
         "@types/jquery": "^3.3.31",
         "angular.piechart": "^0.2.8",
-        "chart.js": "^2.8.0",
+        "chart.js": "^2.9.4",
         "chartjs-plugin-datalabels": "^0.7.0",
         "es6-fs": "^1.1.1",
         "express": "^4.16.2",
